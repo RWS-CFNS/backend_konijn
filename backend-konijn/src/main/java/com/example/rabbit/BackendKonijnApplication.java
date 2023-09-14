@@ -12,15 +12,25 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
+@EnableScheduling // for repeating tasks
 @ComponentScan(basePackages = "com.example.rabbit")
 @EntityScan("com.example.rabbit")
+
+
 public class BackendKonijnApplication {
 
 	static final String topicExchangeName = "spring-boot-exchange";
 
 	static final String queueName = "spring-boot";
+
+	@Bean
+	void repeater() {
+		System.out.println("repeater");
+
+	}
 
 	@Bean
 	Queue queue() {
