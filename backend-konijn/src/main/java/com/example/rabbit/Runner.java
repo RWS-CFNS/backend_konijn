@@ -6,8 +6,8 @@ import java.util.concurrent.TimeUnit;
 
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -26,8 +26,8 @@ public class Runner implements CommandLineRunner {
 		this.rabbitTemplate = rabbitTemplate;
 	}
 
-	@Bean
-	@Scheduled(fixedRate = 100)
+	@Scheduled(fixedRate = 3000)
+	@Async
 	void simulateMessages() {
 		System.out.println("Sending message...");
 		for (int i = 0; i < 2; i++) {
@@ -38,7 +38,7 @@ public class Runner implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		getLatch().await(10000, TimeUnit.MILLISECONDS); // latch for waiting before receiver has started
+		getLatch().await(10, TimeUnit.MILLISECONDS); // latch for waiting before receiver has started
 	}
 
 	public CountDownLatch getLatch() {
