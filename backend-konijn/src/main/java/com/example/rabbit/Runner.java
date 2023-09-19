@@ -1,13 +1,17 @@
 package com.example.rabbit;
 
 
+import java.util.concurrent.TimeUnit;
+
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 @Component("runner")
+@Configuration
 public class Runner implements CommandLineRunner {
 
 	private final RabbitTemplate rabbitTemplate;
@@ -19,10 +23,10 @@ public class Runner implements CommandLineRunner {
 	}
 
 	@Bean
-	@Scheduled(fixedDelay = 10000)
+	@Scheduled(fixedRate = 100)
 	void simulateMessages() {
 		System.out.println("Sending message...");
-		for (int i = 0; i < 1; i++) {
+		for (int i = 0; i < 100; i++) {
 			rabbitTemplate.convertAndSend(BackendKonijnApplication.topicExchangeName, "foo.bar.baz",
 				"Hello from RabbitMQ!");
 		}
@@ -31,7 +35,7 @@ public class Runner implements CommandLineRunner {
 	@Override
 
 	public void run(String... args) throws Exception {
-		// receiver.getLatch().await(10000, TimeUnit.MILLISECONDS);
+		receiver.getLatch().await(10000, TimeUnit.MILLISECONDS);
 	}
 
 }

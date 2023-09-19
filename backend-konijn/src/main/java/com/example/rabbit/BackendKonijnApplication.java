@@ -13,6 +13,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 
 @SpringBootApplication
 @EnableScheduling // for repeating tasks
@@ -27,6 +28,7 @@ public class BackendKonijnApplication {
 	static final String queueName = "spring-boot";
 
 	@Bean
+	@Scheduled(fixedRate = 100)
 	void repeater() {
 		System.out.println("repeater");
 
@@ -63,7 +65,7 @@ public class BackendKonijnApplication {
 	}
 
 	public static void main(String[] args) throws InterruptedException {
-		SpringApplication.run(BackendKonijnApplication.class, args).close();
+		SpringApplication.run(BackendKonijnApplication.class, args);
 	}
 }
 
