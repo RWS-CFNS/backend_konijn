@@ -18,13 +18,11 @@ import org.springframework.stereotype.Component;
 @Configuration
 @EnableAsync // for scheduling classes in parallel
 public class Runner implements CommandLineRunner {
-	private CountDownLatch latch = new CountDownLatch(1000000000); // long latch temporary to prevent app from stopping
+	private CountDownLatch latch = new CountDownLatch(1);
 
 	private final RabbitTemplate rabbitTemplate;
-	private final Receiver receiver;
 
-	public Runner(Receiver receiver, RabbitTemplate rabbitTemplate) {
-		this.receiver = receiver;
+	public Runner(RabbitTemplate rabbitTemplate) {
 		this.rabbitTemplate = rabbitTemplate;
 	}
 
@@ -40,7 +38,7 @@ public class Runner implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		getLatch().await(10000, TimeUnit.MILLISECONDS);
+		getLatch().await(10000, TimeUnit.MILLISECONDS); // latch for waiting before receiver has started
 	}
 
 	public CountDownLatch getLatch() {

@@ -7,8 +7,7 @@ spring:
     scheduling:
       pool:
         size: 8
-  server:
-    port: 8090
+
   application:
     name: konijntje
   h2:
@@ -22,5 +21,5 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
 
-main:
-  web-application-type: none
+server:
+  port: 8090
