@@ -31,7 +31,7 @@ public class Runner implements CommandLineRunner {
 	void simulateMessages() {
 		System.out.println("Sending message...");
 		for (int i = 0; i < 2; i++) {
-			rabbitTemplate.convertAndSend(BackendKonijnApplication.topicExchangeName, "foo.bar.baz",
+			rabbitTemplate.convertAndSend(RabbitConfig.topicExchangeName, "foo.bar.baz",
 				"Hello from RabbitMQ!");
 		}
 	}
