@@ -12,12 +12,16 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Profile;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
 @SpringBootApplication
+@Profile("dev") // profile for configurations
 @EnableScheduling // for repeating tasks
-@ComponentScan(basePackages = "com.example.rabbit")
+@EnableAsync // for scheduling classes in parallel
+@ComponentScan(basePackages = "com.example.rabbit") // add other classes to app
 @EntityScan("com.example.rabbit")
 
 
