@@ -28,7 +28,7 @@ public class BackendKonijnApplication {
 
 	@Bean
 	void Repeater() {
-		System.out.println("Repeater");
+		System.out.println("Repeater2");
 	}
 
 	@Async
