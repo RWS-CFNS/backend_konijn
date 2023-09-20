@@ -12,12 +12,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Component("receiver")
 public class Receiver {
 	private CountDownLatch latch = new CountDownLatch(1);
+	ObjectMapper objectMapper = new ObjectMapper(); // mapper for JSON conversion
 
 	@Async
 	public void receiveMessage(String message) throws JsonMappingException, JsonProcessingException {
-		System.out.println("ohnomyfunction"); // print message as json string
-		ObjectMapper objectMapper = new ObjectMapper(); // mapper for JSON conversion
-
 		Measuringbox receivedBox = objectMapper.readValue(message, Measuringbox.class); // convert JSON string to class
 																						// object
 		System.out.println("the name of the box is: " + receivedBox.getName());

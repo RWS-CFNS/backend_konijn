@@ -18,6 +18,7 @@ public class RabbitConfig {
 	static final String topicExchangeName = "spring-boot-exchange";
 	static final String queueName = "spring-boot";
 
+
 	@Bean
 	Queue queue() {
 		return new Queue(queueName, false);

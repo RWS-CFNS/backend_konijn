@@ -36,6 +36,7 @@ public class BackendKonijnApplication {
 //		}
 //	}
 
+
 	public static void main(String[] args) throws InterruptedException {
 		SpringApplication.run(BackendKonijnApplication.class, args);
 	}

@@ -22,9 +22,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Configuration
 public class Runner implements CommandLineRunner {
 	private CountDownLatch latch = new CountDownLatch(1);
+	ObjectMapper objectMapper = new ObjectMapper();
 
+	// rabbit template for publishing messages
 	private final RabbitTemplate rabbitTemplate;
-
 	public Runner(RabbitTemplate rabbitTemplate) {
 		this.rabbitTemplate = rabbitTemplate;
 	}
@@ -40,7 +41,6 @@ public class Runner implements CommandLineRunner {
 		box.setTempValue1(3);
 
 		// convert to JSON string
-		ObjectMapper objectMapper = new ObjectMapper();
 		objectMapper.writeValue(new File("target/box.json"), box); // convert box to
 		// JSON
 		String boxAsString = objectMapper.writeValueAsString(box); // convert object
