@@ -2,18 +2,15 @@ package com.example.rabbit;
 
 import java.util.Date;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.Transient;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import jakarta.persistence.Transient;
 
 @Entity
 @Table(name = "Table")
@@ -31,8 +28,8 @@ public class Measuringbox {
 	@Temporal(TemporalType.DATE)
 	private Date tempValue1;
 
-	@Enumerated(EnumType.STRING)
-	private boolean measuringboxGender;
+	// @Enumerated(EnumType.STRING)
+	// private boolean measuringboxGender;
 
 	// other fields, getters and setters
 }
