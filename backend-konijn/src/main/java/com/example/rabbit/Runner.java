@@ -26,6 +26,7 @@ public class Runner implements CommandLineRunner {
 		this.rabbitTemplate = rabbitTemplate;
 	}
 
+	// send some test messages every x seconds
 	@Scheduled(fixedRate = 3000)
 	@Async
 	void simulateMessages() {

@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 
-@SpringBootApplication
+@SpringBootApplication // main app
 @Profile("dev") // profile for configurations
 @ComponentScan(basePackages = "com.example.rabbit") // add other classes to main app
 @EntityScan("com.example.rabbit") // add database object structures to main app
