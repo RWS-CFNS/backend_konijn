@@ -11,7 +11,7 @@ import jakarta.persistence.TemporalType;
 import jakarta.persistence.Transient;
 
 @Entity
-@Table(name = "Table")
+@Table(name = "MTABLE")
 public class Measuringbox {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
