@@ -16,9 +16,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 @ComponentScan(basePackages = "com.example.rabbit") // add other classes to main app
 @EntityScan("com.example.rabbit") // add database object structures to main app
 
-
 public class BackendKonijnApplication {
-
 	@Async
 	@Scheduled(fixedRate = 3000)
 	void asyncRepeater() {
