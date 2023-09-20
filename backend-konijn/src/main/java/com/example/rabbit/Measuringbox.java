@@ -1,7 +1,5 @@
 package com.example.rabbit;
 
-import java.util.Date;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,8 +23,32 @@ public class Measuringbox {
 	@Transient
 	private Integer value1;
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Integer getValue1() {
+		return value1;
+	}
+
+	public void setValue1(Integer value1) {
+		this.value1 = value1;
+	}
+
+	public Integer getTempValue1() {
+		return tempValue1;
+	}
+
+	public void setTempValue1(Integer tempValue1) {
+		this.tempValue1 = tempValue1;
+	}
+
 	@Temporal(TemporalType.DATE)
-	private Date tempValue1;
+	private Integer tempValue1;
 
 	// @Enumerated(EnumType.STRING)
 	// private boolean measuringboxGender;
