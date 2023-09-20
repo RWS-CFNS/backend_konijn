@@ -10,10 +10,12 @@ import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+//this configuration creates a connection with an existing rabbitmq server
+//only works if a rabbitmq server is running on this PC
 @Configuration
 public class RabbitConfig {
+	// name for queue and topic
 	static final String topicExchangeName = "spring-boot-exchange";
-
 	static final String queueName = "spring-boot";
 
 	@Bean
@@ -41,6 +43,7 @@ public class RabbitConfig {
 		return container;
 	}
 
+	// adapter to be used by the receiver class
 	@Bean
 	MessageListenerAdapter listenerAdapter(Receiver receiver) {
 		return new MessageListenerAdapter(receiver, "receiveMessage");

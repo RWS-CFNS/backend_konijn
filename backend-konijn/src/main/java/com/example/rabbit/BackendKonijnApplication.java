@@ -13,8 +13,8 @@ import org.springframework.scheduling.annotation.Scheduled;
 
 @SpringBootApplication
 @Profile("dev") // profile for configurations
-@ComponentScan(basePackages = "com.example.rabbit") // add other classes to app
-@EntityScan("com.example.rabbit")
+@ComponentScan(basePackages = "com.example.rabbit") // add other classes to main app
+@EntityScan("com.example.rabbit") // add database object structures to main app
 
 
 public class BackendKonijnApplication {
