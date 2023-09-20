@@ -4,7 +4,6 @@ package com.example.rabbit;
 //for using File objects, print functions
 import java.io.File;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
@@ -12,7 +11,6 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.Async;
-import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -22,10 +20,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 //simulation class for sending messages to backend locally
 @Component("runner")
 @Configuration
-@EnableAsync // for scheduling classes in parallel
 public class Runner implements CommandLineRunner {
-	static final String queueName = "spring-boot";
-
 	private CountDownLatch latch = new CountDownLatch(1);
 
 	private final RabbitTemplate rabbitTemplate;
@@ -52,7 +47,10 @@ public class Runner implements CommandLineRunner {
 		// to string in JSON format
 
 		System.out.println(" [x] Sent '" + boxAsString + "'"); // display box in console in JSON format
-		rabbitTemplate.convertAndSend(RabbitConfig.topicExchangeName, boxAsString.getBytes(StandardCharsets.UTF_8));
+		rabbitTemplate.convertAndSend(RabbitConfig.topicExchangeName, "foo.bar.baz", boxAsString);
+
+		// rabbitTemplate.convertAndSend(RabbitConfig.topicExchangeName, "foo.bar.baz",
+		// "Hello from RabbitMQ!");
 	}
 
 

@@ -2,14 +2,29 @@ package com.example.rabbit;
 
 import java.util.concurrent.CountDownLatch;
 
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Component("receiver")
 public class Receiver {
 	private CountDownLatch latch = new CountDownLatch(1);
 
-	public void receiveMessage(String message) {
-		System.out.println("Received <" + message + ">");
+	@Async
+	public void receiveMessage(String message) throws JsonMappingException, JsonProcessingException {
+		System.out.println("ohnomyfunction"); // print message as json string
+		ObjectMapper objectMapper = new ObjectMapper(); // mapper for JSON conversion
+
+		Measuringbox receivedBox = objectMapper.readValue(message, Measuringbox.class); // convert JSON string to class
+																						// object
+		System.out.println("the name of the box is: " + receivedBox.getName());
+
+		System.out.println(" [x] Received '" + message + "'"); // print message as json string
+
+		// System.out.println("Received <" + message + ">");
 		latch.countDown(); // why a countdown on receive?
 	}
 
@@ -18,3 +33,18 @@ public class Receiver {
 	}
 
 }
+
+//@Component("receiver")
+//public class Receiver {
+//	private CountDownLatch latch = new CountDownLatch(1);
+//
+//	public void receiveMessage(String message) {
+//		System.out.println("Received <" + message + ">");
+//		latch.countDown(); // why a countdown on receive?
+//	}
+//
+//	public CountDownLatch getLatch() {
+//		return latch;
+//	}
+//
+//}
