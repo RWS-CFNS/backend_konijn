@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 //TODO devide classes into different packages
 
@@ -13,6 +14,7 @@ import org.springframework.context.annotation.Profile;
 @Profile("dev") // profile for configurations. TODO: create diffent profile for production environment
 @ComponentScan(basePackages = "com.example.rabbit") // add other classes to main app. autoconfiguration is automatically enabled here
 @EntityScan("com.example.rabbit") // add database object structures to main app
+@EnableJpaRepositories("com.example.rabbit") //for detecting repository extentions that help interacting with database
 
 @Configuration //configuration annotation after scanning, this may prevent scanning problems
 public class BackendKonijnApplication {
