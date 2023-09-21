@@ -413,3 +413,6 @@ SELECT * FROM Table [42001-214]
 2023-09-20 16:47:57 jdbc[13]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MTABLE" not found; SQL statement:
 SELECT * FROM MTABLE [42102-214]
+2023-09-21 11:49:52 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]ID"; expected "INSERT"; SQL statement:
+ID [42001-214]
