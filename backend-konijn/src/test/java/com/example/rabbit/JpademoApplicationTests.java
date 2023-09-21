@@ -21,7 +21,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 //
 //	   	Measuringbox boxMeasuringbox = new Measuringbox("testje", 5, 2);
 //        Measuringbox user = MeasuringboxRepository.save(boxMeasuringbox);
-//        Measuringbox searchUser= MeasuringboxRepository.findById(user.getId());
+//        Measuringbox searchUser= MeasuringboxRepository.findById(user.get());
 //
 //        assertNotNull(searchUser);
 //        assertEquals(user.getId(),searchUser.getId());

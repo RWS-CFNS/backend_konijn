@@ -5,9 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
 public class MeasuringboxService {
-
-
-	@Autowired
+	//private repository object for interacting with measuringbox section of database
+	@Autowired	
 	private MeasuringboxRepository measuringboxRepository;
 
 	public Iterable<Measuringbox> getAllMeasuringboxes() {

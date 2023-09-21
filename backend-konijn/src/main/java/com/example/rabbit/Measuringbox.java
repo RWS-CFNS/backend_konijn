@@ -26,11 +26,19 @@ public class Measuringbox {
 		this.tempValue1 = tempValue1;
 	}
 	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@Column(name = "STUDENT_NAME", length = 50, nullable = false, unique = false)
+	@Column(name = "BOX_NAME", length = 50, nullable = false, unique = false)
 	private String name;
 
 	@Transient
