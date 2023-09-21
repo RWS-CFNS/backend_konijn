@@ -35,10 +35,10 @@ public class Runner implements CommandLineRunner {
 	@Async
 	void simulateMessages() throws IOException {
 		// create example box with values
-		Measuringbox box = new Measuringbox();
-		box.setName("exampleBox");
-		box.setValue1(2);
-		box.setTempValue1(3);
+		Measuringbox box = new Measuringbox("exampleBox", 2, 3);
+//		box.setName("exampleBox");
+//		box.setValue1(2);
+//		box.setTempValue1(3);
 
 		// convert to JSON string
 		objectMapper.writeValue(new File("target/box.json"), box); // convert box to

@@ -13,6 +13,19 @@ import jakarta.persistence.Transient;
 @Entity
 @Table(name = "MTABLE")
 public class Measuringbox {
+	
+	
+	public Measuringbox() { //empty constructor, needed for JSON parser
+		super();
+	}
+
+	public Measuringbox(String name, Integer value1, Integer tempValue1) { //constructor with fields
+		super();
+		this.name = name;
+		this.value1 = value1;
+		this.tempValue1 = tempValue1;
+	}
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
