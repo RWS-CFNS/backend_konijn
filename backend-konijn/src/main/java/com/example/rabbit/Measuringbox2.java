@@ -6,8 +6,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 import jakarta.persistence.Transient;
 
 @Entity
@@ -23,7 +21,6 @@ public class Measuringbox2 {
 	@Transient
 	private Integer value1;
 
---
 
 	// @Enumerated(EnumType.STRING)
 	// private boolean measuringboxGender;
