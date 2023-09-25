@@ -11,7 +11,7 @@ import jakarta.persistence.TemporalType;
 import jakarta.persistence.Transient;
 
 @Entity
-@Table(name = "MTABLE")
+@Table(name = "MBOX_TABLE")
 public class Measuringbox2 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,7 +23,7 @@ public class Measuringbox2 {
 	@Transient
 	private Integer value1;
 
-
+--
 
 	// @Enumerated(EnumType.STRING)
 	// private boolean measuringboxGender;
