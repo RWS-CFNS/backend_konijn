@@ -6,8 +6,6 @@ import com.example.entities.Measuringbox2.MeasuringboxStatus;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -18,31 +16,27 @@ import lombok.Setter;
 @Entity
 @Getter	@Setter //generate getters and setters for all variables
 @NoArgsConstructor	@AllArgsConstructor //generator constructors with and without variables
-@Table(name = "MEASUREMENTS_TABLE")
-public class Measurements {
+@Table(name = "WEATHER_TABLE")
+public class WeatherMeasurement {
 	@Column
 	@Id
 	private Timestamp time;
 	
 	@Column
-	private Integer latency;
+	private Float temp;
 	
 	@Column
-	private Float upload;
+	private Float humid;
 	
 	@Column
-	private Float download;
+	private Integer windDirection;
 	
 	@Column
-	private Integer RSSI;
+	private Float windspeed;
 	
 	@Column
-	private Integer RSRQ;
+	private Float dauw;
 	
 	@Column
-	private Integer RSRP;
-	
-	@Column
-	private Integer SINR;
-	
+	private Float pressure;
 }

@@ -3,6 +3,8 @@ package com.example.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -42,7 +44,12 @@ public class Measuringbox2 {
 	@Column
 	private Integer Latitude;
 	
-	// @Enumerated(EnumType.STRING)
+	public enum MeasuringboxStatus {INACTIVE, CONNECTING, RECEIVING, ACTIVE, ERROR}; //enum for keeping track of box status
+	
+	@Column
+	 @Enumerated(EnumType.STRING)
+	 private MeasuringboxStatus status;
+	 
 	// private boolean measuringboxGender;
 
 	// other fields, getters and setters
