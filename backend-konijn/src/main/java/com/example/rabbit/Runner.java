@@ -14,6 +14,8 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import com.example.configs.RabbitConfig;
+import com.example.entities.Measuringbox;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 

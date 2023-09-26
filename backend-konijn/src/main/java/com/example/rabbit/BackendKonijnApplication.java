@@ -11,8 +11,8 @@ import org.springframework.context.annotation.Profile;
 
 @SpringBootApplication // main app
 @Profile("dev") // profile for configurations. TODO: create diffent profile for production environment
-@ComponentScan(basePackages = "com.example.rabbit") // add other classes to main app. autoconfiguration is automatically enabled here
-@EntityScan("com.example.rabbit") // add database object structures to main app
+@ComponentScan(basePackages = "com.example.rabbit, com.example.configs") // add other classes to main app. autoconfiguration is automatically enabled here
+@EntityScan("com.example.entities") // add database object structures to main app
 
 @Configuration //configuration annotation after scanning, this may prevent scanning problems
 public class BackendKonijnApplication {

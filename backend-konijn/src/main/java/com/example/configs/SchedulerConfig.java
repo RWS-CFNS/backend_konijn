@@ -1,4 +1,4 @@
-package com.example.rabbit;
+package com.example.configs;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;

@@ -1,6 +1,9 @@
 package com.example.rabbit;
 
 import org.springframework.stereotype.Service;
+
+import com.example.entities.Measuringbox;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
