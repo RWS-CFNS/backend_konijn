@@ -7,6 +7,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+import lombok.extern.java.Log;
+
 //TODO devide classes into different packages
 
 @SpringBootApplication // main app
@@ -15,9 +17,11 @@ import org.springframework.context.annotation.Profile;
 @EntityScan("com.example.entities") // add database object structures to main app
 
 @Configuration //configuration annotation after scanning, this may prevent scanning problems
+@Log
 public class BackendKonijnApplication {
 	public static void main(String[] args) throws InterruptedException {
 		SpringApplication.run(BackendKonijnApplication.class, args);
+		log.info("program has started. this message is generated using Lombok");
 	}
 }
 
