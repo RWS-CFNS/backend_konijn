@@ -35,7 +35,7 @@ public class Runner implements CommandLineRunner {
 	@Async
 	void simulateMessages() throws IOException {
 		// create example box with values
-		Measuringbox box = new Measuringbox("exampleBox", 2, 3);
+		Measuringbox box = new Measuringbox((long) 1, "exampleBox", 2, 3);
 //		box.setName("exampleBox");
 //		box.setValue1(2);
 //		box.setTempValue1(3);
