@@ -16,31 +16,6 @@ import org.springframework.context.annotation.Profile;
 
 @Configuration //configuration annotation after scanning, this may prevent scanning problems
 public class BackendKonijnApplication {
-//	@Async
-//	@Scheduled(fixedRate = 3000)
-//	void asyncRepeater() {
-//		System.out.println("asyncRepeater");
-//
-//	}
-//
-//	@Bean
-//	void Repeater() {
-//		System.out.println("Repeater2");
-//	}
-//
-//	@Async
-//	@Scheduled(fixedRate = 3000)
-//	public void doSomething() { // show info about current threads
-//		System.out.println("Scheduled job is running with thread: " + Thread.currentThread().getName() + " at time: "
-//				+ LocalDateTime.now());
-//		try {
-//			Thread.sleep(5000L);
-//		} catch (InterruptedException e) {
-//			e.printStackTrace();
-//		}
-//	}
-
-
 	public static void main(String[] args) throws InterruptedException {
 		SpringApplication.run(BackendKonijnApplication.class, args);
 	}
