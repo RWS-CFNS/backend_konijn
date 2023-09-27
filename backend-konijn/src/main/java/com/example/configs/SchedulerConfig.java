@@ -27,7 +27,7 @@ public class SchedulerConfig implements SchedulingConfigurer {
 	// destroymethod parameter for properly deleting executor when program is shut
 	// down
 	@Bean(destroyMethod = "shutdown")
-	public Executor taskExecutor() {
+	Executor taskExecutor() {
 		return Executors.newScheduledThreadPool(8);
 	}
 

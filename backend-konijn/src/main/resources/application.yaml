@@ -10,6 +10,11 @@ spring:
 
   application:
     name: konijntje
+  rabbitmq:
+    host: host
+    port: 5672
+    username: myapp
+    password: mypass
   h2:
     console:
       enabled: true
@@ -28,3 +33,4 @@ spring:
 
 server:
   port: 8090
+  

@@ -4,6 +4,7 @@ import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.core.TopicExchange;
+import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
@@ -34,6 +35,18 @@ public class RabbitConfig {
 	@Bean
 	Binding binding(Queue queue, TopicExchange exchange) {
 		return BindingBuilder.bind(queue).to(exchange).with("foo.bar.#");
+	}
+	
+	@Bean
+	ConnectionFactory connectionFactory(){
+	    CachingConnectionFactory connectionFactory =new CachingConnectionFactory() ;
+	    connectionFactory.setCacheMode(CachingConnectionFactory.CacheMode.CHANNEL);
+	    connectionFactory.setHost("localhost");
+	    connectionFactory.setVirtualHost("/");
+	    connectionFactory.setPort(5672);
+	    connectionFactory.setUsername("backendUser");
+	    connectionFactory.setPassword("backendPass");
+	    return connectionFactory;
 	}
 
 	@Bean
