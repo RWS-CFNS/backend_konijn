@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.example.entities.Measuringbox;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class JpademoApplicationTests {
@@ -24,7 +26,7 @@ public class JpademoApplicationTests {
    @Test
    public void contextLoads() {
 
-	   	Measuringbox boxMeasuringbox = new Measuringbox("testje", 5, 2); //create box example
+	   	Measuringbox boxMeasuringbox = new Measuringbox(null, "testje", 5, 2); //create box example
 	   	boxRepository.save(boxMeasuringbox); //put box in database
         Optional<Measuringbox> thisBoxIsSus = boxRepository.findById(boxMeasuringbox.getId()); //find box in database using ID
         Measuringbox definatelyABox = thisBoxIsSus.get(); //check if box is not null, convert it from "optional"  to normal object

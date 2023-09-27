@@ -14,6 +14,8 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import com.example.configs.RabbitConfig;
+import com.example.entities.Measuringbox;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 
@@ -35,7 +37,7 @@ public class Runner implements CommandLineRunner {
 	@Async
 	void simulateMessages() throws IOException {
 		// create example box with values
-		Measuringbox box = new Measuringbox("exampleBox", 2, 3);
+		Measuringbox box = new Measuringbox((long) 1, "exampleBox", 2, 3);
 //		box.setName("exampleBox");
 //		box.setValue1(2);
 //		box.setTempValue1(3);

@@ -1,0 +1,48 @@
+package com.example.entities;
+
+import java.sql.Timestamp;
+
+import com.example.entities.Measuringbox2.MeasuringboxStatus;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Entity
+@Getter	@Setter //generate getters and setters for all variables
+@NoArgsConstructor	@AllArgsConstructor //generator constructors with and without variables
+@Table(name = "MEASUREMENTS_TABLE")
+public class Measurements {
+	@Column
+	@Id
+	private Timestamp time;
+	
+	@Column
+	private Integer latency;
+	
+	@Column
+	private Float upload;
+	
+	@Column
+	private Float download;
+	
+	@Column
+	private Integer RSSI;
+	
+	@Column
+	private Integer RSRQ;
+	
+	@Column
+	private Integer RSRP;
+	
+	@Column
+	private Integer SINR;
+	
+}

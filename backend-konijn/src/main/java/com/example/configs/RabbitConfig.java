@@ -1,4 +1,4 @@
-package com.example.rabbit;
+package com.example.configs;
 
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
@@ -10,13 +10,15 @@ import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import com.example.rabbit.Receiver;
+
 //this configuration creates a connection with an existing rabbitmq server
 //only works if a rabbitmq server is running on this PC
 @Configuration
 public class RabbitConfig {
 	// name for queue and topic
-	static final String topicExchangeName = "spring-boot-exchange";
-	static final String queueName = "spring-boot";
+	public static final String topicExchangeName = "spring-boot-exchange";
+	public static final String queueName = "spring-boot";
 
 
 	@Bean
