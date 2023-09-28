@@ -47,7 +47,8 @@ public class RabbitConfig {
 
 	@Bean
 	TopicExchange MainExchange() {
-		return new TopicExchange(topicExchangeName);
+		TopicExchange topicExchange = new TopicExchange(topicExchangeName);		
+		return topicExchange;
 	}
 
     @Bean
@@ -75,7 +76,8 @@ public class RabbitConfig {
     
     @Bean
     Queue deadLetterQueue() {
-        return new Queue(DEAD_LETTER_QUEUE);
+    	Queue queue = new Queue(DEAD_LETTER_QUEUE, false, false, false);
+        return queue;
     }
 	
 	//TODO move connection and user settings in factory to seperate configuration file
@@ -110,6 +112,7 @@ public class RabbitConfig {
 	        container.setConnectionFactory(connectionFactory);
 	        container.setQueues(deadLetterQueue());
 	        container.setMessageListener(listener);
+	        container.setDefaultRequeueRejected(false); //this prevents endless exception loop due to dead letters
 	        return container;
 	    }
 
