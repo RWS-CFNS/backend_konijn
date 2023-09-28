@@ -43,9 +43,6 @@ public class Runner implements CommandLineRunner {
 	void simulateMessages() throws IOException {
 		// create example box with values
 		Measuringbox box = new Measuringbox((long) 1, "exampleBox", 2, 3);
-//		box.setName("exampleBox");
-//		box.setValue1(2);
-//		box.setTempValue1(3);
 
 		// convert to JSON string
 		objectMapper.writeValue(new File("target/box.json"), box); // convert box to
@@ -55,9 +52,6 @@ public class Runner implements CommandLineRunner {
 
 		System.out.println(" [x] Sent '" + box.toString() + "'"); // display box in console in JSON format
 		amqpTemplate.convertAndSend(RabbitConfig.topicExchangeName, "foo.bar.abc", box);
-
-		// rabbitTemplate.convertAndSend(RabbitConfig.topicExchangeName, "foo.bar.baz",
-		// "Hello from RabbitMQ!");
 	}
 
 

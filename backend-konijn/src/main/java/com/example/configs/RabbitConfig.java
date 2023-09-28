@@ -106,8 +106,7 @@ public class RabbitConfig {
 	}
 	
 	   @Bean
-	   SimpleMessageListenerContainer DeadContainer(ConnectionFactory connectionFactory,
-	                                            DeadLetterMessageListener listener) {
+	   SimpleMessageListenerContainer DeadContainer(ConnectionFactory connectionFactory,	                                            DeadLetterMessageListener listener) {
 	        SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
 	        container.setConnectionFactory(connectionFactory);
 	        container.setQueues(deadLetterQueue());
@@ -129,6 +128,7 @@ public class RabbitConfig {
     }
     
     //template for setting converter
+    @Bean
     AmqpTemplate amqpTemplate(ConnectionFactory connectionFactory){
         RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
         rabbitTemplate.setMessageConverter(jsonMessageConverter());
