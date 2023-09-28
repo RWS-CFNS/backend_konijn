@@ -32,6 +32,7 @@ public class RabbitConfig {
 	// name for main queue and topic
 	public static final String topicExchangeName = "spring-boot-exchange";
 	public static final String queueName = "spring-boot";
+	public static final String routingKey = "foo.bar.abc";
 
 	//name for dead letter, when messages are rejected
     private static final String DEAD_LETTER_QUEUE = "dead.letter.queue";
@@ -56,7 +57,7 @@ public class RabbitConfig {
 
 	@Bean
 	Binding MainBinding() {
-		return BindingBuilder.bind(mainQueue()).to(MainExchange()).with("foo.bar.#");
+		return BindingBuilder.bind(mainQueue()).to(MainExchange()).with(routingKey);
 	}
     
     @Bean
@@ -69,7 +70,7 @@ public class RabbitConfig {
         Map<String, Object> args = new HashMap<>();
         args.put("x-dead-letter-exchange", DEAD_LETTER_EXCHANGE);
         args.put("x-dead-letter-routing-key", DEAD_LETTER_ROUTING_KEY);
-        return new Queue(queueName, true, false, false, args);
+        return new Queue(queueName, false, false, false, args);
     }
     
     @Bean
@@ -125,7 +126,6 @@ public class RabbitConfig {
     }
     
     //template for setting converter
-    //@Bean
     AmqpTemplate amqpTemplate(ConnectionFactory connectionFactory){
         RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
         rabbitTemplate.setMessageConverter(jsonMessageConverter());
