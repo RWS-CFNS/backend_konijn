@@ -11,12 +11,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
-
-
-
 @Entity
 @Data
-@NoArgsConstructor	@AllArgsConstructor //generator constructors with and without variables
+@NoArgsConstructor	@AllArgsConstructor //generator constructors with and without variables. not included in @data annotation!
 @Table(name = "MTABLE")
 public class Measuringbox {	
 	@Id
