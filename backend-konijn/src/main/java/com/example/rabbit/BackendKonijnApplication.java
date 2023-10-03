@@ -1,50 +1,25 @@
 package com.example.rabbit;
 
-import java.time.LocalDateTime;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
-import org.springframework.scheduling.annotation.Async;
-import org.springframework.scheduling.annotation.Scheduled;
 
-@SpringBootApplication
-@Profile("dev") // profile for configurations
-@ComponentScan(basePackages = "com.example.rabbit") // add other classes to app
-@EntityScan("com.example.rabbit")
+import lombok.extern.java.Log;
 
+@SpringBootApplication // main app
+@Profile("dev") // profile for configurations. TODO: create diffent profile for production environment
+@ComponentScan(basePackages = "com.example.rabbit, com.example.configs") // add other classes to main app. autoconfiguration is automatically enabled here
+@EntityScan("com.example.entities") // add database object structures to main app
 
+@Configuration //configuration annotation after scanning, this may prevent scanning problems
+@Log // to use logging in this class
 public class BackendKonijnApplication {
-
-	@Async
-	@Scheduled(fixedRate = 3000)
-	void asyncRepeater() {
-		System.out.println("asyncRepeater");
-
-	}
-
-	@Bean
-	void Repeater() {
-		System.out.println("Repeater");
-	}
-
-	@Async
-	@Scheduled(fixedRate = 3000)
-	public void doSomething() { // show info about current threads
-		System.out.println("Scheduled job is running with thread: " + Thread.currentThread().getName() + " at time: "
-				+ LocalDateTime.now());
-		try {
-			Thread.sleep(5000L);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-	}
-
 	public static void main(String[] args) throws InterruptedException {
 		SpringApplication.run(BackendKonijnApplication.class, args);
+		log.info("program has started. this message is generated using Lombok");
 	}
 }
 
