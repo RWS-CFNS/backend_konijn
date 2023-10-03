@@ -9,15 +9,13 @@ import org.springframework.context.annotation.Profile;
 
 import lombok.extern.java.Log;
 
-//TODO devide classes into different packages
-
 @SpringBootApplication // main app
 @Profile("dev") // profile for configurations. TODO: create diffent profile for production environment
 @ComponentScan(basePackages = "com.example.rabbit, com.example.configs") // add other classes to main app. autoconfiguration is automatically enabled here
 @EntityScan("com.example.entities") // add database object structures to main app
 
 @Configuration //configuration annotation after scanning, this may prevent scanning problems
-@Log
+@Log // to use logging in this class
 public class BackendKonijnApplication {
 	public static void main(String[] args) throws InterruptedException {
 		SpringApplication.run(BackendKonijnApplication.class, args);
