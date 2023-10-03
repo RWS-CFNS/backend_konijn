@@ -10,15 +10,16 @@ import org.springframework.amqp.core.DirectExchange;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.core.TopicExchange;
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;
+import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.amqp.support.converter.MessageConverter;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 import com.example.rabbit.Receiver;
 
@@ -81,7 +82,6 @@ public class RabbitConfig {
     }
 	
 	//TODO move connection and user settings in factory to seperate configuration file
-	//connectionfactory contains settings for connection to rabbitMQ server
 	@Bean
 	ConnectionFactory connectionFactory(){
 	    CachingConnectionFactory connectionFactory =new CachingConnectionFactory() ;
@@ -94,6 +94,15 @@ public class RabbitConfig {
 	    return connectionFactory;
 	}
 
+	// Setting the annotation listeners to use the jackson2JsonMessageConverter
+	@Bean
+	SimpleRabbitListenerContainerFactory rabbitListenerContainerFactory() {
+		SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
+		factory.setConnectionFactory(connectionFactory());
+		factory.setMessageConverter(jsonMessageConverter());
+		return factory;
+	}
+
 	@Bean
 	SimpleMessageListenerContainer MainContainer(ConnectionFactory connectionFactory,
 			MessageListenerAdapter listenerAdapter) {
@@ -101,12 +110,14 @@ public class RabbitConfig {
 		container.setConnectionFactory(connectionFactory);
 		container.setQueueNames(queueName);
 		container.setMessageListener(listenerAdapter);
+		container.setConcurrentConsumers(8);
 		listenerAdapter.setMessageConverter(jsonMessageConverter());
 		return container;
 	}
 	
 	   @Bean
-	   SimpleMessageListenerContainer DeadContainer(ConnectionFactory connectionFactory,	                                            DeadLetterMessageListener listener) {
+		SimpleMessageListenerContainer DeadContainer(ConnectionFactory connectionFactory,
+				DeadLetterMessageListener listener) {
 	        SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
 	        container.setConnectionFactory(connectionFactory);
 	        container.setQueues(deadLetterQueue());
@@ -121,6 +132,7 @@ public class RabbitConfig {
 		return new MessageListenerAdapter(receiver, "receiveMessage");
 	}
 	
+
 	//jackson converter for default conversion from message payload to JSON
     @Bean
     MessageConverter jsonMessageConverter() {
