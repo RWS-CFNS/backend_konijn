@@ -14,7 +14,7 @@ public class SecurityConfig {
 	// console does not work without these lines
 	// dependency is included
 	@Bean
-	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http.authorizeHttpRequests((authz) -> authz.anyRequest().permitAll()).csrf().disable();
 		http.csrf().disable();
 		http.headers().frameOptions().disable();
