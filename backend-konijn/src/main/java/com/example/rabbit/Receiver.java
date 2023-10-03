@@ -4,12 +4,9 @@ import java.util.concurrent.CountDownLatch;
 
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 import com.example.entities.Measuringbox;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Component("receiver")
@@ -22,10 +19,10 @@ public class Receiver {
 	@Autowired	
 	private MeasuringboxRepository measuringboxRepository;
 
-	@Async
+	// @Async
 	//@RabbitHandler
 	@RabbitListener(queues = "spring-boot")
-	public void receiveMessage(Measuringbox receivedBox) throws JsonMappingException, JsonProcessingException {
+	public void receiveMessage(Measuringbox receivedBox) {
 		//Measuringbox receivedBox = objectMapper.readValue(message, Measuringbox.class); // convert JSON string to class object
 		measuringboxRepository.save(receivedBox);	//insert measuringbox object into database
 				

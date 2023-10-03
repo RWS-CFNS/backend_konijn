@@ -6,9 +6,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
-import jakarta.persistence.Transient;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,10 +26,10 @@ public class Measuringbox {
 	@Column(name = "BOX_NAME", length = 50, nullable = false, unique = false)
 	private String name;
 
-	@Transient
+	@Column
 	private Integer value1;
 
-	@Temporal(TemporalType.DATE)
+	@Column
 	private Integer tempValue1;
 
 }

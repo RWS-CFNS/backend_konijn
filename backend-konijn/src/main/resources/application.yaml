@@ -15,6 +15,11 @@ rabbitmq:
   port: 5672
   username: myapp
   password: mypass
+  container_name: rabbitmq
+  image: rabbitmq:management
+  ports:
+      - "5672:5672"
+      - "15672:15672"
   exchange:
     name: javaguides_exchange
   queue:
