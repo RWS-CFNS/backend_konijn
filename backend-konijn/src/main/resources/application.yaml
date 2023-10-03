@@ -1,49 +1,49 @@
-spring:
-  profiles:
-    active: dev
-  thymeleaf:
-    check-template-location: false
-  task:
-    scheduling:
-      pool:
-        size: 8
-
-application:
-  name: konijntje
-rabbitmq:
-  host: host
-  port: 5672
-  username: myapp
-  password: mypass
-  container_name: rabbitmq
-  image: rabbitmq:management
-  ports:
-      - "5672:5672"
-      - "15672:15672"
-  exchange:
-    name: javaguides_exchange
-  queue:
-    json:
-      name: javaguides_json
-  routing:
-    json:
-      key: javaguides_routing_json_key
-
-h2:
-  console:
-    enabled: true
-datasource:
-  url: jdbc:h2:file:./data/demo
-  username: sa
-  password: stage
-  driverClassName: org.h2.Driver
-jpa:
-  database-platform: org.hibernate.dialect.H2Dialect
-  hibernate:
-    ddl-auto: update
-data:
-  repositories:
-    bootstrap-mode: default
-
-server:
-  port: 8090
+#spring:
+#  profiles:
+#    active: dev
+#  thymeleaf:
+#    check-template-location: false
+#  task:
+#    scheduling:
+#      pool:
+#        size: 8
+#
+#application:
+#  name: konijntje
+#rabbitmq:
+#  host: host
+#  port: 5672
+#  username: myapp
+#  password: mypass
+#  container_name: rabbitmq
+#  image: rabbitmq:management
+#  ports:
+#      - "5672:5672"
+#      - "15672:15672"
+#  exchange:
+#    name: javaguides_exchange
+#  queue:
+#    json:
+#      name: javaguides_json
+#  routing:
+#    json:
+#      key: javaguides_routing_json_key
+#
+#h2:
+#  console:
+#    enabled: true
+#datasource:
+#  url: jdbc:h2:file:./data/demo
+#  username: sa
+#  password: stage
+#  driverClassName: org.h2.Driver
+#jpa:
+#  database-platform: org.hibernate.dialect.H2Dialect
+#  hibernate:
+#    ddl-auto: update
+#data:
+#  repositories:
+#    bootstrap-mode: default
+#
+#server:
+#  port: 8090
