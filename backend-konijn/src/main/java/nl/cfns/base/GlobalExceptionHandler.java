@@ -1,4 +1,4 @@
-package com.example.rabbit;
+package nl.cfns.base;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
 

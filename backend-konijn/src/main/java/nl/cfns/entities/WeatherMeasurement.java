@@ -1,8 +1,6 @@
-package com.example.entities;
+package nl.cfns.entities;
 
 import java.sql.Timestamp;
-
-import com.example.entities.Measuringbox2.MeasuringboxStatus;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -13,6 +11,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import nl.cfns.entities.Measuringbox2.MeasuringboxStatus;
 
 @Entity
 @Data

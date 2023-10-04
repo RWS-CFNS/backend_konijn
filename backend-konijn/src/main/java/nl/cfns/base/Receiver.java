@@ -1,13 +1,16 @@
-package com.example.rabbit;
+package nl.cfns.base;
 
 import java.util.concurrent.CountDownLatch;
 
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
-import com.example.entities.Measuringbox;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import nl.cfns.entities.Measuringbox;
+import nl.cfns.repositories.MeasuringboxRepository;
 
 @Component("receiver")
 //@RabbitListener(queues = "spring-boot") annotation does not work on class level for some reason?
@@ -19,7 +22,7 @@ public class Receiver {
 	@Autowired	
 	private MeasuringboxRepository measuringboxRepository;
 
-	// @Async
+	@Async
 	//@RabbitHandler
 	@RabbitListener(queues = "spring-boot")
 	public void receiveMessage(Measuringbox receivedBox) {

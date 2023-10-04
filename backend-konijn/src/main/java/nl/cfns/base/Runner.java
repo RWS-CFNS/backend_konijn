@@ -1,4 +1,4 @@
-package com.example.rabbit;
+package nl.cfns.base;
 
 
 //for using File objects, print functions
@@ -15,9 +15,10 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import com.example.configs.RabbitConfig;
-import com.example.entities.Measuringbox;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import nl.cfns.configs.RabbitConfig;
+import nl.cfns.entities.Measuringbox;
 
 
 //simulation class for sending messages to backend locally

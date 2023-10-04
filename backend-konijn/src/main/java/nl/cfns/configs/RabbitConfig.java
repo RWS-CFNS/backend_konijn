@@ -1,4 +1,4 @@
-package com.example.configs;
+package nl.cfns.configs;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,7 +21,7 @@ import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.example.rabbit.Receiver;
+import nl.cfns.base.Receiver;
 
 //this configuration creates a connection with an existing rabbitmq server
 //only works if a rabbitmq server is running on this PC

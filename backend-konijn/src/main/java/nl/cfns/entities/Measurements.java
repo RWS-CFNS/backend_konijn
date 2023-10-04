@@ -1,4 +1,4 @@
-package com.example.entities;
+package nl.cfns.entities;
 
 import java.sql.Timestamp;
 

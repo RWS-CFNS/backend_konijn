@@ -8,6 +8,8 @@ import org.springframework.context.annotation.Bean;
 import org.testcontainers.containers.RabbitMQContainer;
 import org.testcontainers.utility.DockerImageName;
 
+import nl.cfns.base.BackendKonijnApplication;
+
 @TestConfiguration(proxyBeanMethods = false)
 public class TestBackendKonijnApplication {
 
