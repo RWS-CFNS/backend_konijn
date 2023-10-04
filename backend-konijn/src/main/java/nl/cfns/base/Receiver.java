@@ -28,7 +28,7 @@ public class Receiver {
 	public void receiveMessage(Measuringbox receivedBox) {
 		//Measuringbox receivedBox = objectMapper.readValue(message, Measuringbox.class); // convert JSON string to class object
 		measuringboxRepository.save(receivedBox);	//insert measuringbox object into database
-				
+	
 		System.out.println("the name of the box is: " + receivedBox.getName());
 		System.out.println(" [x] Received '" + receivedBox + "'"); // print message as string
 

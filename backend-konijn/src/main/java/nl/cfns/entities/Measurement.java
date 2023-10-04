@@ -16,7 +16,7 @@ import lombok.Setter;
 @Data
 @NoArgsConstructor	@AllArgsConstructor //generator constructors with and without variables
 @Table(name = "MEASUREMENTS_TABLE")
-public class Measurements {
+public class Measurement {
 	@Column
 	@Id
 	private Timestamp time;
