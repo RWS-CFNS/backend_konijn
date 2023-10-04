@@ -11,11 +11,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-//TODO add enum status to this entity
-//TODO generate getters, setters and constructors when finished setting up entities
 //TODO possibly add geometry datatype with extra dependency
 
 @Entity
