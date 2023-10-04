@@ -9,6 +9,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,22 +25,25 @@ public class Measuringbox2 {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "MNC", length = 50, nullable = false, unique = false)
+	@Column(name = "Mobile Network Code", length = 50, nullable = false, unique = false)
 	private String mnc;
 
-	@Column(name = "MCC", length = 50, nullable = false, unique = false)
+	@Column(name = "Mobile Country Code", length = 50, nullable = false, unique = false)
 	private String mcc;	
 
-	@Column(name = "LAC", length = 50, nullable = false, unique = false)
+	@Column(name = "Location Area Code", length = 50, nullable = false, unique = false)
 	private String lac;	
 	
-	@Column 
+	@Column(nullable = false)
+	@Min(value = 0, message = "Value should be greater then, or equal to 0")
+	@Max(value = 100, message = "Value should be less then, or equal to 100")
 	private Integer longitude;
 	
 	//@Column 
 	//private Geometry location;
-	
-	@Column
+	@Column(nullable = false)
+	@Min(value = 0, message = "Value should be greater then, or equal to 0")
+	@Max(value = 100, message = "Value should be less then, or equal to 100")
 	private Integer Latitude;
 	
 	public enum MeasuringboxStatus {INACTIVE, CONNECTING, RECEIVING, ACTIVE, ERROR}; //enum for keeping track of box status
