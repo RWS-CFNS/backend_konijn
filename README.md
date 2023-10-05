@@ -22,10 +22,6 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-
 
 <!-- PROJECT LOGO -->
 <br />
@@ -85,7 +81,7 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
+Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `Nielsnew`, `Backend-konijn`, `RWS-CFNS 12 nm project`, `creating a backend solution for processing data on the North sea into a heatmap. Part of the interconnectivity project`
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -93,14 +89,10 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 
 ### Built With
 
-* [![Next][Next.js]][Next-url]
-* [![React][React.js]][React-url]
-* [![Vue][Vue.js]][Vue-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
+* [![Eclipse][Eclipse.org]][[Eclipse-url](https://www.eclipse.org/downloads/)
+* [![Spring Boot][spring.io]][Spring-url](https://spring.io/projects/spring-boot)
+* [![RabbitMQ][rabbitmq.com]][Vue-url](https://www.rabbitmq.com/)
+* [![Lombok][projectlombok.org]][Angular-url](https://projectlombok.org/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -109,31 +101,16 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+You will need a text editor or IDE to run the program. Lombok needs to be installed seperately. By default, Eclipse was used to make this project.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+The back-end only works if a rabbitmq server is running on this device and is properly configured. Run the batch file in the main folder of this github repo if that is not the case
+warning: this may change settings on an existing rabbitmq server
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/github_username/repo_name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
+Use the following URL to clone this repository: https://github.com/RWS-CFNS/backend_konijn.git
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -195,7 +172,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
+Niels de Bruin - niels.de.bruin@rws.nl
 
 Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
 
