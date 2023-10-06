@@ -4,6 +4,8 @@ import java.sql.Timestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Max;
@@ -17,8 +19,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor	@AllArgsConstructor //generator constructors with and without variables
 @Table(name = "MEASUREMENTS_TABLE")
 public class Measurement {
-	@Column
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	
+	@Column
 	private Timestamp time;
 	
 	@Column

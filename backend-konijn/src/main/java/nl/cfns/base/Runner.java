@@ -4,6 +4,7 @@ package nl.cfns.base;
 //for using File objects, print functions
 import java.io.File;
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
@@ -21,6 +22,7 @@ import nl.cfns.configs.RabbitConfig;
 import nl.cfns.entities.Measurement;
 import nl.cfns.entities.Measuringbox;
 import nl.cfns.entities.Measuringbox2;
+import nl.cfns.entities.Measuringbox2.MeasuringboxStatus;
 import nl.cfns.entities.WeatherMeasurement;
 
 
@@ -62,7 +64,8 @@ public class Runner implements CommandLineRunner {
 	@Async
 	void simulateMessagesMeasuringbox() throws IOException {
 		// create example box with values
-		Measuringbox2 box = new Measuringbox2((long) 1, "exampleBox", null, null, 2, 3, null);
+		
+		Measuringbox2 box = new Measuringbox2((long) 1, "exampleBox", "ok", "ok", 2, 3, MeasuringboxStatus.ACTIVE);
 		System.out.println(" [x] Sent '" + box.toString() + "'"); // display box in console in JSON format
 		amqpTemplate.convertAndSend(RabbitConfig.topicExchangeName, RabbitConfig.MEASURINGBOX2_KEY, box);
 	}
@@ -72,7 +75,7 @@ public class Runner implements CommandLineRunner {
 	@Async
 	void simulateMessagesMeasurement() throws IOException {
 		// create example box with values
-		Measurement measurement = new Measurement();
+		Measurement measurement = new Measurement((long) 1, new Timestamp(System.currentTimeMillis()), 50, 60.5f, 70.2f, 80, 75, 85, 90, "ExampleOperator", 42, 76);
 		System.out.println(" [x] Sent '" + measurement.toString() + "'"); // display box in console in JSON format
 		amqpTemplate.convertAndSend(RabbitConfig.topicExchangeName, RabbitConfig.MEASUREMENT_KEY , measurement);
 	}
@@ -82,7 +85,7 @@ public class Runner implements CommandLineRunner {
 	@Async
 	void simulateMessagesWeather() throws IOException {
 		// create example box with values
-		WeatherMeasurement weatherMeasurement = new WeatherMeasurement();
+		WeatherMeasurement weatherMeasurement = new WeatherMeasurement((long) 1, new Timestamp(System.currentTimeMillis()), 50.5f, 60.5f, 45, 12.3f, 15.7f, 1013.2f);
 		System.out.println(" [x] Sent '" + weatherMeasurement.toString() + "'"); // display box in console in JSON format
 		amqpTemplate.convertAndSend(RabbitConfig.topicExchangeName, RabbitConfig.WEATHER_MEASUREMENT_KEY, weatherMeasurement);
 	}

@@ -45,8 +45,8 @@ public class Receiver {
 		//Measuringbox receivedBox = objectMapper.readValue(message, Measuringbox.class); // convert JSON string to class object
 		measuringboxRepository.save(receivedBox);	//insert measuringbox object into database
 	
-		System.out.println("the name of the box is: " + receivedBox.getName());
-		System.out.println(" [x] Received '" + receivedBox + "'"); // print message as string
+		//System.out.println("the name of the box is: " + receivedBox.getName());
+		System.out.println(" [x] Received testbox '" + receivedBox + "'"); // print message as string
 
 		// System.out.println("Received <" + message + ">");
 		latch.countDown(); // why a countdown on receive?
@@ -56,7 +56,8 @@ public class Receiver {
 	@Async
 	@RabbitListener(queues = RabbitConfig.WEATHER_MEASUREMENT_QUEUE)
 	public void receiveMessage(WeatherMeasurement weatherMeasurement) {
-		System.out.println(weatherMeasurement.toString());
+		System.out.println(" [x] Received weather" + weatherMeasurement.toString());
+		weatherMeasurementRepository.save(weatherMeasurement);
 		latch.countDown(); // why a countdown on receive?
 		
 	}
@@ -64,7 +65,8 @@ public class Receiver {
 	@Async
 	@RabbitListener(queues = RabbitConfig.MEASUREMENT_QUEUE)
 	public void receiveMessage(Measurement measurement) {
-		System.out.println(measurement.toString());
+		System.out.println(" [x] Received  measurement " + measurement.toString());
+		measurementsRepository.save(measurement);
 		latch.countDown(); // why a countdown on receive?
 		
 	}
@@ -72,7 +74,8 @@ public class Receiver {
 	@Async
 	@RabbitListener(queues = RabbitConfig.MEASURINGBOX2_QUEUE)
 	public void receiveMessage(Measuringbox2 measuringbox2) {
-		System.out.println(measuringbox2.toString());
+		System.out.println(" [x] Received box2" + measuringbox2.toString());
+		measuringbox2Repository.save(measuringbox2);
 		latch.countDown(); // why a countdown on receive?
 		
 	}
