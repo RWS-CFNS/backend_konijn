@@ -2,6 +2,8 @@ package nl.cfns.entities;
 
 import java.sql.Timestamp;
 
+import com.github.javafaker.Faker;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -55,4 +57,21 @@ public class WeatherMeasurement {
 	@Min(value = 0, message = "Value should be greater then, or equal to 0")
 	@Max(value = 100, message = "Value should be less then, or equal to 100")
 	private Float pressure;
+	
+	//generate random values for testing purposes
+	public static WeatherMeasurement generateRandomWeatherMeasurement() {
+	    Faker faker = new Faker();
+	    WeatherMeasurement measurement = new WeatherMeasurement();
+	    
+	    measurement.setId((long) 1);
+	    measurement.setTime(new Timestamp(System.currentTimeMillis())); 
+	    measurement.setTemp((float) faker.number().randomDouble(1, 0, 100)); 
+	    measurement.setHumid((float) faker.number().randomDouble(1, 0, 100)); 
+	    measurement.setWindDirection(faker.number().numberBetween(0, 100)); 
+	    measurement.setWindspeed((float) faker.number().randomDouble(1, 0, 100)); 
+	    measurement.setDauw((float) faker.number().randomDouble(1, 0, 100)); 
+	    measurement.setPressure((float) faker.number().randomDouble(1, 0, 100)); 
+	    
+	    return measurement;
+	}
 }

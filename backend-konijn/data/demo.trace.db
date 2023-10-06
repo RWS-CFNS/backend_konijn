@@ -820,3 +820,55 @@ org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-21
 org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
 2023-10-06 16:39:40 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-10-06 17:27:27 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-10-06 17:38:19 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MBOX_TABLE" not found; SQL statement:
+select m1_0.id,m1_0.latitude,m1_0."location area code",m1_0.longitude,m1_0."mobile country code",m1_0."mobile network code",m1_0.status from mbox_table m1_0 where m1_0.id=? [42102-214]
+2023-10-06 17:38:21 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MTABLE" not found; SQL statement:
+select m1_0.id,m1_0.box_name,m1_0.temp_value1,m1_0.value1 from mtable m1_0 where m1_0.id=? [42102-214]
+2023-10-06 17:38:21 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MBOX_TABLE" not found; SQL statement:
+select m1_0.id,m1_0.latitude,m1_0."location area code",m1_0.longitude,m1_0."mobile country code",m1_0."mobile network code",m1_0.status from mbox_table m1_0 where m1_0.id=? [42102-214]
+2023-10-06 17:38:26 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MBOX_TABLE" not found; SQL statement:
+select m1_0.id,m1_0.latitude,m1_0."location area code",m1_0.longitude,m1_0."mobile country code",m1_0."mobile network code",m1_0.status from mbox_table m1_0 where m1_0.id=? [42102-214]
+2023-10-06 17:38:31 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MTABLE" not found; SQL statement:
+select m1_0.id,m1_0.box_name,m1_0.temp_value1,m1_0.value1 from mtable m1_0 where m1_0.id=? [42102-214]
+2023-10-06 17:38:31 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MBOX_TABLE" not found; SQL statement:
+select m1_0.id,m1_0.latitude,m1_0."location area code",m1_0.longitude,m1_0."mobile country code",m1_0."mobile network code",m1_0.status from mbox_table m1_0 where m1_0.id=? [42102-214]
+2023-10-06 17:38:31 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MBOX_TABLE" not found; SQL statement:
+select m1_0.id,m1_0.latitude,m1_0."location area code",m1_0.longitude,m1_0."mobile country code",m1_0."mobile network code",m1_0.status from mbox_table m1_0 where m1_0.id=? [42102-214]
+2023-10-06 17:38:31 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MTABLE" not found; SQL statement:
+select m1_0.id,m1_0.box_name,m1_0.temp_value1,m1_0.value1 from mtable m1_0 where m1_0.id=? [42102-214]
+2023-10-06 17:38:32 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WEATHER_TABLE" not found; SQL statement:
+select w1_0.id,w1_0.dauw,w1_0.humid,w1_0.pressure,w1_0.temp,w1_0.time,w1_0.wind_direction,w1_0.windspeed from weather_table w1_0 where w1_0.id=? [42102-214]
+2023-10-06 17:38:36 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MBOX_TABLE" not found; SQL statement:
+select m1_0.id,m1_0.latitude,m1_0."location area code",m1_0.longitude,m1_0."mobile country code",m1_0."mobile network code",m1_0.status from mbox_table m1_0 where m1_0.id=? [42102-214]
+2023-10-06 17:38:41 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MTABLE" not found (this database is empty); SQL statement:
+select m1_0.id,m1_0.box_name,m1_0.temp_value1,m1_0.value1 from mtable m1_0 where m1_0.id=? [42104-214]
+2023-10-06 17:38:41 jdbc[7]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WEATHER_TABLE" not found (this database is empty); SQL statement:
+select w1_0.id,w1_0.dauw,w1_0.humid,w1_0.pressure,w1_0.temp,w1_0.time,w1_0.wind_direction,w1_0.windspeed from weather_table w1_0 where w1_0.id=? [42104-214]
+2023-10-06 17:38:41 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MBOX_TABLE" not found (this database is empty); SQL statement:
+select m1_0.id,m1_0.latitude,m1_0."location area code",m1_0.longitude,m1_0."mobile country code",m1_0."mobile network code",m1_0.status from mbox_table m1_0 where m1_0.id=? [42104-214]
+2023-10-06 17:38:42 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MEASUREMENTS_TABLE" not found (this database is empty); SQL statement:
+select m1_0.id,m1_0.rsrp,m1_0.rsrq,m1_0.rssi,m1_0.sinr,m1_0.download,m1_0.latency,m1_0.latitude_integer,m1_0.longitude_integer,m1_0."mobile network operator",m1_0.time,m1_0.upload from measurements_table m1_0 where m1_0.id=? [42104-214]
+2023-10-06 17:38:49 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-10-06 17:38:49 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-10-06 17:38:49 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-10-06 17:38:49 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]

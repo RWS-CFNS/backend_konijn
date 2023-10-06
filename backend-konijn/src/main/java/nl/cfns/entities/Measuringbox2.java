@@ -1,6 +1,6 @@
 package nl.cfns.entities;
 
-
+import com.github.javafaker.Faker;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -52,6 +52,21 @@ public class Measuringbox2 {
 	 @Enumerated(EnumType.STRING)
 	 private MeasuringboxStatus status;
 	 
+	
+	public static Measuringbox2 generateRandomMeasuringbox() {
+	    Faker faker = new Faker();
+	    Measuringbox2 measuringbox = new Measuringbox2();
+	    
+	    measuringbox.setId((long) 1);
+	    measuringbox.setMnc(faker.number().digits(3)); 
+	    measuringbox.setMcc(faker.number().digits(3)); 
+	    measuringbox.setLac(faker.number().digits(5)); 
+	    measuringbox.setLongitude(faker.number().numberBetween(0, 100)); 
+	    measuringbox.setLatitude(faker.number().numberBetween(0, 100)); 
+	    measuringbox.setStatus(Measuringbox2.MeasuringboxStatus.values()[faker.number().numberBetween(0, 4)]); 
+	    
+	    return measuringbox;
+	}
 	// private boolean measuringboxGender;
 
 	// other fields, getters and setters

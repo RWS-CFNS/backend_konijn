@@ -65,7 +65,8 @@ public class Runner implements CommandLineRunner {
 	void simulateMessagesMeasuringbox() throws IOException {
 		// create example box with values
 		
-		Measuringbox2 box = new Measuringbox2((long) 1, "exampleBox", "ok", "ok", 2, 3, MeasuringboxStatus.ACTIVE);
+		//Measuringbox2 box = new Measuringbox2((long) 1, "exampleBox", "ok", "ok", 2, 3, MeasuringboxStatus.ACTIVE);
+		Measuringbox2 box = Measuringbox2.generateRandomMeasuringbox();
 		System.out.println(" [x] Sent '" + box.toString() + "'"); // display box in console in JSON format
 		amqpTemplate.convertAndSend(RabbitConfig.topicExchangeName, RabbitConfig.MEASURINGBOX2_KEY, box);
 	}
@@ -75,7 +76,8 @@ public class Runner implements CommandLineRunner {
 	@Async
 	void simulateMessagesMeasurement() throws IOException {
 		// create example box with values
-		Measurement measurement = new Measurement((long) 1, new Timestamp(System.currentTimeMillis()), 50, 60.5f, 70.2f, 80, 75, 85, 90, "ExampleOperator", 42, 76);
+		//Measurement measurement = new Measurement((long) 1, new Timestamp(System.currentTimeMillis()), 50, 60.5f, 70.2f, 80, 75, 85, 90, "ExampleOperator", 42, 76);
+		Measurement measurement = Measurement.generateRandomMeasurement();
 		System.out.println(" [x] Sent '" + measurement.toString() + "'"); // display box in console in JSON format
 		amqpTemplate.convertAndSend(RabbitConfig.topicExchangeName, RabbitConfig.MEASUREMENT_KEY , measurement);
 	}
@@ -85,7 +87,8 @@ public class Runner implements CommandLineRunner {
 	@Async
 	void simulateMessagesWeather() throws IOException {
 		// create example box with values
-		WeatherMeasurement weatherMeasurement = new WeatherMeasurement((long) 1, new Timestamp(System.currentTimeMillis()), 50.5f, 60.5f, 45, 12.3f, 15.7f, 1013.2f);
+		//WeatherMeasurement weatherMeasurement = new WeatherMeasurement((long) 1, new Timestamp(System.currentTimeMillis()), 50.5f, 60.5f, 45, 12.3f, 15.7f, 13.2f);
+		WeatherMeasurement weatherMeasurement = WeatherMeasurement.generateRandomWeatherMeasurement();
 		System.out.println(" [x] Sent '" + weatherMeasurement.toString() + "'"); // display box in console in JSON format
 		amqpTemplate.convertAndSend(RabbitConfig.topicExchangeName, RabbitConfig.WEATHER_MEASUREMENT_KEY, weatherMeasurement);
 	}
