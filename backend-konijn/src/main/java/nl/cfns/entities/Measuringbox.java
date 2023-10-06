@@ -20,6 +20,7 @@ import lombok.NoArgsConstructor;
 public class Measuringbox {	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
 	private Long id;
 
 	@Column(name = "BOX_NAME", length = 50, nullable = false, unique = false)
@@ -32,5 +33,9 @@ public class Measuringbox {
 
 	@Column
 	private Integer tempValue1;
+	
+    public void generateNewId() {
+        this.id = null; // Set the current ID to null and generate a new one
+    }
 
 }

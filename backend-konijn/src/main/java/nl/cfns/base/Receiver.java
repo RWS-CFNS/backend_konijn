@@ -8,6 +8,7 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.javafaker.Faker;
 
 import nl.cfns.configs.RabbitConfig;
 import nl.cfns.entities.Measurement;
@@ -23,7 +24,9 @@ import nl.cfns.repositories.WeatherMeasurementRepository;
 //@RabbitListener(queues = "spring-boot") annotation does not work on class level for some reason?
 public class Receiver {
 	private CountDownLatch latch = new CountDownLatch(1);
-	ObjectMapper objectMapper = new ObjectMapper(); // mapper for JSON conversion
+	//ObjectMapper objectMapper = new ObjectMapper(); // mapper for JSON conversion
+
+    private Faker faker = new Faker();	
 	
 	//private repository object for interacting with measuringbox section of database
 	@Autowired	
@@ -43,8 +46,9 @@ public class Receiver {
 	@RabbitListener(queues = RabbitConfig.queueName)
 	public void receiveMessage(Measuringbox receivedBox) {
 		//Measuringbox receivedBox = objectMapper.readValue(message, Measuringbox.class); // convert JSON string to class object
+		receivedBox.generateNewId();
 		measuringboxRepository.save(receivedBox);	//insert measuringbox object into database
-	
+		
 		//System.out.println("the name of the box is: " + receivedBox.getName());
 		System.out.println(" [x] Received testbox '" + receivedBox + "'"); // print message as string
 
@@ -57,6 +61,8 @@ public class Receiver {
 	@RabbitListener(queues = RabbitConfig.WEATHER_MEASUREMENT_QUEUE)
 	public void receiveMessage(WeatherMeasurement weatherMeasurement) {
 		System.out.println(" [x] Received weather" + weatherMeasurement.toString());
+		weatherMeasurement.generateNewId();
+		//WeatherMeasurement validweatherMeasurement = new WeatherMeasurement(weatherMeasurement);
 		weatherMeasurementRepository.save(weatherMeasurement);
 		latch.countDown(); // why a countdown on receive?
 		
@@ -66,6 +72,7 @@ public class Receiver {
 	@RabbitListener(queues = RabbitConfig.MEASUREMENT_QUEUE)
 	public void receiveMessage(Measurement measurement) {
 		System.out.println(" [x] Received  measurement " + measurement.toString());
+		measurement.generateNewId();
 		measurementsRepository.save(measurement);
 		latch.countDown(); // why a countdown on receive?
 		
@@ -75,6 +82,8 @@ public class Receiver {
 	@RabbitListener(queues = RabbitConfig.MEASURINGBOX2_QUEUE)
 	public void receiveMessage(Measuringbox2 measuringbox2) {
 		System.out.println(" [x] Received box2" + measuringbox2.toString());
+		
+		measuringbox2.generateNewId();
 		measuringbox2Repository.save(measuringbox2);
 		latch.countDown(); // why a countdown on receive?
 		

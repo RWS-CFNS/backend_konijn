@@ -12,17 +12,20 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 //TODO possibly add geometry datatype with extra dependency
 
 @Entity
 @Data
+@Builder(toBuilder = true, builderMethodName = "") //for only generating a copy constructor
 @NoArgsConstructor	@AllArgsConstructor //generator constructors with and without variables
 @Table(name = "MBOX_TABLE")
 public class Measuringbox2 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
 	private Long id;
 
 	@Column(name = "Mobile Network Code", length = 50, nullable = false, unique = false)
@@ -52,6 +55,11 @@ public class Measuringbox2 {
 	 @Enumerated(EnumType.STRING)
 	 private MeasuringboxStatus status;
 	 
+
+    public void generateNewId() {
+        this.id = null; // Set the current ID to null and generate a new one
+    }
+	
 	
 	public static Measuringbox2 generateRandomMeasuringbox() {
 	    Faker faker = new Faker();

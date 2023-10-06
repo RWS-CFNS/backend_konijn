@@ -23,6 +23,7 @@ import lombok.NoArgsConstructor;
 public class Measurement {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
 	private Long id;
 	
 	@Column
@@ -76,6 +77,10 @@ public class Measurement {
 	@Max(value = 100, message = "Value should be less then, or equal to 100")
 	private Integer longitudeInteger;
 	
+    public void generateNewId() {
+        this.id = null; // Set the current ID to null and generate a new one
+    }
+	
 	//generate random values for testing purposes
 	public static Measurement generateRandomMeasurement() {
 	    Faker faker = new Faker();
@@ -97,5 +102,7 @@ public class Measurement {
 	    
 	    return measurement;
 	}
+	
+
 
 }
