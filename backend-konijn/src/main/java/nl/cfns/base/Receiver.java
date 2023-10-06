@@ -10,7 +10,10 @@ import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import nl.cfns.entities.Measuringbox;
+import nl.cfns.repositories.MeasurementsRepository;
+import nl.cfns.repositories.Measuringbox2Repository;
 import nl.cfns.repositories.MeasuringboxRepository;
+import nl.cfns.repositories.WeatherMeasurementRepository;
 
 @Component("receiver")
 //@RabbitListener(queues = "spring-boot") annotation does not work on class level for some reason?
@@ -22,6 +25,15 @@ public class Receiver {
 	@Autowired	
 	private MeasuringboxRepository measuringboxRepository;
 
+	@Autowired	
+	private MeasurementsRepository measurementsRepository;
+	
+	@Autowired	
+	private Measuringbox2Repository measuringbox2Repository;
+	
+	@Autowired	
+	private WeatherMeasurementRepository weatherMeasurementRepository;
+	
 	@Async
 	//@RabbitHandler
 	@RabbitListener(queues = "spring-boot")

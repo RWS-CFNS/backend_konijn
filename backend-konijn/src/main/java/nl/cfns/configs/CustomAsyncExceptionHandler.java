@@ -3,6 +3,7 @@ package nl.cfns.configs;
 import org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler;
 import java.lang.reflect.Method;
 
+//class for throwing exceptions relevant to async
 public class CustomAsyncExceptionHandler implements AsyncUncaughtExceptionHandler {
 
   @Override
