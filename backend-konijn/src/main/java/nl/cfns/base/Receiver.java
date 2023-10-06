@@ -9,7 +9,11 @@ import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import nl.cfns.configs.RabbitConfig;
+import nl.cfns.entities.Measurement;
 import nl.cfns.entities.Measuringbox;
+import nl.cfns.entities.Measuringbox2;
+import nl.cfns.entities.WeatherMeasurement;
 import nl.cfns.repositories.MeasurementsRepository;
 import nl.cfns.repositories.Measuringbox2Repository;
 import nl.cfns.repositories.MeasuringboxRepository;
@@ -36,7 +40,7 @@ public class Receiver {
 	
 	@Async
 	//@RabbitHandler
-	@RabbitListener(queues = "spring-boot")
+	@RabbitListener(queues = RabbitConfig.queueName)
 	public void receiveMessage(Measuringbox receivedBox) {
 		//Measuringbox receivedBox = objectMapper.readValue(message, Measuringbox.class); // convert JSON string to class object
 		measuringboxRepository.save(receivedBox);	//insert measuringbox object into database
@@ -49,6 +53,30 @@ public class Receiver {
 		
 	}
 
+	@Async
+	@RabbitListener(queues = RabbitConfig.WEATHER_MEASUREMENT_QUEUE)
+	public void receiveMessage(WeatherMeasurement weatherMeasurement) {
+		System.out.println(weatherMeasurement.toString());
+		latch.countDown(); // why a countdown on receive?
+		
+	}
+
+	@Async
+	@RabbitListener(queues = RabbitConfig.MEASUREMENT_QUEUE)
+	public void receiveMessage(Measurement measurement) {
+		System.out.println(measurement.toString());
+		latch.countDown(); // why a countdown on receive?
+		
+	}
+	
+	@Async
+	@RabbitListener(queues = RabbitConfig.MEASURINGBOX2_QUEUE)
+	public void receiveMessage(Measuringbox2 measuringbox2) {
+		System.out.println(measuringbox2.toString());
+		latch.countDown(); // why a countdown on receive?
+		
+	}
+	
 	public CountDownLatch getLatch() {
 		return latch;
 	}

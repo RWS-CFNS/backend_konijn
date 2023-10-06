@@ -124,6 +124,27 @@ public class RabbitConfig {
     Binding deadLetterBinding() {
         return BindingBuilder.bind(deadLetterQueue()).to(deadLetterExchange()).with(DEAD_LETTER_ROUTING_KEY);
     }
+    
+	// adapters to be used by the receiver class
+	@Bean
+	MessageListenerAdapter exampleListenerAdapter(Receiver receiver) {
+		return new MessageListenerAdapter(receiver, "receiveMessage");
+	}
+	
+//	@Bean
+//	MessageListenerAdapter measuringboxListenerAdapter(Receiver receiver) {
+//		return new MessageListenerAdapter(receiver, "receiveMessage");
+//	}
+//	
+//	@Bean
+//	MessageListenerAdapter measurementListenerAdapter(Receiver receiver) {
+//		return new MessageListenerAdapter(receiver, "receiveMessage");
+//	}
+//	
+//	@Bean
+//	MessageListenerAdapter weatherListenerAdapter(Receiver receiver) {
+//		return new MessageListenerAdapter(receiver, "receiveMessage");
+//	}
 	
 	//TODO move connection and user settings in factory to seperate configuration file
 	@Bean
@@ -148,11 +169,14 @@ public class RabbitConfig {
 	}
 
 	@Bean
-	SimpleMessageListenerContainer MainContainer(ConnectionFactory connectionFactory,
+	SimpleMessageListenerContainer exampleContainer(ConnectionFactory connectionFactory,
 			MessageListenerAdapter listenerAdapter) {
 		SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
 		container.setConnectionFactory(connectionFactory);
-		container.setQueueNames(queueName);
+		container.addQueueNames(queueName);
+		container.addQueueNames(WEATHER_MEASUREMENT_QUEUE);
+		container.addQueueNames(MEASURINGBOX2_QUEUE);
+		container.addQueueNames(MEASUREMENT_QUEUE);
 		container.setMessageListener(listenerAdapter);
 		container.setConcurrentConsumers(8);
 		listenerAdapter.setMessageConverter(jsonMessageConverter());
@@ -169,13 +193,6 @@ public class RabbitConfig {
 	        container.setDefaultRequeueRejected(false); //this prevents endless exception loop due to dead letters
 	        return container;
 	    }
-
-	// adapter to be used by the receiver class
-	@Bean
-	MessageListenerAdapter listenerAdapter(Receiver receiver) {
-		return new MessageListenerAdapter(receiver, "receiveMessage");
-	}
-	
 
 	//jackson converter for default conversion from message payload to JSON
     @Bean
