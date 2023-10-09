@@ -1,4 +1,4 @@
-package nl.cfns.base;
+package nl.cfns.services;
 
 import org.springframework.stereotype.Service;
 
