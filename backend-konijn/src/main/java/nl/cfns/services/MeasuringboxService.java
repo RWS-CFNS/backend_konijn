@@ -1,8 +1,9 @@
-package com.example.rabbit;
+package nl.cfns.services;
 
 import org.springframework.stereotype.Service;
 
-import com.example.entities.Measuringbox;
+import nl.cfns.entities.Measuringbox;
+import nl.cfns.repositories.MeasuringboxRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 

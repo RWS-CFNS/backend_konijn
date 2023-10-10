@@ -1,7 +1,8 @@
-package com.example.rabbit;
+package nl.cfns.base;
 
 import org.springframework.stereotype.Component;
 
+//class for testing async and scheduling functionality
 @Component
 public class AsyncDemoBeans {
 //	@Async

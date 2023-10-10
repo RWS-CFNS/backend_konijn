@@ -6,15 +6,16 @@ import static org.junit.Assert.assertNotNull;
 import java.util.Optional;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
-import com.example.entities.Measuringbox;
+import nl.cfns.base.BackendKonijnApplication;
+import nl.cfns.entities.Measuringbox;
+import nl.cfns.repositories.MeasuringboxRepository;
+import nl.cfns.services.MeasuringboxService;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
+//@RunWith(SpringRunner.class)
+@SpringBootTest(classes = BackendKonijnApplication.class)
 public class JpademoApplicationTests {
 
    @Autowired

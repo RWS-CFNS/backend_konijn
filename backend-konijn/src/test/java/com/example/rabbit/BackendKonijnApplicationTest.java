@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import nl.cfns.base.BackendKonijnApplication;
+
 @SpringBootTest(classes = BackendKonijnApplication.class)
 public class BackendKonijnApplicationTest {
 
