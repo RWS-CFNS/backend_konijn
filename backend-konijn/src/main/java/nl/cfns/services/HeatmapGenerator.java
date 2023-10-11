@@ -1,4 +1,4 @@
-package nl.cfns.base;
+package nl.cfns.services;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -17,9 +17,6 @@ import nl.cfns.entities.Measurement;
 import nl.cfns.repositories.MeasurementsRepository;
 
 import com.uber.h3core.H3Core;
-import com.uber.h3core.util.GeoCoord;
-
-
 
 @Service
 public class HeatmapGenerator {
@@ -45,6 +42,7 @@ public class HeatmapGenerator {
 		return CompletableFuture.completedFuture(heatmapData);
 	}
 	
+	@Async
     public static Map<String, Double> generateHexHeatmap(List<Measurement> signalData, int resolution) throws IOException {
         // Initialize H3Core
         H3Core h3Core = H3Core.newInstance();

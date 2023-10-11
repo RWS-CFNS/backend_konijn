@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.javafaker.Faker;
 
 import nl.cfns.configs.RabbitConfig;
@@ -25,8 +24,6 @@ import nl.cfns.repositories.WeatherMeasurementRepository;
 public class Receiver {
 	private CountDownLatch latch = new CountDownLatch(1);
 	//ObjectMapper objectMapper = new ObjectMapper(); // mapper for JSON conversion
-
-    private Faker faker = new Faker();	
 	
 	//private repository object for interacting with measuringbox section of database
 	@Autowired	
@@ -95,17 +92,3 @@ public class Receiver {
 
 }
 
-//@Component("receiver")
-//public class Receiver {
-//	private CountDownLatch latch = new CountDownLatch(1);
-//
-//	public void receiveMessage(String message) {
-//		System.out.println("Received <" + message + ">");
-//		latch.countDown(); // why a countdown on receive?
-//	}
-//
-//	public CountDownLatch getLatch() {
-//		return latch;
-//	}
-//
-//}

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import nl.cfns.basicpojo.MeasurementPoint;
+import nl.cfns.services.HeatmapGenerator;
 import nl.cfns.services.SignalstrengthService;
 
 @RestController
@@ -31,7 +32,7 @@ public class HeatmapController {
 	// access this mapping at http://localhost:8090/heatmap/h3data
 	@GetMapping("/h3data")
 	public Map<String, Double> geth3Mapdata() throws IOException{
-		return signalstrengthService.getSignalStrengthHeatmap(2);
+		return signalstrengthService.getSignalStrengthHeatmap();
 	}
 }
 

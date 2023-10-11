@@ -2,9 +2,7 @@ package nl.cfns.base;
 
 
 //for using File objects, print functions
-import java.io.File;
 import java.io.IOException;
-import java.sql.Timestamp;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
@@ -22,7 +20,6 @@ import nl.cfns.configs.RabbitConfig;
 import nl.cfns.entities.Measurement;
 import nl.cfns.entities.Measuringbox;
 import nl.cfns.entities.Measuringbox2;
-import nl.cfns.entities.Measuringbox2.MeasuringboxStatus;
 import nl.cfns.entities.WeatherMeasurement;
 
 

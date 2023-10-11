@@ -1,9 +1,10 @@
 package nl.cfns.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-import nl.cfns.base.HeatmapGenerator;
 import nl.cfns.repositories.MeasurementsRepository;
 import nl.cfns.entities.Measurement;
 
@@ -17,12 +18,20 @@ import java.util.stream.StreamSupport;
 public class SignalstrengthService {
 	@Autowired
 	private MeasurementsRepository measurementRepository;
-
 	
-    public Map<String, Double> getSignalStrengthHeatmap(int resolution) throws IOException {
-        Iterable<Measurement> measurements = measurementRepository.findAll(); // Adjust query as needed
-		List<Measurement> measurementList = StreamSupport.stream(measurements.spliterator(), false)
+	private Map<String, Double> generatedHeatmap;
+
+	//generate heatmap every x milliseconds
+	@Async
+	@Scheduled(fixedRate = 5000)
+	public void generateHeatmap() throws IOException {
+        Iterable<Measurement> measurements = measurementRepository.findAll(); //take all measurements
+		List<Measurement> measurementList = StreamSupport.stream(measurements.spliterator(), false)//()convert to list
 				.collect(Collectors.toList());
-        return HeatmapGenerator.generateHexHeatmap(measurementList, resolution);
+		generatedHeatmap = HeatmapGenerator.generateHexHeatmap(measurementList, 2);	//update object generatedHeatmap	
+	}
+	
+    public Map<String, Double> getSignalStrengthHeatmap() throws IOException {
+        return generatedHeatmap;
     }
 }
