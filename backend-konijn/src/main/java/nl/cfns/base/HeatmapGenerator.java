@@ -45,7 +45,7 @@ public class HeatmapGenerator {
 		return CompletableFuture.completedFuture(heatmapData);
 	}
 	
-    public static Map<String, Double> generateHeatmap(List<Measurement> signalData, int resolution) throws IOException {
+    public static Map<String, Double> generateHexHeatmap(List<Measurement> signalData, int resolution) throws IOException {
         // Initialize H3Core
         H3Core h3Core = H3Core.newInstance();
 

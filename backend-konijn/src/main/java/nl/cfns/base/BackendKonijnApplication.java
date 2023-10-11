@@ -9,7 +9,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import lombok.extern.java.Log;
 
-@SpringBootApplication(scanBasePackages = "nl.cfns.base, nl.cfns.configs, nl.cfns.entities, " + "nl.cfns.services") // add
+@SpringBootApplication(scanBasePackages = "nl.cfns.base, nl.cfns.configs, "
+		+ "nl.cfns.entities, " + "nl.cfns.services") // add
 																													// other
 																													// classes
 																													// to
