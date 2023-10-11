@@ -70,12 +70,12 @@ public class Measurement {
 	@Column(nullable = false)
 	@Min(value = 0, message = "Value should be greater then, or equal to 0")
 	@Max(value = 100, message = "Value should be less then, or equal to 100")
-	private Integer latitudeInteger;
+	private Double latitude;
 
 	@Column(nullable = false)
 	@Min(value = 0, message = "Value should be greater then, or equal to 0")
 	@Max(value = 100, message = "Value should be less then, or equal to 100")
-	private Integer longitudeInteger;
+	private Double longitude;
 	
     public void generateNewId() {
         this.id = null; // Set the current ID to null and generate a new one
@@ -96,8 +96,8 @@ public class Measurement {
 	    measurement.setRSRP(faker.number().numberBetween(0, 100)); 
 	    measurement.setSINR(faker.number().numberBetween(0, 100)); 
 	    measurement.setMnoString(faker.lorem().word()); 
-	    measurement.setLatitudeInteger(faker.number().numberBetween(0, 100)); 
-	    measurement.setLongitudeInteger(faker.number().numberBetween(0, 100)); 
+	    measurement.setLongitude(faker.number().randomDouble(2, 0, 100)); 
+	    measurement.setLatitude(faker.number().randomDouble(2, 0, 100)); 
 	    
 	    
 	    return measurement;

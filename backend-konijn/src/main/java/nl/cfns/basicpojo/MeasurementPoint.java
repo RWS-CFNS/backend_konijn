@@ -16,7 +16,7 @@ public class MeasurementPoint {
 	private double y;
 	private double value;
 
-	public MeasurementPoint(Integer latitude, Integer longitude, Integer RSSI) {
+	public MeasurementPoint(Double latitude, Double longitude, Integer RSSI) {
 		this.id = null;
 		this.x = latitude;
 		this.y = longitude;

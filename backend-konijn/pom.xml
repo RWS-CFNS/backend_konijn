@@ -12,8 +12,11 @@
 	<groupId>com.example</groupId>
 	<artifactId>backend-konijn</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	
 	<name>backend-konijn</name>
 	<description>H2 and rabbitmq</description>
+	<url>https://github.com/RWS-CFNS/backend_konijn.git</url>
+	
 	<properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -115,6 +118,11 @@
     		<groupId>io.micrometer</groupId>
     		<artifactId>micrometer-registry-graphite</artifactId>
 		</dependency>
+		<dependency>
+      		<groupId>com.uber</groupId>
+      		<artifactId>h3</artifactId>
+      		<version>3.7.0</version> 
+    	</dependency>
 	</dependencies>
 
 	<build>
