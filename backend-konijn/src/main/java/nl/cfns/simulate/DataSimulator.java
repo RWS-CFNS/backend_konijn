@@ -1,7 +1,8 @@
-package nl.cfns.base;
+package nl.cfns.simulate;
 
 import java.sql.Timestamp;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.github.javafaker.Faker;
@@ -10,11 +11,11 @@ import nl.cfns.entity.Celltower;
 import nl.cfns.entity.Measurement;
 import nl.cfns.entity.Measuringbox2;
 import nl.cfns.entity.WeatherMeasurement;
+import nl.cfns.repository.CelltowerRepository;
 
 //this class contains functions to generate valid data values. 
 @Service
-public class DataSimulator {
-	
+public class DataSimulator {	
 	//generate random values for weather measurements
 	public static WeatherMeasurement generateRandomWeatherMeasurement() {
 	    Faker faker = new Faker();		
@@ -57,8 +58,8 @@ public class DataSimulator {
 	    tower.setMnc(faker.number().digits(3)); 
 	    tower.setMcc(faker.number().digits(3)); 
 	    tower.setLac(faker.number().digits(5)); 
-	    tower.setLongitude(faker.number().randomDouble(2, 0, 100)); 
-	    tower.setLatitude(faker.number().randomDouble(2, 0, 100)); 
+	    tower.setLongitude(faker.number().randomDouble(2, 0, 5)); 
+	    tower.setLatitude(faker.number().randomDouble(2, 0, 5)); 
 	    
 	    return tower;
 	}
@@ -73,7 +74,7 @@ public class DataSimulator {
 	    measurement.setLatency(faker.number().numberBetween(0, 100)); 
 	    measurement.setUpload((float) faker.number().randomDouble(2, 0, 100)); 
 	    measurement.setDownload((float) faker.number().randomDouble(2, 0, 100)); 
-	    measurement.setRSSI(faker.number().numberBetween(0, 100)); 
+	    measurement.setRSSI(faker.number().numberBetween(-100, 0)); 
 	    measurement.setRSRQ(faker.number().numberBetween(0, 100)); 
 	    measurement.setRSRP(faker.number().numberBetween(0, 100)); 
 	    measurement.setSINR(faker.number().numberBetween(0, 100)); 
@@ -87,41 +88,40 @@ public class DataSimulator {
 	
 	//generate random measurements, but they are based on locations of cell towers. 
 	//the values are determined by the distance to the cell towers
-	public static Measurement generateRandomMeasurementwithCelltower() {
+	public static Measurement generateRandomMeasurementAdjusted(Iterable<Celltower> celltowerIterable) {
 	    Faker faker = new Faker();
 	    Measurement measurement = new Measurement();
 	    
 	    // Generate random latitude and longitude for the measurement point
-	    double latitude = faker.number().randomDouble(6, 0, 90); // Example: range of latitudes
-	    double longitude = faker.number().randomDouble(6, 0, 180); // Example: range of longitudes
+	    double latitude = faker.number().randomDouble(6, 0, 5); //range of latitudes
+	    double longitude = faker.number().randomDouble(6, 0, 5); //range of longitudes
 
 	    measurement.generateNewId();
 	    measurement.setTime(new Timestamp(System.currentTimeMillis())); 
 	    measurement.setLatitude(latitude);
 	    measurement.setLongitude(longitude);
 
-	    // Simulate tower locations (latitude and longitude)
-	    double tower1Latitude = 45.0;
-	    double tower1Longitude = 60.0;
-	    double tower2Latitude = 30.0;
-	    double tower2Longitude = 120.0;
+	    //Calculate distance to each tower
+	    double distanceToTower = calculateMinimalDistancetoTower(celltowerIterable, latitude, longitude);
 
-	    // Calculate distance to each tower
-	    double distanceToTower1 = calculateDistanceHaversine(latitude, longitude, tower1Latitude, tower1Longitude);
-	    double distanceToTower2 = calculateDistanceHaversine(latitude, longitude, tower2Latitude, tower2Longitude);
+	    //Adjust RSSI values based on distance
+	    int rssiTower1 = (int) (1 - distanceToTower); // Example: Inverse relation with distance
 
-	    // Adjust RSSI values based on distance
-	    int rssiTower1 = (int) (100 - distanceToTower1); // Example: Inverse relation with distance
-	    int rssiTower2 = (int) (100 - distanceToTower2);
-
-	    // Set RSSI values based on distance
-	    measurement.setRSSI(rssiTower1 + rssiTower2); // Combining signals from both towers
+	    //Set RSSI values based on distance
+	    measurement.setRSSI(rssiTower1); // Combining signals from both towers
 	    measurement.setRSRQ(0); // Set a constant value for RSRQ
 	    measurement.setRSRP(0); // Set a constant value for RSRP
-	    measurement.setSINR(measurement.getRSSI());
+	    measurement.setSINR(0);
+	    
+	    //check in terminal if values make sense
+	    System.out.println( "the following measurement:" + measurement.toString());
+	    System.out.println( "the following distance to a tower was used: " + distanceToTower);
 
-	    // Other values (latency, upload, download, MNO) can be set randomly or as needed
-
+	    measurement.setLatency(faker.number().numberBetween(0, 100)); 
+	    measurement.setUpload((float) faker.number().randomDouble(2, 0, 100)); 
+	    measurement.setDownload((float) faker.number().randomDouble(2, 0, 100)); 
+	    measurement.setMnoString(faker.lorem().word()); 
+	    
 	    return measurement;
 	}
 	
@@ -147,5 +147,20 @@ public class DataSimulator {
 		return rad * c;
 		}
     
+	//calculates distance to closest tower. if no tower is found, 999999 is returned
+	public static Double calculateMinimalDistancetoTower(Iterable<Celltower> celltowerIterable, double latitude, double longitude) {
+	    double minimalDistanceToTower = 999999;
+		
+	    for (Celltower thisCelltower : celltowerIterable) {
+	        Double distanceToTower = DataSimulator.calculateDistanceHaversine(
+	            thisCelltower.getLatitude(), thisCelltower.getLongitude(), latitude, longitude);
+	        
+	        if (distanceToTower < minimalDistanceToTower) {
+	            minimalDistanceToTower = distanceToTower;
+	        }
+	    }
+
+	    return minimalDistanceToTower;
+	}
     
 }

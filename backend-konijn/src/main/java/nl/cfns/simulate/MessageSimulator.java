@@ -1,4 +1,4 @@
-package nl.cfns.base;
+package nl.cfns.simulate;
 
 
 //for using File objects, print functions
@@ -27,14 +27,14 @@ import nl.cfns.repository.CelltowerRepository;
 //simulation class for sending messages to backend locally
 @Component
 public class MessageSimulator{
+	@Autowired
+    private CelltowerRepository celltowerRepository;
 //	private CountDownLatch latch = new CountDownLatch(1);
 	//ObjectMapper objectMapper = new ObjectMapper();
 	
 	@Autowired 
 	private AmqpTemplate amqpTemplate;
-	@Autowired
-	private CelltowerRepository celltowerRepository;
-	private final Iterable<Celltower> celltowerIterable = celltowerRepository.findAll();
+
 	
 	// send some test messages every x seconds
 	@Scheduled(fixedRate = 3000)
@@ -59,13 +59,26 @@ public class MessageSimulator{
 		amqpTemplate.convertAndSend(RabbitConfig.topicExchangeName, RabbitConfig.MEASURINGBOX2_KEY, box);
 	}
 	
+//	// send some test messages every x seconds
+//	@Scheduled(fixedRate = 5000)
+//	@Async
+//	void simulateMessagesSimpleMeasurement() throws IOException {
+//		// create example box with values
+//		//Measurement measurement = new Measurement((long) 1, new Timestamp(System.currentTimeMillis()), 50, 60.5f, 70.2f, 80, 75, 85, 90, "ExampleOperator", 42, 76);
+//		Measurement measurement = DataSimulator.generateRandomMeasurement();
+//		//System.out.println(" [x] Sent '" + measurement.toString() + "'"); // display box in console in JSON format
+//		amqpTemplate.convertAndSend(RabbitConfig.topicExchangeName, RabbitConfig.MEASUREMENT_KEY , measurement);
+//	}
+
 	// send some test messages every x seconds
 	@Scheduled(fixedRate = 5000)
 	@Async
-	void simulateMessagesMeasurement() throws IOException {
+	void simulateMessagesAdjustedMeasurement() throws IOException {
+		//take celltowers from database
+		Iterable<Celltower> celltowerIterable = celltowerRepository.findAll();
 		// create example box with values
-		//Measurement measurement = new Measurement((long) 1, new Timestamp(System.currentTimeMillis()), 50, 60.5f, 70.2f, 80, 75, 85, 90, "ExampleOperator", 42, 76);
-		Measurement measurement = DataSimulator.generateRandomMeasurement();
+		Measurement measurement = DataSimulator.generateRandomMeasurementAdjusted(celltowerIterable);
+		
 		//System.out.println(" [x] Sent '" + measurement.toString() + "'"); // display box in console in JSON format
 		amqpTemplate.convertAndSend(RabbitConfig.topicExchangeName, RabbitConfig.MEASUREMENT_KEY , measurement);
 	}
@@ -82,21 +95,7 @@ public class MessageSimulator{
 	}
 	
 
-	//calculates distance to closest tower. if no tower is found, 999999 is returned
-	private Double calculateMinimalDistancetoTower(double latitude, double longitude) {
-	    double minimalDistanceToTower = 999999;
 
-	    for (Celltower thisCelltower : celltowerIterable) {
-	        Double distanceToTower = DataSimulator.calculateDistanceHaversine(
-	            thisCelltower.getLatitude(), thisCelltower.getLongitude(), latitude, longitude);
-	        
-	        if (distanceToTower < minimalDistanceToTower) {
-	            minimalDistanceToTower = distanceToTower;
-	        }
-	    }
-
-	    return minimalDistanceToTower;
-	}
 	
 //	@Override
 //	public void run(String... args) throws Exception {

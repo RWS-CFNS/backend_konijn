@@ -10,19 +10,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import lombok.extern.java.Log;
 
 @SpringBootApplication(scanBasePackages = "nl.cfns.base, nl.cfns.config, "
-		+ "nl.cfns.entity, " + "nl.cfns.service, nl.cfns.controller") // add
-																													// other
-																													// classes
-																													// to
-																													// main
-																													// app.
-																													// autoconfiguration
-																													// is
-																													// automatically
-																													// enabled
-																													// here
+		+ "nl.cfns.entity, " + "nl.cfns.service, nl.cfns.controller, nl.cfns.simulate") 
+																												
 @Profile("dev") // profile for configurations. TODO: create diffent profile for production environment
-//@ComponentScan(basePackages = "nl.cfns.base, nl.cfns.config, nl.cfns.entity") // add other classes to main app. autoconfiguration is automatically enabled here
 @EntityScan("nl.cfns.entity, nl.cfns.basicpojo") // add database object structures to main app
 @EnableJpaRepositories("nl.cfns.repository")// find repository classes in repository package
 

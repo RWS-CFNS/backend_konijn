@@ -1,4 +1,4 @@
-package nl.cfns.config;
+package nl.cfns.simulate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import nl.cfns.base.DataSimulator;
+
 import nl.cfns.entity.Celltower;
 import nl.cfns.repository.CelltowerRepository;
 

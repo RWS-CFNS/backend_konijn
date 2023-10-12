@@ -43,8 +43,8 @@ public class Measurement {
 	private Float download;
 	
 	@Column
-	@Min(value = 0, message = "Value should be greater then, or equal to 0")
-	@Max(value = 100, message = "Value should be less then, or equal to 100")
+	@Min(value = -100, message = "Value should be greater then, or equal to 0")
+	@Max(value = 0, message = "Value should be less then, or equal to 100")
 	private Integer RSSI;
 	
 	@Column
