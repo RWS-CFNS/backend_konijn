@@ -1,6 +1,6 @@
-package nl.cfns.entities;
+package nl.cfns.entity;
 
-import com.github.javafaker.Faker;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -40,14 +40,14 @@ public class Measuringbox2 {
 	@Column(nullable = false)
 	@Min(value = 0, message = "Value should be greater then, or equal to 0")
 	@Max(value = 100, message = "Value should be less then, or equal to 100")
-	private Integer longitude;
+	private Double longitude;
 	
 	//@Column 
 	//private Geometry location;
 	@Column(nullable = false)
 	@Min(value = 0, message = "Value should be greater then, or equal to 0")
 	@Max(value = 100, message = "Value should be less then, or equal to 100")
-	private Integer Latitude;
+	private Double Latitude;
 	
 	public enum MeasuringboxStatus {INACTIVE, CONNECTING, RECEIVING, ACTIVE, ERROR}; //enum for keeping track of box status
 	
@@ -59,23 +59,5 @@ public class Measuringbox2 {
     public void generateNewId() {
         this.id = null; // Set the current ID to null and generate a new one
     }
-	
-	
-	public static Measuringbox2 generateRandomMeasuringbox() {
-	    Faker faker = new Faker();
-	    Measuringbox2 measuringbox = new Measuringbox2();
-	    
-	    measuringbox.setId((long) 1);
-	    measuringbox.setMnc(faker.number().digits(3)); 
-	    measuringbox.setMcc(faker.number().digits(3)); 
-	    measuringbox.setLac(faker.number().digits(5)); 
-	    measuringbox.setLongitude(faker.number().numberBetween(0, 100)); 
-	    measuringbox.setLatitude(faker.number().numberBetween(0, 100)); 
-	    measuringbox.setStatus(Measuringbox2.MeasuringboxStatus.values()[faker.number().numberBetween(0, 4)]); 
-	    
-	    return measuringbox;
-	}
-	// private boolean measuringboxGender;
 
-	// other fields, getters and setters
 }

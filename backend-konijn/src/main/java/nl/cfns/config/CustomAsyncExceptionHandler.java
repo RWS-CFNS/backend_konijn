@@ -1,4 +1,4 @@
-package nl.cfns.configs;
+package nl.cfns.config;
 
 import org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler;
 import java.lang.reflect.Method;

@@ -1,4 +1,4 @@
-package nl.cfns.configs;
+package nl.cfns.config;
 
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessageListener;

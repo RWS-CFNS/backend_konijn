@@ -1,11 +1,11 @@
-package nl.cfns.repositories;
+package nl.cfns.repository;
 
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import nl.cfns.entities.Measuringbox2;
+import nl.cfns.entity.Measuringbox2;
 
 @Repository("Measuringbox2Repository")
 public interface Measuringbox2Repository  extends CrudRepository<Measuringbox2,Long>{

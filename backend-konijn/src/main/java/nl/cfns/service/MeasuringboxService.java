@@ -1,9 +1,9 @@
-package nl.cfns.services;
+package nl.cfns.service;
 
 import org.springframework.stereotype.Service;
 
-import nl.cfns.entities.Measuringbox;
-import nl.cfns.repositories.MeasuringboxRepository;
+import nl.cfns.entity.Measuringbox;
+import nl.cfns.repository.MeasuringboxRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 

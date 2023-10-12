@@ -10,9 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import nl.cfns.base.BackendKonijnApplication;
-import nl.cfns.entities.Measuringbox;
-import nl.cfns.repositories.MeasuringboxRepository;
-import nl.cfns.services.MeasuringboxService;
+import nl.cfns.entity.Measuringbox;
+import nl.cfns.repository.MeasuringboxRepository;
+import nl.cfns.service.MeasuringboxService;
 
 //@RunWith(SpringRunner.class)
 @SpringBootTest(classes = BackendKonijnApplication.class)

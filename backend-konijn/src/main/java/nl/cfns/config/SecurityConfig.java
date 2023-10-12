@@ -1,4 +1,4 @@
-package nl.cfns.configs;
+package nl.cfns.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

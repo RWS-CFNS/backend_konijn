@@ -1,4 +1,4 @@
-package nl.cfns.configs;
+package nl.cfns.config;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -131,21 +131,6 @@ public class RabbitConfig {
 		return new MessageListenerAdapter(receiver, "receiveMessage");
 	}
 	
-//	@Bean
-//	MessageListenerAdapter measuringboxListenerAdapter(Receiver receiver) {
-//		return new MessageListenerAdapter(receiver, "receiveMessage");
-//	}
-//	
-//	@Bean
-//	MessageListenerAdapter measurementListenerAdapter(Receiver receiver) {
-//		return new MessageListenerAdapter(receiver, "receiveMessage");
-//	}
-//	
-//	@Bean
-//	MessageListenerAdapter weatherListenerAdapter(Receiver receiver) {
-//		return new MessageListenerAdapter(receiver, "receiveMessage");
-//	}
-	
 	//TODO move connection and user settings in factory to seperate configuration file
 	@Bean
 	ConnectionFactory connectionFactory(){
@@ -207,4 +192,6 @@ public class RabbitConfig {
 		rabbitTemplate.setMessageConverter(jsonMessageConverter());
         return rabbitTemplate;
     }
+    
+    
 }

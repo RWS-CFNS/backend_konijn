@@ -1,8 +1,6 @@
-package nl.cfns.entities;
+package nl.cfns.entity;
 
 import java.sql.Timestamp;
-
-import com.github.javafaker.Faker;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -45,8 +43,8 @@ public class Measurement {
 	private Float download;
 	
 	@Column
-	@Min(value = 0, message = "Value should be greater then, or equal to 0")
-	@Max(value = 100, message = "Value should be less then, or equal to 100")
+	@Min(value = -100, message = "Value should be greater then, or equal to 0")
+	@Max(value = 0, message = "Value should be less then, or equal to 100")
 	private Integer RSSI;
 	
 	@Column
@@ -70,39 +68,18 @@ public class Measurement {
 	@Column(nullable = false)
 	@Min(value = 0, message = "Value should be greater then, or equal to 0")
 	@Max(value = 100, message = "Value should be less then, or equal to 100")
-	private Integer latitudeInteger;
+	private Double latitude;
 
 	@Column(nullable = false)
 	@Min(value = 0, message = "Value should be greater then, or equal to 0")
 	@Max(value = 100, message = "Value should be less then, or equal to 100")
-	private Integer longitudeInteger;
+	private Double longitude;
 	
     public void generateNewId() {
         this.id = null; // Set the current ID to null and generate a new one
     }
 	
-	//generate random values for testing purposes
-	public static Measurement generateRandomMeasurement() {
-	    Faker faker = new Faker();
-	    Measurement measurement = new Measurement();
-	    
-	    measurement.setId((long) 1);
-	    measurement.setTime(new Timestamp(System.currentTimeMillis())); 
-	    measurement.setLatency(faker.number().numberBetween(0, 100)); 
-	    measurement.setUpload((float) faker.number().randomDouble(2, 0, 100)); 
-	    measurement.setDownload((float) faker.number().randomDouble(2, 0, 100)); 
-	    measurement.setRSSI(faker.number().numberBetween(0, 100)); 
-	    measurement.setRSRQ(faker.number().numberBetween(0, 100)); 
-	    measurement.setRSRP(faker.number().numberBetween(0, 100)); 
-	    measurement.setSINR(faker.number().numberBetween(0, 100)); 
-	    measurement.setMnoString(faker.lorem().word()); 
-	    measurement.setLatitudeInteger(faker.number().numberBetween(0, 100)); 
-	    measurement.setLongitudeInteger(faker.number().numberBetween(0, 100)); 
-	    
-	    
-	    return measurement;
-	}
-	
+
 
 
 }
