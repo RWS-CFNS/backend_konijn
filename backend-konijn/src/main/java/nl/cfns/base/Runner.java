@@ -14,13 +14,11 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import nl.cfns.configs.RabbitConfig;
-import nl.cfns.entities.Measurement;
-import nl.cfns.entities.Measuringbox;
-import nl.cfns.entities.Measuringbox2;
-import nl.cfns.entities.WeatherMeasurement;
+import nl.cfns.config.RabbitConfig;
+import nl.cfns.entity.Measurement;
+import nl.cfns.entity.Measuringbox;
+import nl.cfns.entity.Measuringbox2;
+import nl.cfns.entity.WeatherMeasurement;
 
 
 //simulation class for sending messages to backend locally
@@ -34,7 +32,7 @@ public class Runner implements CommandLineRunner {
 	private AmqpTemplate amqpTemplate;
 	
 	// send some test messages every x seconds
-	@Scheduled(fixedRate = 10000)
+	@Scheduled(fixedRate = 3000)
 	@Async
 	void simulateMessagesExample() throws IOException {
 		// create example box with values
@@ -45,35 +43,35 @@ public class Runner implements CommandLineRunner {
 	}
 
 	// send some test messages every x seconds
-	@Scheduled(fixedRate = 5000)
+	@Scheduled(fixedRate = 4000)
 	@Async
 	void simulateMessagesMeasuringbox() throws IOException {
 		// create example box with values
 		
 		//Measuringbox2 box = new Measuringbox2((long) 1, "exampleBox", "ok", "ok", 2, 3, MeasuringboxStatus.ACTIVE);
-		Measuringbox2 box = Measuringbox2.generateRandomMeasuringbox();
+		Measuringbox2 box = DataSimulator.generateRandomMeasuringbox();
 		//ystem.out.println(" [x] Sent '" + box.toString() + "'"); // display box in console in JSON format
 		amqpTemplate.convertAndSend(RabbitConfig.topicExchangeName, RabbitConfig.MEASURINGBOX2_KEY, box);
 	}
 	
 	// send some test messages every x seconds
-	@Scheduled(fixedRate = 7000)
+	@Scheduled(fixedRate = 5000)
 	@Async
 	void simulateMessagesMeasurement() throws IOException {
 		// create example box with values
 		//Measurement measurement = new Measurement((long) 1, new Timestamp(System.currentTimeMillis()), 50, 60.5f, 70.2f, 80, 75, 85, 90, "ExampleOperator", 42, 76);
-		Measurement measurement = Measurement.generateRandomMeasurement();
+		Measurement measurement = DataSimulator.generateRandomMeasurement();
 		//System.out.println(" [x] Sent '" + measurement.toString() + "'"); // display box in console in JSON format
 		amqpTemplate.convertAndSend(RabbitConfig.topicExchangeName, RabbitConfig.MEASUREMENT_KEY , measurement);
 	}
 	
 	// send some test messages every x seconds
-	@Scheduled(fixedRate = 9000)
+	@Scheduled(fixedRate = 6000)
 	@Async
 	void simulateMessagesWeather() throws IOException {
 		// create example box with values
 		//WeatherMeasurement weatherMeasurement = new WeatherMeasurement((long) 1, new Timestamp(System.currentTimeMillis()), 50.5f, 60.5f, 45, 12.3f, 15.7f, 13.2f);
-		WeatherMeasurement weatherMeasurement = WeatherMeasurement.generateRandomWeatherMeasurement();
+		WeatherMeasurement weatherMeasurement = DataSimulator.generateRandomWeatherMeasurement();
 		//System.out.println(" [x] Sent '" + weatherMeasurement.toString() + "'"); // display box in console in JSON format
 		amqpTemplate.convertAndSend(RabbitConfig.topicExchangeName, RabbitConfig.WEATHER_MEASUREMENT_KEY, weatherMeasurement);
 	}

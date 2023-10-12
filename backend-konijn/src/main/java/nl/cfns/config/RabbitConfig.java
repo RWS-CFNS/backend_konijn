@@ -1,4 +1,4 @@
-package nl.cfns.configs;
+package nl.cfns.config;
 
 import java.util.HashMap;
 import java.util.Map;

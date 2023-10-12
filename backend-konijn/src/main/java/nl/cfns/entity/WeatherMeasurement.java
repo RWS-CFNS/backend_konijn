@@ -1,4 +1,4 @@
-package nl.cfns.entities;
+package nl.cfns.entity;
 
 import java.sql.Timestamp;
 
@@ -64,20 +64,5 @@ public class WeatherMeasurement {
     }
 	
 	
-	//generate random values for testing purposes
-	public static WeatherMeasurement generateRandomWeatherMeasurement() {
-	    Faker faker = new Faker();
-	    WeatherMeasurement measurement = new WeatherMeasurement();
-	    
-	    measurement.setId((long) 1);
-	    measurement.setTime(new Timestamp(System.currentTimeMillis())); 
-	    measurement.setTemp((float) faker.number().randomDouble(1, 0, 100)); 
-	    measurement.setHumid((float) faker.number().randomDouble(1, 0, 100)); 
-	    measurement.setWindDirection(faker.number().numberBetween(0, 100)); 
-	    measurement.setWindspeed((float) faker.number().randomDouble(1, 0, 100)); 
-	    measurement.setDauw((float) faker.number().randomDouble(1, 0, 100)); 
-	    measurement.setPressure((float) faker.number().randomDouble(1, 0, 100)); 
-	    
-	    return measurement;
-	}
+
 }

@@ -9,15 +9,15 @@ import org.springframework.stereotype.Component;
 
 import com.github.javafaker.Faker;
 
-import nl.cfns.configs.RabbitConfig;
-import nl.cfns.entities.Measurement;
-import nl.cfns.entities.Measuringbox;
-import nl.cfns.entities.Measuringbox2;
-import nl.cfns.entities.WeatherMeasurement;
-import nl.cfns.repositories.MeasurementsRepository;
-import nl.cfns.repositories.Measuringbox2Repository;
-import nl.cfns.repositories.MeasuringboxRepository;
-import nl.cfns.repositories.WeatherMeasurementRepository;
+import nl.cfns.config.RabbitConfig;
+import nl.cfns.entity.Measurement;
+import nl.cfns.entity.Measuringbox;
+import nl.cfns.entity.Measuringbox2;
+import nl.cfns.entity.WeatherMeasurement;
+import nl.cfns.repository.MeasurementsRepository;
+import nl.cfns.repository.Measuringbox2Repository;
+import nl.cfns.repository.MeasuringboxRepository;
+import nl.cfns.repository.WeatherMeasurementRepository;
 
 @Component("receiver")
 //@RabbitListener(queues = "spring-boot") annotation does not work on class level for some reason?

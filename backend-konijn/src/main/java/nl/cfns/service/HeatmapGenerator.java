@@ -1,4 +1,4 @@
-package nl.cfns.services;
+package nl.cfns.service;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -13,8 +13,8 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import nl.cfns.basicpojo.MeasurementPoint;
-import nl.cfns.entities.Measurement;
-import nl.cfns.repositories.MeasurementsRepository;
+import nl.cfns.entity.Measurement;
+import nl.cfns.repository.MeasurementsRepository;
 
 import com.uber.h3core.H3Core;
 

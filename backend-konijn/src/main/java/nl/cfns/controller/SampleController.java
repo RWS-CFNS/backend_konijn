@@ -1,4 +1,4 @@
-package nl.cfns.base;
+package nl.cfns.controller;
 
 //a controller like this can be used to display a front-end
 //this example can be accessed through http://localhost:8090/greetings

@@ -1,11 +1,11 @@
-package nl.cfns.repositories;
+package nl.cfns.repository;
 
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import nl.cfns.entities.WeatherMeasurement;
+import nl.cfns.entity.WeatherMeasurement;
 
 @Repository("WeatherMeasurementRepository")
 public interface WeatherMeasurementRepository extends CrudRepository<WeatherMeasurement,Long> {

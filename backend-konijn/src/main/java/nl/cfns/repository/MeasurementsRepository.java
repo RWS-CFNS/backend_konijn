@@ -1,9 +1,11 @@
-package nl.cfns.repositories;
+package nl.cfns.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
+
+import nl.cfns.entity.Measurement;
+
 import java.util.List;
-import nl.cfns.entities.Measurement;
 
 @Repository("MeasurementsRepository")
 public interface MeasurementsRepository  extends CrudRepository<Measurement,Long> {

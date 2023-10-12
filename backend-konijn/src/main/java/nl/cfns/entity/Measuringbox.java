@@ -1,4 +1,4 @@
-package nl.cfns.entities;
+package nl.cfns.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

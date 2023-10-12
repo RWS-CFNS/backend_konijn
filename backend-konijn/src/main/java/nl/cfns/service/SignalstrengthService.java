@@ -1,12 +1,12 @@
-package nl.cfns.services;
+package nl.cfns.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-import nl.cfns.repositories.MeasurementsRepository;
-import nl.cfns.entities.Measurement;
+import nl.cfns.entity.Measurement;
+import nl.cfns.repository.MeasurementsRepository;
 
 import java.io.IOException;
 import java.util.ArrayList;
