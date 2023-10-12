@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
-import com.github.javafaker.Faker;
-
 import nl.cfns.config.RabbitConfig;
 import nl.cfns.entity.Measurement;
 import nl.cfns.entity.Measuringbox;

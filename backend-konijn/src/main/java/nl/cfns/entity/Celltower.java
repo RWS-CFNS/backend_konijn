@@ -1,6 +1,5 @@
 package nl.cfns.entity;
 
-import java.sql.Timestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -13,54 +12,42 @@ import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+//TODO possibly add geometry datatype with extra dependency
 
 @Entity
 @Data
 @NoArgsConstructor	@AllArgsConstructor //generator constructors with and without variables
-@Table(name = "WEATHER_TABLE")
-public class WeatherMeasurement {
+@Table(name = "CELLTOWER")
+public class Celltower {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
 	private Long id;
 
+	@Column(name = "Mobile Network Code", length = 50, nullable = false, unique = false)
+	private String mnc;
+
+	@Column(name = "Mobile Country Code", length = 50, nullable = false, unique = false)
+	private String mcc;	
+
+	@Column(name = "Location Area Code", length = 50, nullable = false, unique = false)
+	private String lac;	
+	
 	@Column(nullable = false)
-	private Timestamp time;
-	
-	@Column
 	@Min(value = 0, message = "Value should be greater then, or equal to 0")
 	@Max(value = 100, message = "Value should be less then, or equal to 100")
-	private Float temp;
+	private Double longitude;
 	
-	@Column
+	//@Column 
+	//private Geometry location;
+	@Column(nullable = false)
 	@Min(value = 0, message = "Value should be greater then, or equal to 0")
 	@Max(value = 100, message = "Value should be less then, or equal to 100")
-	private Float humid;
+	private Double Latitude;
 	
-	@Column
-	@Min(value = 0, message = "Value should be greater then, or equal to 0")
-	@Max(value = 100, message = "Value should be less then, or equal to 100")
-	private Integer windDirection;
-	
-	@Column
-	@Min(value = 0, message = "Value should be greater then, or equal to 0")
-	@Max(value = 100, message = "Value should be less then, or equal to 100")
-	private Float windspeed;
-	
-	@Column
-	@Min(value = 0, message = "Value should be greater then, or equal to 0")
-	@Max(value = 100, message = "Value should be less then, or equal to 100")
-	private Float dauw;
-	
-	@Column
-	@Min(value = 0, message = "Value should be greater then, or equal to 0")
-	@Max(value = 100, message = "Value should be less then, or equal to 100")
-	private Float pressure;
-	
+
     public void generateNewId() {
         this.id = null; // Set the current ID to null and generate a new one
     }
-	
-	
-
 }
+

@@ -1,6 +1,6 @@
 package nl.cfns.entity;
 
-import com.github.javafaker.Faker;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -59,8 +59,5 @@ public class Measuringbox2 {
     public void generateNewId() {
         this.id = null; // Set the current ID to null and generate a new one
     }
-	
-	// private boolean measuringboxGender;
 
-	// other fields, getters and setters
 }

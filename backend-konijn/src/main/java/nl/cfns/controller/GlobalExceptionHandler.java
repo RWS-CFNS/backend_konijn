@@ -1,4 +1,4 @@
-package nl.cfns.base;
+package nl.cfns.controller;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
 

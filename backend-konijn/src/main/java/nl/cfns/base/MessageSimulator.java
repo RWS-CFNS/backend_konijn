@@ -9,7 +9,6 @@ import java.util.concurrent.TimeUnit;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -19,17 +18,18 @@ import nl.cfns.entity.Measurement;
 import nl.cfns.entity.Measuringbox;
 import nl.cfns.entity.Measuringbox2;
 import nl.cfns.entity.WeatherMeasurement;
-
+import nl.cfns.repository.CelltowerRepository;
 
 //simulation class for sending messages to backend locally
-@Component("runner")
-@Configuration
-public class Runner implements CommandLineRunner {
-	private CountDownLatch latch = new CountDownLatch(1);
+@Component
+public class MessageSimulator{
+//	private CountDownLatch latch = new CountDownLatch(1);
 	//ObjectMapper objectMapper = new ObjectMapper();
 	
 	@Autowired 
 	private AmqpTemplate amqpTemplate;
+//	@Autowired
+//	private CelltowerRepository celltowerRepository;
 	
 	// send some test messages every x seconds
 	@Scheduled(fixedRate = 3000)
@@ -77,13 +77,13 @@ public class Runner implements CommandLineRunner {
 	}
 	
 
-	@Override
-	public void run(String... args) throws Exception {
-		getLatch().await(10, TimeUnit.MILLISECONDS); // latch for waiting before receiver has started
-	}
-
-	public CountDownLatch getLatch() {
-		return latch;
-	}
+//	@Override
+//	public void run(String... args) throws Exception {
+//		getLatch().await(10, TimeUnit.MILLISECONDS); // latch for waiting before receiver has started
+//	}
+//
+//	public CountDownLatch getLatch() {
+//		return latch;
+//	}
 
 }

@@ -2,8 +2,6 @@ package nl.cfns.entity;
 
 import java.sql.Timestamp;
 
-import com.github.javafaker.Faker;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

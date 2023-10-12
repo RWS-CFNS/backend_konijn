@@ -22,6 +22,7 @@ public class SchedulerConfig implements AsyncConfigurer {
 
 	@Bean
     @Override
+    //do not remove the public annotation, this creates problems
     public Executor getAsyncExecutor() {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
         executor.setCorePoolSize(7);

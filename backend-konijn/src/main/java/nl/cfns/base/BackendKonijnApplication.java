@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import lombok.extern.java.Log;
 
 @SpringBootApplication(scanBasePackages = "nl.cfns.base, nl.cfns.config, "
-		+ "nl.cfns.entity, " + "nl.cfns.service") // add
+		+ "nl.cfns.entity, " + "nl.cfns.service, nl.cfns.controller") // add
 																													// other
 																													// classes
 																													// to
