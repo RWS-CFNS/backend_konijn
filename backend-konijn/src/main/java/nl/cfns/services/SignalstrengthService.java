@@ -36,7 +36,7 @@ public class SignalstrengthService {
         return generatedHeatmap;
     }
   
-    //function to filter based on values given bij the user. if the parameter is null, it indicates that the user does not 
+    //function to filter based on values given by the user. if the parameter is null, it indicates that the user does not 
     //wish to filter based on that member of the entity class
     public List<Measurement> filterMeasurements(
             Integer minLatency, Integer maxLatency,
