@@ -3,6 +3,8 @@ package nl.cfns.base;
 
 //for using File objects, print functions
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
@@ -13,7 +15,9 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import nl.cfns.basicpojo.Coordinates;
 import nl.cfns.config.RabbitConfig;
+import nl.cfns.entity.Celltower;
 import nl.cfns.entity.Measurement;
 import nl.cfns.entity.Measuringbox;
 import nl.cfns.entity.Measuringbox2;
@@ -28,8 +32,9 @@ public class MessageSimulator{
 	
 	@Autowired 
 	private AmqpTemplate amqpTemplate;
-//	@Autowired
-//	private CelltowerRepository celltowerRepository;
+	@Autowired
+	private CelltowerRepository celltowerRepository;
+	private final Iterable<Celltower> celltowerIterable = celltowerRepository.findAll();
 	
 	// send some test messages every x seconds
 	@Scheduled(fixedRate = 3000)
@@ -77,6 +82,22 @@ public class MessageSimulator{
 	}
 	
 
+	//calculates distance to closest tower. if no tower is found, 999999 is returned
+	private Double calculateMinimalDistancetoTower(double latitude, double longitude) {
+	    double minimalDistanceToTower = 999999;
+
+	    for (Celltower thisCelltower : celltowerIterable) {
+	        Double distanceToTower = DataSimulator.calculateDistanceHaversine(
+	            thisCelltower.getLatitude(), thisCelltower.getLongitude(), latitude, longitude);
+	        
+	        if (distanceToTower < minimalDistanceToTower) {
+	            minimalDistanceToTower = distanceToTower;
+	        }
+	    }
+
+	    return minimalDistanceToTower;
+	}
+	
 //	@Override
 //	public void run(String... args) throws Exception {
 //		getLatch().await(10, TimeUnit.MILLISECONDS); // latch for waiting before receiver has started

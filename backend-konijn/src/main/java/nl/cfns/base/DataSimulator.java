@@ -126,7 +126,7 @@ public class DataSimulator {
 	}
 	
 	//function to calculate shortest distance between two points
-    private static double calculateDistanceHaversine(double lat1, double lon1,
+    public static double calculateDistanceHaversine(double lat1, double lon1,
             double lat2, double lon2)
 		{
 		// distance between latitudes and longitudes
