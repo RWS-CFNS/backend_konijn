@@ -42,6 +42,9 @@ public class HeatmapGenerator {
 		return CompletableFuture.completedFuture(heatmapData);
 	}
 	
+	//this function creates a heatmap using a hex shaped grid instead of rectangle-shaped grid
+	//it uses the H3 library from uber. The result is a map containing (1) grid number values, and then (2) signalstrength
+	//values corresponding to that specific hex shape
 	@Async
     public static Map<String, Double> generateHexHeatmap(List<Measurement> signalData, int resolution) throws IOException {
         // Initialize H3Core
