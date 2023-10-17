@@ -33,13 +33,13 @@ public class Request {
 	@Column(name = "measuringboxID")
 	private UUID measuringboxID;
 	
-	public enum MeasuringboxStatus {INACTIVE, CONNECTING, RECEIVING, ACTIVE, ERROR}; //enum for keeping track of box status
+	public enum MeasuringboxStatus {INACTIVE, CONNECTING, RECEIVING, ACTIVE, ERROR, RESETTING}; //enum for keeping track of box status
 	
 	@Column
 	 @Enumerated(EnumType.STRING)
 	 private MeasuringboxStatus measuringboxStatus;	
 	
-	public enum RequestType {NONE, ISALIVE, LIVEDATA, STATUS};
+	public enum RequestType {NONE, ISALIVE, LIVEDATA, STATUS, RESET};
 
 	@Column
 	 @Enumerated(EnumType.STRING)

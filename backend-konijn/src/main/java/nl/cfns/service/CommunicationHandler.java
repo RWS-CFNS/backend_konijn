@@ -1,6 +1,7 @@
 package nl.cfns.service;
 
 import java.io.IOException;
+import java.util.UUID;
 
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import nl.cfns.config.RabbitConfig;
+import nl.cfns.entity.Measurement;
 import nl.cfns.entity.Measuringbox2;
 import nl.cfns.entity.Request;
 import nl.cfns.entity.Request.MeasuringboxStatus;
@@ -36,7 +38,7 @@ public class CommunicationHandler {
 	@Scheduled(fixedRate = 30000)
 	@Async
 	void isAliveMeasuringboxes() throws IOException {
-		System.out.println("try to send request");
+		//System.out.println("try to send request");
         Iterable<Measuringbox2> measuringboxes = measuringbox2Repository.findAll();
         
         //create request object for sending ISALIVE messages
@@ -49,10 +51,36 @@ public class CommunicationHandler {
 
             // Send the request object to RabbitMQ. Save request for later processing
         	request.setMeasuringboxID(box.getId());
-        	System.out.println(" [x] Sent '" + request.toString() + "'");
-            amqpTemplate.convertAndSend(RabbitConfig.topicExchangeName, RabbitConfig.REQUEST_KEY, request);
-            requestRepository.save(request);
+        	sendandSaveRequest(request);
         }
     }
+
+	
+	//ask the measuringbox to send data that is not being send automatically. This forces the box to check for leftover data
+	//Measuringbox will send a debug JSON file. 
+	@Async
+	void requestStatusMeasuringbox(UUID id) throws IOException{     
+        //create request object for sending ISALIVE messages
+        Request request = new Request();
+        request.setMeasuringboxStatus(MeasuringboxStatus.ACTIVE);
+        request.setRequestType(RequestType.STATUS);	
+        sendandSaveRequest(request);
+	}
+	
+	@Async
+	void requestResetMeasuringbox(UUID id) throws IOException{     
+        //create request object for sending ISALIVE messages
+        Request request = new Request();
+        request.setMeasuringboxStatus(MeasuringboxStatus.RESETTING);
+        request.setRequestType(RequestType.RESET);	
+        sendandSaveRequest(request);
+	}
+	
+	@Async
+	void sendandSaveRequest(Request request) {
+    	System.out.println(" [x] Sent '" + request.toString() + "'");
+        amqpTemplate.convertAndSend(RabbitConfig.topicExchangeName, RabbitConfig.REQUEST_KEY, request);
+        requestRepository.save(request);		
+	}
 }
 
