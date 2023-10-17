@@ -30,36 +30,50 @@ import nl.cfns.base.Receiver;
 public class RabbitConfig {
 	//TODO use @value annotation to define variables at the top of configuration here
 	public static final String topicExchangeName = "spring-boot-exchange";
+	public static final String requestExchangeName = "request-exchange";
 	
 	// name for queue's and topics
 	public static final String queueName = "spring-boot";
 	public static final String WEATHER_MEASUREMENT_QUEUE = "cfns.weather";
 	public static final String MEASURINGBOX2_QUEUE = "cfns.measuringbox2";
 	public static final String MEASUREMENT_QUEUE = "cfns.measurement";
+	public static final String REQUEST_QUEUE = "cfns.request";
  	
 	public static final String WEATHER_MEASUREMENT_KEY = "key.cfns.weather";  
 	public static final String routingKey = "foo.bar.abc";
 	public static final String MEASURINGBOX2_KEY = "key.cfns.measuringbox2"; 	
 	public static final String MEASUREMENT_KEY = "key.cfns.measurement"; 
+	public static final String REQUEST_KEY = "key.cfns.request"; 
 	
 	//name for dead letter, when messages are rejected
     private static final String DEAD_LETTER_QUEUE = "dead.letter.queue";
     private static final String DEAD_LETTER_EXCHANGE = "dead.letter.exchange";
     private static final String DEAD_LETTER_ROUTING_KEY = "dead.letter";
     
-	//exchange definitions
+	///////////////////////////////////////////////////////////////////////
+    //EXCHANGE DEFINITIONS
+    ///////////////////////////////////////////////////////////////////////
 	@Bean
 	TopicExchange MainExchange() {
-		TopicExchange topicExchange = new TopicExchange(topicExchangeName);		
+		TopicExchange topicExchange = new TopicExchange(topicExchangeName, true, false);		
+		return topicExchange;
+	}
+	
+	@Bean
+	TopicExchange RequestExchange() {
+		TopicExchange topicExchange = new TopicExchange(requestExchangeName, true, false);		
 		return topicExchange;
 	}
 
     @Bean
     DirectExchange deadLetterExchange() {
-        return new DirectExchange(DEAD_LETTER_EXCHANGE);
+        return new DirectExchange(DEAD_LETTER_EXCHANGE, true, false);
     }
+       
     
-    //queue definitions
+	///////////////////////////////////////////////////////////////////////
+    //QUEUE DEFINITIONS
+    ///////////////////////////////////////////////////////////////////////
     @Bean
     Queue testQueue() {
         Map<String, Object> args = new HashMap<>();
@@ -92,6 +106,14 @@ public class RabbitConfig {
         return new Queue(WEATHER_MEASUREMENT_QUEUE, false, false, false, args);
     }
     
+    //currently request messages failed to deliver are not moved to dead letter queue
+    @Bean
+    Queue requestQueue() {
+//        Map<String, Object> args = new HashMap<>();
+//        args.put("x-dead-letter-exchange", DEAD_LETTER_EXCHANGE);
+//        args.put("x-dead-letter-routing-key", DEAD_LETTER_ROUTING_KEY);
+        return new Queue(REQUEST_QUEUE, false, false, false);
+    }
     
     @Bean
     Queue deadLetterQueue() {
@@ -99,7 +121,9 @@ public class RabbitConfig {
         return queue;
     }
 
-    //binding definitions
+	///////////////////////////////////////////////////////////////////////
+    //BINDING DEFINITIONS
+    ///////////////////////////////////////////////////////////////////////
 	@Bean
 	Binding testBinding() {
 		return BindingBuilder.bind(testQueue()).to(MainExchange()).with(routingKey);
@@ -120,17 +144,21 @@ public class RabbitConfig {
 		return BindingBuilder.bind(weatherQueue()).to(MainExchange()).with(WEATHER_MEASUREMENT_KEY);
 	}
     
+	@Bean
+	Binding requestBinding() {
+		return BindingBuilder.bind(requestQueue()).to(RequestExchange()).with(REQUEST_KEY);
+	}
+	
     @Bean
     Binding deadLetterBinding() {
         return BindingBuilder.bind(deadLetterQueue()).to(deadLetterExchange()).with(DEAD_LETTER_ROUTING_KEY);
     }
     
-	// adapters to be used by the receiver class
-	@Bean
-	MessageListenerAdapter exampleListenerAdapter(Receiver receiver) {
-		return new MessageListenerAdapter(receiver, "receiveMessage");
-	}
+
 	
+	///////////////////////////////////////////////////////////////////////
+    //FACTORY / CONTAINER DEFINITIONS
+    ///////////////////////////////////////////////////////////////////////
 	//TODO move connection and user settings in factory to seperate configuration file
 	@Bean
 	ConnectionFactory connectionFactory(){
@@ -162,6 +190,7 @@ public class RabbitConfig {
 		container.addQueueNames(WEATHER_MEASUREMENT_QUEUE);
 		container.addQueueNames(MEASURINGBOX2_QUEUE);
 		container.addQueueNames(MEASUREMENT_QUEUE);
+		container.addQueueNames(REQUEST_QUEUE);		
 		container.setMessageListener(listenerAdapter);
 		container.setConcurrentConsumers(8);
 		listenerAdapter.setMessageConverter(jsonMessageConverter());
@@ -179,6 +208,12 @@ public class RabbitConfig {
 	        return container;
 	    }
 
+		// adapters to be used by the receiver class
+		@Bean
+		MessageListenerAdapter exampleListenerAdapter(Receiver receiver) {
+			return new MessageListenerAdapter(receiver, "receiveMessage");
+		}	   
+	   
 	//jackson converter for default conversion from message payload to JSON
     @Bean
     MessageConverter jsonMessageConverter() {

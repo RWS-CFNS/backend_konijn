@@ -28,8 +28,10 @@ public class Request {
     @Column(name = "ID")
 	private UUID id;
 	
+	
+	
 	@Column(name = "measuringboxID")
-	private Long measuringboxID;
+	private UUID measuringboxID;
 	
 	public enum MeasuringboxStatus {INACTIVE, CONNECTING, RECEIVING, ACTIVE, ERROR}; //enum for keeping track of box status
 	

@@ -1,4 +1,4 @@
-package nl.cfns.base;
+package nl.cfns.simulate;
 
 import org.springframework.stereotype.Component;
 

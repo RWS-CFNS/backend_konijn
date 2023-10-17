@@ -14,6 +14,8 @@ import nl.cfns.entity.WeatherMeasurement;
 import nl.cfns.repository.CelltowerRepository;
 
 //this class contains functions to generate valid data values. 
+//the faker libary is used to generate values and string that are defined within a range
+//the faker library will generate strings that are words instead of random letters
 @Service
 public class DataSimulator {	
 	//generate random values for weather measurements
@@ -151,10 +153,12 @@ public class DataSimulator {
 	public static Double calculateMinimalDistancetoTower(Iterable<Celltower> celltowerIterable, double latitude, double longitude) {
 	    double minimalDistanceToTower = 999999;
 		
+	    //iterate all celltowers
 	    for (Celltower thisCelltower : celltowerIterable) {
 	        Double distanceToTower = DataSimulator.calculateDistanceHaversine(
-	            thisCelltower.getLatitude(), thisCelltower.getLongitude(), latitude, longitude);
+	        		thisCelltower.getLatitude(), thisCelltower.getLongitude(), latitude, longitude);
 	        
+	        //save temp distance if this distance is smaller the value currently saved
 	        if (distanceToTower < minimalDistanceToTower) {
 	            minimalDistanceToTower = distanceToTower;
 	        }

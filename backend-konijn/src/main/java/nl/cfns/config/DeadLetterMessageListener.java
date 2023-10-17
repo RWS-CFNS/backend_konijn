@@ -5,14 +5,13 @@ import org.springframework.amqp.core.MessageListener;
 import org.springframework.amqp.utils.SerializationUtils;
 import org.springframework.stereotype.Component;
 
-import lombok.extern.java.Log;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
+import lombok.extern.java.Log;
+import nl.cfns.entity.*;
 @Component
 @Log
-public class DeadLetterMessageListener implements MessageListener {
-
-    //private static final Logger LOGGER = LoggerFactory.getLogger(DeadLetterMessageListener.class);
-
+public class DeadLetterMessageListener implements MessageListener {	
     @Override
     public void onMessage(Message message) {
         try {
