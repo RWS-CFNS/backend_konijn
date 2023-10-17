@@ -1,6 +1,8 @@
 package nl.cfns.entity;
 
 
+import java.util.UUID;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -24,9 +26,9 @@ import lombok.NoArgsConstructor;
 @Table(name = "MBOX_TABLE")
 public class Measuringbox2 {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "ID")
-	private Long id;
+	private UUID id;
 
 	@Column(name = "Mobile Network Code", length = 50, nullable = false, unique = false)
 	private String mnc;

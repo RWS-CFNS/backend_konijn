@@ -9,6 +9,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import lombok.extern.java.Log;
 
+
+
+//annotations below are for importing packages and profile configurations. 
+//EntityScan and EnableJpaRepositories have separate functionality and needed to be added separately 
 @SpringBootApplication(scanBasePackages = "nl.cfns.base, nl.cfns.config, "
 		+ "nl.cfns.entity, " + "nl.cfns.service, nl.cfns.controller, nl.cfns.simulate") 
 																												
