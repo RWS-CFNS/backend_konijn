@@ -15,17 +15,17 @@ import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import nl.cfns.entity.Measuringbox2.MeasuringboxStatus;
+import nl.cfns.entity.Measuringbox.MeasuringboxStatus;
 
 
 @Entity
 @Data
 @NoArgsConstructor	@AllArgsConstructor //generator constructors with and without variables. not included in @data annotation!
-@Table(name = "REQUEST")
+@Table(name = "REQUEST_TABLE")
 public class Request {
 	@Id
 	@GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "ID")
+    @Column(name = "request_id")
 	private UUID id;
 	
 	
@@ -44,6 +44,9 @@ public class Request {
 	@Column
 	 @Enumerated(EnumType.STRING)
 	 private RequestType requestType;	
+	
+	@Column(nullable = false)
+	private boolean isSimulated;  
 	
     public void generateNewId() {
         this.id = null; // Set the current ID to null and generate a new one

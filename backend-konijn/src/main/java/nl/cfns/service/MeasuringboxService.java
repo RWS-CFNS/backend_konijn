@@ -2,7 +2,7 @@ package nl.cfns.service;
 
 import org.springframework.stereotype.Service;
 
-import nl.cfns.entity.Measuringbox;
+import nl.cfns.entity.Testbox;
 import nl.cfns.repository.MeasuringboxRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,15 +13,15 @@ public class MeasuringboxService {
 	@Autowired	
 	private MeasuringboxRepository measuringboxRepository;
 
-	public Iterable<Measuringbox> getAllMeasuringboxes() {
+	public Iterable<Testbox> getAllMeasuringboxes() {
 	    return measuringboxRepository.findAll();
 	}
 
-	public Measuringbox getMeasuringboxById(Long id) {
+	public Testbox getMeasuringboxById(Long id) {
 	    return measuringboxRepository.findById(id).orElse(null);
 	}
 
-	public Measuringbox saveMeasuringbox(Measuringbox measuringbox) {
+	public Testbox saveMeasuringbox(Testbox measuringbox) {
 	    return measuringboxRepository.save(measuringbox);
 	}
 

@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 
 import nl.cfns.config.RabbitConfig;
 import nl.cfns.entity.Measurement;
+import nl.cfns.entity.Testbox;
 import nl.cfns.entity.Measuringbox;
-import nl.cfns.entity.Measuringbox2;
 import nl.cfns.entity.WeatherMeasurement;
 import nl.cfns.repository.MeasurementsRepository;
 import nl.cfns.repository.Measuringbox2Repository;
@@ -39,8 +39,8 @@ public class Receiver {
 	@Async
 	//@RabbitHandler
 	@RabbitListener(queues = RabbitConfig.queueName)
-	public void receiveMessage(Measuringbox receivedBox) {
-		//Measuringbox receivedBox = objectMapper.readValue(message, Measuringbox.class); // convert JSON string to class object
+	public void receiveMessage(Testbox receivedBox) {
+		//Testbox receivedBox = objectMapper.readValue(message, Testbox.class); // convert JSON string to class object
 		receivedBox.generateNewId();
 		measuringboxRepository.save(receivedBox);	//insert measuringbox object into database
 		
@@ -75,7 +75,7 @@ public class Receiver {
 	
 	@Async
 	@RabbitListener(queues = RabbitConfig.MEASURINGBOX2_QUEUE)
-	public void receiveMessage(Measuringbox2 measuringbox2) {
+	public void receiveMessage(Measuringbox measuringbox2) {
 		//System.out.println(" [x] Received box2" + measuringbox2.toString());
 		
 		measuringbox2.generateNewId();

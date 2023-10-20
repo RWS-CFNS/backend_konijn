@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import nl.cfns.base.BackendKonijnApplication;
-import nl.cfns.entity.Measuringbox;
+import nl.cfns.entity.Testbox;
 import nl.cfns.repository.MeasuringboxRepository;
 import nl.cfns.service.MeasuringboxService;
 
@@ -27,10 +27,10 @@ public class JpademoApplicationTests {
    @Test
    public void contextLoads() {
 
-	   	Measuringbox boxMeasuringbox = new Measuringbox(null, "testje", 5, 2); //create box example
+	   	Testbox boxMeasuringbox = new Testbox(null, "testje", 5, 2); //create box example
 	   	boxRepository.save(boxMeasuringbox); //put box in database
-        Optional<Measuringbox> thisBoxIsSus = boxRepository.findById(boxMeasuringbox.getId()); //find box in database using ID
-        Measuringbox definatelyABox = thisBoxIsSus.get(); //check if box is not null, convert it from "optional"  to normal object
+        Optional<Testbox> thisBoxIsSus = boxRepository.findById(boxMeasuringbox.getId()); //find box in database using ID
+        Testbox definatelyABox = thisBoxIsSus.get(); //check if box is not null, convert it from "optional"  to normal object
         
         assertNotNull(definatelyABox); //check if box is not null
         assertEquals(boxMeasuringbox.getId(),definatelyABox.getId()); //compare ID box example, with ID in the box from the database

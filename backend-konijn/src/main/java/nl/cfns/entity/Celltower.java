@@ -17,11 +17,11 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor	@AllArgsConstructor //generator constructors with and without variables
-@Table(name = "CELLTOWER")
+@Table(name = "CELLTOWER_TABLE")
 public class Celltower {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
+    @Column(name = "celltower_id")
 	private Long id;
 
 	@Column(name = "Mobile Network Code", length = 50, nullable = false, unique = false)
@@ -45,6 +45,8 @@ public class Celltower {
 	@Max(value = 100, message = "Value should be less then, or equal to 100")
 	private Double Latitude;
 	
+	@Column(nullable = false)
+	private boolean isSimulated;  
 
     public void generateNewId() {
         this.id = null; // Set the current ID to null and generate a new one

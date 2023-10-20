@@ -21,7 +21,7 @@ import lombok.NoArgsConstructor;
 public class WeatherMeasurement {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
+    @Column(name = "weather_id")
 	private Long id;
 
 	@Column(nullable = false)
@@ -56,6 +56,9 @@ public class WeatherMeasurement {
 	@Min(value = 0, message = "Value should be greater then, or equal to 0")
 	@Max(value = 100, message = "Value should be less then, or equal to 100")
 	private Float pressure;
+	
+	@Column(nullable = false)
+	private boolean isSimulated;  
 	
     public void generateNewId() {
         this.id = null; // Set the current ID to null and generate a new one

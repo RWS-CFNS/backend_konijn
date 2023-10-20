@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 import nl.cfns.config.RabbitConfig;
 import nl.cfns.entity.Measurement;
-import nl.cfns.entity.Measuringbox2;
+import nl.cfns.entity.Measuringbox;
 import nl.cfns.entity.Request;
 import nl.cfns.entity.Request.MeasuringboxStatus;
 import nl.cfns.entity.Request.RequestType;
@@ -39,7 +39,7 @@ public class CommunicationHandler {
 	@Async
 	void isAliveMeasuringboxes() throws IOException {
 		//System.out.println("try to send request");
-        Iterable<Measuringbox2> measuringboxes = measuringbox2Repository.findAll();
+        Iterable<Measuringbox> measuringboxes = measuringbox2Repository.findAll();
         
         //create request object for sending ISALIVE messages
         Request request = new Request();
@@ -47,7 +47,7 @@ public class CommunicationHandler {
         request.setRequestType(RequestType.ISALIVE);
         
         //iterate all measuringboxes in database
-        for (Measuringbox2 box : measuringboxes) {
+        for (Measuringbox box : measuringboxes) {
 
             // Send the request object to RabbitMQ. Save request for later processing
         	request.setMeasuringboxID(box.getId());
@@ -57,7 +57,7 @@ public class CommunicationHandler {
 
 	
 	//ask the measuringbox to send data that is not being send automatically. This forces the box to check for leftover data
-	//Measuringbox will send a debug JSON file. 
+	//Testbox will send a debug JSON file. 
 	@Async
 	void requestStatusMeasuringbox(UUID id) throws IOException{     
         //create request object for sending ISALIVE messages

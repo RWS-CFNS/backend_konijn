@@ -19,8 +19,8 @@ import nl.cfns.basicpojo.Coordinates;
 import nl.cfns.config.RabbitConfig;
 import nl.cfns.entity.Celltower;
 import nl.cfns.entity.Measurement;
+import nl.cfns.entity.Testbox;
 import nl.cfns.entity.Measuringbox;
-import nl.cfns.entity.Measuringbox2;
 import nl.cfns.entity.WeatherMeasurement;
 import nl.cfns.repository.CelltowerRepository;
 
@@ -41,7 +41,7 @@ public class MessageSimulator{
 	@Async
 	void simulateMessagesExample() throws IOException {
 		// create example box with values
-		Measuringbox box = new Measuringbox((long) 1, "exampleBox", 2, 3);
+		Testbox box = new Testbox((long) 1, "exampleBox", 2, 3);
 
 		//System.out.println(" [x] Sent '" + box.toString() + "'"); // display box in console in JSON format
 		amqpTemplate.convertAndSend(RabbitConfig.topicExchangeName, RabbitConfig.routingKey, box);
@@ -53,8 +53,8 @@ public class MessageSimulator{
 	void simulateMessagesMeasuringbox() throws IOException {
 		// create example box with values
 		
-		//Measuringbox2 box = new Measuringbox2((long) 1, "exampleBox", "ok", "ok", 2, 3, MeasuringboxStatus.ACTIVE);
-		Measuringbox2 box = DataSimulator.generateRandomMeasuringbox();
+		//Measuringbox box = new Measuringbox((long) 1, "exampleBox", "ok", "ok", 2, 3, MeasuringboxStatus.ACTIVE);
+		Measuringbox box = DataSimulator.generateRandomMeasuringbox();
 		//ystem.out.println(" [x] Sent '" + box.toString() + "'"); // display box in console in JSON format
 		amqpTemplate.convertAndSend(RabbitConfig.topicExchangeName, RabbitConfig.MEASURINGBOX2_KEY, box);
 	}

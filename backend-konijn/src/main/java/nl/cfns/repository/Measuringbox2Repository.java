@@ -6,9 +6,9 @@ import java.util.UUID;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import nl.cfns.entity.Measuringbox2;
+import nl.cfns.entity.Measuringbox;
 
 @Repository("Measuringbox2Repository")
-public interface Measuringbox2Repository  extends CrudRepository<Measuringbox2,Long>{
-	List<Measuringbox2> findBoxByid(UUID id);
+public interface Measuringbox2Repository  extends CrudRepository<Measuringbox,Long>{
+	List<Measuringbox> findBoxByid(UUID id);
 }

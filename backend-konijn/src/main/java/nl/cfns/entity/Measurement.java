@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -21,8 +23,13 @@ import lombok.NoArgsConstructor;
 public class Measurement {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
+    @Column(name = "measurement_id")
 	private Long id;
+	
+	//foreign key for keeping track which measuringbox this measurement belongs to
+    @ManyToOne
+    @JoinColumn(name = "measuringbox_id")
+    private Measuringbox measuringbox;
 	
 	@Column
 	private Timestamp time;
@@ -74,6 +81,11 @@ public class Measurement {
 	@Min(value = 0, message = "Value should be greater then, or equal to 0")
 	@Max(value = 100, message = "Value should be less then, or equal to 100")
 	private Double longitude;
+
+	@Column(nullable = false)
+	private boolean isSimulated;  
+	
+	
 	
     public void generateNewId() {
         this.id = null; // Set the current ID to null and generate a new one

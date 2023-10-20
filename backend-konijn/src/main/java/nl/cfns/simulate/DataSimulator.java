@@ -9,7 +9,7 @@ import com.github.javafaker.Faker;
 
 import nl.cfns.entity.Celltower;
 import nl.cfns.entity.Measurement;
-import nl.cfns.entity.Measuringbox2;
+import nl.cfns.entity.Measuringbox;
 import nl.cfns.entity.WeatherMeasurement;
 import nl.cfns.repository.CelltowerRepository;
 
@@ -31,14 +31,15 @@ public class DataSimulator {
 	    measurement.setWindspeed((float) faker.number().randomDouble(1, 0, 100)); 
 	    measurement.setDauw((float) faker.number().randomDouble(1, 0, 100)); 
 	    measurement.setPressure((float) faker.number().randomDouble(1, 0, 100)); 
+	    measurement.setSimulated(true);
 	    
 	    return measurement;
 	}
 	
 	//function for generating random measuringbox values
-	public static Measuringbox2 generateRandomMeasuringbox() {
+	public static Measuringbox generateRandomMeasuringbox() {
 	    Faker faker = new Faker();
-	    Measuringbox2 measuringbox = new Measuringbox2();
+	    Measuringbox measuringbox = new Measuringbox();
 	    
 	    measuringbox.generateNewId();
 	    measuringbox.setMnc(faker.number().digits(3)); 
@@ -46,7 +47,8 @@ public class DataSimulator {
 	    measuringbox.setLac(faker.number().digits(5)); 
 	    measuringbox.setLongitude(faker.number().randomDouble(2, 0, 100)); 
 	    measuringbox.setLatitude(faker.number().randomDouble(2, 0, 100)); 
-	    measuringbox.setStatus(Measuringbox2.MeasuringboxStatus.values()[faker.number().numberBetween(0, 4)]); 
+	    measuringbox.setStatus(Measuringbox.MeasuringboxStatus.values()[faker.number().numberBetween(0, 4)]); 
+	    measuringbox.setSimulated(true);
 	    
 	    return measuringbox;
 	}
@@ -62,6 +64,7 @@ public class DataSimulator {
 	    tower.setLac(faker.number().digits(5)); 
 	    tower.setLongitude(faker.number().randomDouble(2, 0, 5)); 
 	    tower.setLatitude(faker.number().randomDouble(2, 0, 5)); 
+	    tower.setSimulated(true);
 	    
 	    return tower;
 	}
@@ -83,7 +86,7 @@ public class DataSimulator {
 	    measurement.setMnoString(faker.lorem().word()); 
 	    measurement.setLongitude(faker.number().randomDouble(2, 0, 100)); 
 	    measurement.setLatitude(faker.number().randomDouble(2, 0, 100)); 
-	    
+	    measurement.setSimulated(true);
 	    
 	    return measurement;
 	}

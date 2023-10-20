@@ -9,8 +9,6 @@ import lombok.Data;
 @Data
 //this POJO is used to generate points on the heatmap
 public class MeasurementPoint {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private double x;
 	private double y;
