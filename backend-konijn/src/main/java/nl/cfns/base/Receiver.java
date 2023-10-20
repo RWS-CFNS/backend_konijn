@@ -12,26 +12,24 @@ import nl.cfns.entity.Measurement;
 import nl.cfns.entity.Testbox;
 import nl.cfns.entity.Measuringbox;
 import nl.cfns.entity.WeatherMeasurement;
-import nl.cfns.repository.MeasurementsRepository;
-import nl.cfns.repository.Measuringbox2Repository;
+import nl.cfns.repository.MeasurementRepository;
 import nl.cfns.repository.MeasuringboxRepository;
+import nl.cfns.repository.TestboxRepository;
 import nl.cfns.repository.WeatherMeasurementRepository;
 
 @Component("receiver")
-//@RabbitListener(queues = "spring-boot") annotation does not work on class level for some reason?
 public class Receiver {
 	private CountDownLatch latch = new CountDownLatch(1);
-	//ObjectMapper objectMapper = new ObjectMapper(); // mapper for JSON conversion
 	
 	//private repository object for interacting with measuringbox section of database
 	@Autowired	
-	private MeasuringboxRepository measuringboxRepository;
+	private TestboxRepository testboxRepository;
 
 	@Autowired	
-	private MeasurementsRepository measurementsRepository;
+	private MeasurementRepository measurementsRepository;
 	
 	@Autowired	
-	private Measuringbox2Repository measuringbox2Repository;
+	private MeasuringboxRepository measuringboxRepository;
 	
 	@Autowired	
 	private WeatherMeasurementRepository weatherMeasurementRepository;
@@ -42,7 +40,7 @@ public class Receiver {
 	public void receiveMessage(Testbox receivedBox) {
 		//Testbox receivedBox = objectMapper.readValue(message, Testbox.class); // convert JSON string to class object
 		receivedBox.generateNewId();
-		measuringboxRepository.save(receivedBox);	//insert measuringbox object into database
+		testboxRepository.save(receivedBox);	//insert measuringbox object into database
 		
 		//System.out.println("the name of the box is: " + receivedBox.getName());
 		//System.out.println(" [x] Received testbox '" + receivedBox + "'"); // print message as string
@@ -79,7 +77,7 @@ public class Receiver {
 		//System.out.println(" [x] Received box2" + measuringbox2.toString());
 		
 		measuringbox2.generateNewId();
-		measuringbox2Repository.save(measuringbox2);
+		measuringboxRepository.save(measuringbox2);
 		latch.countDown(); // why a countdown on receive?
 		
 	}

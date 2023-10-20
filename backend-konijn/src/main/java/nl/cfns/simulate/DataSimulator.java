@@ -12,12 +12,17 @@ import nl.cfns.entity.Measurement;
 import nl.cfns.entity.Measuringbox;
 import nl.cfns.entity.WeatherMeasurement;
 import nl.cfns.repository.CelltowerRepository;
+import nl.cfns.repository.MeasuringboxRepository;
+import nl.cfns.repository.TestboxRepository;
+import nl.cfns.simulate.SimulatorConfig;
 
 //this class contains functions to generate valid data values. 
 //the faker libary is used to generate values and string that are defined within a range
 //the faker library will generate strings that are words instead of random letters
 @Service
 public class DataSimulator {	
+
+	
 	//generate random values for weather measurements
 	public static WeatherMeasurement generateRandomWeatherMeasurement() {
 	    Faker faker = new Faker();		
@@ -75,6 +80,7 @@ public class DataSimulator {
 	    Measurement measurement = new Measurement();
 	    
 	    measurement.generateNewId();
+	    measurement.setMeasuringbox(SimulatorConfig.simulatorMeasuringbox);
 	    measurement.setTime(new Timestamp(System.currentTimeMillis())); 
 	    measurement.setLatency(faker.number().numberBetween(0, 100)); 
 	    measurement.setUpload((float) faker.number().randomDouble(2, 0, 100)); 

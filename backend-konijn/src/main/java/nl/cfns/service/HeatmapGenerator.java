@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 
 import nl.cfns.basicpojo.MeasurementPoint;
 import nl.cfns.entity.Measurement;
-import nl.cfns.repository.MeasurementsRepository;
+import nl.cfns.repository.MeasurementRepository;
 
 import com.uber.h3core.H3Core;
 
@@ -22,7 +22,7 @@ import com.uber.h3core.H3Core;
 public class HeatmapGenerator {
 	//create repo object for this class to access database
 	@Autowired
-	private MeasurementsRepository measurementRepository;
+	private MeasurementRepository measurementRepository;
 
 	@Async
 	public CompletableFuture<List<MeasurementPoint>> generateHeatmap() {

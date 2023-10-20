@@ -1,14 +1,14 @@
 package nl.cfns.repository;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import nl.cfns.entity.Testbox;
+import nl.cfns.entity.Measuringbox;
 
-//repository for measuringbox for interacting with the database
 @Repository("MeasuringboxRepository")
-public interface MeasuringboxRepository extends CrudRepository<Testbox,Long> {
-    List<Testbox> findBoxByid(Long id);
+public interface MeasuringboxRepository  extends CrudRepository<Measuringbox,Long>{
+	List<Measuringbox> findBoxByid(UUID id);
 }

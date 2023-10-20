@@ -15,7 +15,7 @@ import nl.cfns.entity.Measuringbox;
 import nl.cfns.entity.Request;
 import nl.cfns.entity.Request.MeasuringboxStatus;
 import nl.cfns.entity.Request.RequestType;
-import nl.cfns.repository.Measuringbox2Repository;
+import nl.cfns.repository.MeasuringboxRepository;
 import nl.cfns.repository.RequestRepository;
 
 
@@ -32,7 +32,7 @@ public class CommunicationHandler {
 	private RequestRepository requestRepository;
 	
     @Autowired
-    private Measuringbox2Repository measuringbox2Repository;
+    private MeasuringboxRepository measuringbox2Repository;
 	
 	//check every 5 seconds if measuringboxes in the database are connected
 	@Scheduled(fixedRate = 30000)

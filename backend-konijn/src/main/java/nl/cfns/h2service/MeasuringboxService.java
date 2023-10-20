@@ -1,9 +1,9 @@
-package nl.cfns.service;
+package nl.cfns.h2service;
 
 import org.springframework.stereotype.Service;
 
 import nl.cfns.entity.Testbox;
-import nl.cfns.repository.MeasuringboxRepository;
+import nl.cfns.repository.TestboxRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class MeasuringboxService {
 	//private repository object for interacting with measuringbox section of database
 	@Autowired	
-	private MeasuringboxRepository measuringboxRepository;
+	private TestboxRepository measuringboxRepository;
 
 	public Iterable<Testbox> getAllMeasuringboxes() {
 	    return measuringboxRepository.findAll();

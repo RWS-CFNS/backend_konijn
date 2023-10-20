@@ -7,8 +7,8 @@ import nl.cfns.entity.Measurement;
 
 import java.util.List;
 
-@Repository("MeasurementsRepository")
-public interface MeasurementsRepository  extends CrudRepository<Measurement,Long> {
+@Repository("MeasurementRepository")
+public interface MeasurementRepository  extends CrudRepository<Measurement,Long> {
     //Filter measurements based on minimum and maximum values
     List<Measurement> findByLatencyBetween(Integer minLatency, Integer maxLatency);
     List<Measurement> findByUploadBetween(Float minUpload, Float maxUpload);

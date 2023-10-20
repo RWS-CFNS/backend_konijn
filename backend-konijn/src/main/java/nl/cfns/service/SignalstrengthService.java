@@ -6,7 +6,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import nl.cfns.entity.Measurement;
-import nl.cfns.repository.MeasurementsRepository;
+import nl.cfns.repository.MeasurementRepository;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ import java.util.stream.StreamSupport;
 @Service
 public class SignalstrengthService {
 	@Autowired
-	private MeasurementsRepository measurementRepository;
+	private MeasurementRepository measurementRepository;
 	
 	private Map<String, Double> generatedHeatmap;
 

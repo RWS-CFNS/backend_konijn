@@ -11,15 +11,15 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import nl.cfns.base.BackendKonijnApplication;
 import nl.cfns.entity.Testbox;
-import nl.cfns.repository.MeasuringboxRepository;
-import nl.cfns.service.MeasuringboxService;
+import nl.cfns.h2service.MeasuringboxService;
+import nl.cfns.repository.TestboxRepository;
 
 //@RunWith(SpringRunner.class)
 @SpringBootTest(classes = BackendKonijnApplication.class)
 public class JpademoApplicationTests {
 
    @Autowired
-   MeasuringboxRepository boxRepository;
+   TestboxRepository boxRepository;
    
    @Autowired
    MeasuringboxService boxService;
