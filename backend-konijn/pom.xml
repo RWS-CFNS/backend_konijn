@@ -102,6 +102,7 @@
         	<artifactId>javafaker</artifactId>
         	<version>1.0.2</version> 
     	</dependency>
+    	<!-- dependencies for resource monitoring
     	<dependency>
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter-actuator</artifactId>
@@ -118,6 +119,7 @@
     		<groupId>io.micrometer</groupId>
     		<artifactId>micrometer-registry-graphite</artifactId>
 		</dependency>
+		-->
 		<dependency>
       		<groupId>com.uber</groupId>
       		<artifactId>h3</artifactId>

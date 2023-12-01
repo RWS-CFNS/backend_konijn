@@ -1,4 +1,4 @@
-package nl.cfns.base;
+package nl.cfns.service;
 
 import java.util.concurrent.CountDownLatch;
 

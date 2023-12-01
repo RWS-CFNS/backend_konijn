@@ -21,7 +21,7 @@ import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import nl.cfns.base.Receiver;
+import nl.cfns.service.Receiver;
 
 //this configuration creates a connection with an existing rabbitmq server
 //only works if a rabbitmq server is running on this PC

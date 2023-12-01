@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 import nl.cfns.entity.Measuringbox;
 
 @Repository("MeasuringboxRepository")
-public interface MeasuringboxRepository  extends CrudRepository<Measuringbox,Long>{
+public interface MeasuringboxRepository  extends CrudRepository<Measuringbox,UUID>{
 	List<Measuringbox> findBoxByid(UUID id);
 }
