@@ -1,6 +1,7 @@
 package nl.cfns.repository;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -8,8 +9,8 @@ import org.springframework.stereotype.Repository;
 import nl.cfns.entity.WeatherMeasurement;
 
 @Repository("WeatherMeasurementRepository")
-public interface WeatherMeasurementRepository extends CrudRepository<WeatherMeasurement,Long> {
-	List<WeatherMeasurement> findBoxByid(Long id);
+public interface WeatherMeasurementRepository extends CrudRepository<WeatherMeasurement,UUID> {
+	List<WeatherMeasurement> findBoxByid(UUID id);
 	
 	//Filter weather measurements based on minimum and maximum values
     List<WeatherMeasurement> findByTempBetween(Float minTemp, Float maxTemp);

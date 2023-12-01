@@ -35,7 +35,7 @@ public class DataSimulator {
 	    measurement.setWindDirection(faker.number().numberBetween(0, 100)); 
 	    measurement.setWindspeed((float) faker.number().randomDouble(1, 0, 100)); 
 	    measurement.setDauw((float) faker.number().randomDouble(1, 0, 100)); 
-	    measurement.setPressure((float) faker.number().randomDouble(1, 0, 100)); 
+	    measurement.setPressure((float) faker.number().randomDouble(1, 900, 1100)); 
 	    measurement.setSimulated(true);
 	    
 	    return measurement;
@@ -47,11 +47,11 @@ public class DataSimulator {
 	    Measuringbox measuringbox = new Measuringbox();
 	    
 	    measuringbox.generateNewId();
-	    measuringbox.setMnc(faker.number().digits(3)); 
-	    measuringbox.setMcc(faker.number().digits(3)); 
-	    measuringbox.setLac(faker.number().digits(5)); 
+	    measuringbox.setMnc(faker.number().numberBetween(0, 10));
+	    measuringbox.setMcc(faker.number().numberBetween(0, 10)); 
+	    measuringbox.setLac(faker.number().numberBetween(0, 10)); 
 	    measuringbox.setLongitude(faker.number().randomDouble(2, 0, 100)); 
-	    measuringbox.setLatitude(faker.number().randomDouble(2, 0, 100)); 
+	    measuringbox.setLatitude(faker.number().randomDouble(2, 0, 90)); 
 	    measuringbox.setStatus(Measuringbox.MeasuringboxStatus.values()[faker.number().numberBetween(0, 4)]); 
 	    measuringbox.setSimulated(true);
 	    
@@ -80,19 +80,20 @@ public class DataSimulator {
 	    Measurement measurement = new Measurement();
 	    
 	    measurement.generateNewId();
-	    measurement.setMeasuringbox(SimulatorConfig.simulatorMeasuringbox);
+	    //measurement.setMeasuringbox(SimulatorConfig.simulatorMeasuringbox);
 	    measurement.setTime(new Timestamp(System.currentTimeMillis())); 
 	    measurement.setLatency(faker.number().numberBetween(0, 100)); 
 	    measurement.setUpload((float) faker.number().randomDouble(2, 0, 100)); 
 	    measurement.setDownload((float) faker.number().randomDouble(2, 0, 100)); 
 	    measurement.setRSSI(faker.number().numberBetween(-100, 0)); 
-	    measurement.setRSRQ(faker.number().numberBetween(0, 100)); 
-	    measurement.setRSRP(faker.number().numberBetween(0, 100)); 
-	    measurement.setSINR(faker.number().numberBetween(0, 100)); 
+	    measurement.setRSRQ(faker.number().numberBetween(0, 20)); 
+	    measurement.setRSRP(faker.number().numberBetween(-100, 0)); 
+	    measurement.setSINR(faker.number().numberBetween(5, 100)); 
 	    measurement.setMnoString(faker.lorem().word()); 
 	    measurement.setLongitude(faker.number().randomDouble(2, 0, 100)); 
 	    measurement.setLatitude(faker.number().randomDouble(2, 0, 100)); 
 	    measurement.setSimulated(true);
+	  
 	    
 	    return measurement;
 	}

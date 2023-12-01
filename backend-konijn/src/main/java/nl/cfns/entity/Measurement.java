@@ -1,6 +1,7 @@
 package nl.cfns.entity;
 
 import java.sql.Timestamp;
+import java.util.UUID;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -22,64 +23,64 @@ import lombok.NoArgsConstructor;
 @Table(name = "MEASUREMENTS_TABLE")
 public class Measurement {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "measurement_id")
-	private Long id;
+	private UUID id;
 	
 	//foreign key for keeping track which measuringbox this measurement belongs to
-    @ManyToOne
-    @JoinColumn(name = "measuringbox_id")
-    private Measuringbox measuringbox;
+//    @ManyToOne
+//    @JoinColumn(name = "measuringbox_id", nullable = true)
+//    private Measuringbox measuringbox;
 	
-	@Column
+    @Column(nullable = true)
 	private Timestamp time;
 	
-	@Column
+	@Column(nullable = true)
 	@Min(value = 0, message = "Value should be greater then, or equal to 0")
-	@Max(value = 100, message = "Value should be less then, or equal to 100")
+	@Max(value = 10000, message = "Value should be less then, or equal to 10000")
 	private Integer latency;
 	
-	@Column
+	@Column(nullable = true)
 	@Min(value = 0, message = "Value should be greater then, or equal to 0")
-	@Max(value = 100, message = "Value should be less then, or equal to 100")
+	@Max(value = 10000, message = "Value should be less then, or equal to 10000")
 	private Float upload;
 	
-	@Column
+	@Column(nullable = true)
 	@Min(value = 0, message = "Value should be greater then, or equal to 0")
-	@Max(value = 100, message = "Value should be less then, or equal to 100")
+	@Max(value = 10000, message = "Value should be less then, or equal to 10000")
 	private Float download;
 	
-	@Column
-	@Min(value = -100, message = "Value should be greater then, or equal to 0")
-	@Max(value = 0, message = "Value should be less then, or equal to 100")
+	@Column(nullable = true)
+	@Min(value = -120, message = "Value should be greater then, or equal to -120")
+	@Max(value = 0, message = "Value should be less then, or equal to 0")
 	private Integer RSSI;
 	
-	@Column
-	@Min(value = 0, message = "Value should be greater then, or equal to 0")
-	@Max(value = 100, message = "Value should be less then, or equal to 100")
+	@Column(nullable = true)
+	@Min(value = -20, message = "Value should be greater then, or equal to -20")
+	@Max(value = 20, message = "Value should be less then, or equal to 20")
 	private Integer RSRQ;
 	
-	@Column
-	@Min(value = 0, message = "Value should be greater then, or equal to 0")
-	@Max(value = 100, message = "Value should be less then, or equal to 100")
+	@Column(nullable = true)
+	@Min(value = -140, message = "Value should be greater then, or equal to -140")
+	@Max(value = 0, message = "Value should be less then, or equal to 0")
 	private Integer RSRP;
 	
-	@Column
-	@Min(value = 0, message = "Value should be greater then, or equal to 0")
+	@Column(nullable = true)
+	@Min(value = 5, message = "Value should be greater then, or equal to 5")
 	@Max(value = 100, message = "Value should be less then, or equal to 100")
 	private Integer SINR;
-	
-	@Column(name = "Mobile Network Operator", length = 50, nullable = false, unique = false)
+//	
+	@Column(name = "Mobile Network Operator", length = 50, nullable = true, unique = false)
 	private String mnoString;
 
-	@Column(nullable = false)
-	@Min(value = 0, message = "Value should be greater then, or equal to 0")
-	@Max(value = 100, message = "Value should be less then, or equal to 100")
+	@Column(nullable = true)
+	@Min(value = -90, message = "Value should be greater then, or equal to -90")
+	@Max(value = 90, message = "Value should be less then, or equal to 90")
 	private Double latitude;
 
-	@Column(nullable = false)
-	@Min(value = 0, message = "Value should be greater then, or equal to 0")
-	@Max(value = 100, message = "Value should be less then, or equal to 100")
+	@Column(nullable = true)
+	@Min(value = 0, message = "Value should be greater then, or equal to -180")
+	@Max(value = 100, message = "Value should be less then, or equal to 180")
 	private Double longitude;
 
 	@Column(nullable = false)

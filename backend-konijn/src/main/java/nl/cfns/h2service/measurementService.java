@@ -2,6 +2,7 @@ package nl.cfns.h2service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -29,22 +30,22 @@ public class measurementService {
 
     // Save a Measuringbox object
     public Measurement saveMeasuringbox(Measurement measurement, Measuringbox measuringbox) {
-    	measurement.setMeasuringbox(measuringbox); //set foreign key
+    	//measurement.setMeasuringbox(measuringbox); //set foreign key
         return measurementRepository.save(measurement);
     }
 
     // Delete a Measuringbox object by its ID
-    public void deleteMeasuringboxById(Long id) {
+    public void deleteMeasuringboxById(UUID id) {
     	measurementRepository.deleteById(id);
     }
 
     // Verify if a Measuringbox object exists by its ID
-    public boolean doesMeasuringboxExist(Long id) {
+    public boolean doesMeasuringboxExist(UUID id) {
         return measurementRepository.existsById(id);
     }
 
     // Get a Measuringbox object by its ID
-    public Measurement getMeasuringboxById(Long id) {
+    public Measurement getMeasuringboxById(UUID id) {
     	return measurementRepository.findById(id).orElse(null);
     }
 }

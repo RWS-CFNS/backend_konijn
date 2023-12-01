@@ -20,7 +20,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-//TODO possibly add geometry datatype with extra dependency
 
 @Entity
 @Data
@@ -34,33 +33,39 @@ public class Measuringbox {
 	private UUID id;
 	
 	//foreign key relation to keep track of measurements corresponding to this measuringbox
-    @OneToMany(mappedBy = "measuringbox")
-    private Set<Measurement> measurements = new HashSet<>();
+//    @OneToMany(mappedBy = "measuringbox")
+//    private Set<Measurement> measurements = new HashSet<>();
 
-	@Column(name = "Mobile Network Code", length = 50, nullable = false, unique = false)
-	private String mnc;
-
-	@Column(name = "Mobile Country Code", length = 50, nullable = false, unique = false)
-	private String mcc;	
-
-	@Column(name = "Location Area Code", length = 50, nullable = false, unique = false)
-	private String lac;	
+	@Column(nullable = false)
+	@Min(value = 0, message = "Value should be greater then, or equal to 0")
+	@Max(value = 999, message = "Value should be less then, or equal to 999")
+	private Integer mnc;
 	
 	@Column(nullable = false)
 	@Min(value = 0, message = "Value should be greater then, or equal to 0")
-	@Max(value = 100, message = "Value should be less then, or equal to 100")
+	@Max(value = 999, message = "Value should be less then, or equal to 999")
+	private Integer mcc;
+	
+	@Column(nullable = false)
+	@Min(value = 0, message = "Value should be greater then, or equal to 0")
+	@Max(value = 65535, message = "Value should be less then, or equal to 65535")
+	private Integer lac;	
+	
+	@Column(nullable = false)
+	@Min(value = -90, message = "Value should be greater then, or equal to -90")
+	@Max(value = 90, message = "Value should be less then, or equal to 90")
 	private Double longitude;
 	
 	//@Column 
 	//private Geometry location;
 	@Column(nullable = false)
-	@Min(value = 0, message = "Value should be greater then, or equal to 0")
-	@Max(value = 100, message = "Value should be less then, or equal to 100")
+	@Min(value = -180, message = "Value should be greater then, or equal to -180")
+	@Max(value = 180, message = "Value should be less then, or equal to 180")
 	private Double Latitude;
 	
 	public enum MeasuringboxStatus {INACTIVE, CONNECTING, RECEIVING, ACTIVE, ERROR}; //enum for keeping track of box status
 	
-	@Column
+	@Column(nullable = false)
 	 @Enumerated(EnumType.STRING)
 	 private MeasuringboxStatus status;
 	 

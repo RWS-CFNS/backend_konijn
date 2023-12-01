@@ -1,6 +1,7 @@
 package nl.cfns.entity;
 
 import java.sql.Timestamp;
+import java.util.UUID;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -20,41 +21,41 @@ import lombok.NoArgsConstructor;
 @Table(name = "WEATHER_TABLE")
 public class WeatherMeasurement {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "weather_id")
-	private Long id;
+	private UUID id;
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private Timestamp time;
 	
-	@Column
-	@Min(value = 0, message = "Value should be greater then, or equal to 0")
+	@Column(nullable = true)
+	@Min(value = -50, message = "Value should be greater then, or equal to -50")
 	@Max(value = 100, message = "Value should be less then, or equal to 100")
 	private Float temp;
 	
-	@Column
+	@Column(nullable = true)
 	@Min(value = 0, message = "Value should be greater then, or equal to 0")
 	@Max(value = 100, message = "Value should be less then, or equal to 100")
 	private Float humid;
 	
-	@Column
+	@Column(nullable = true)
 	@Min(value = 0, message = "Value should be greater then, or equal to 0")
-	@Max(value = 100, message = "Value should be less then, or equal to 100")
+	@Max(value = 360, message = "Value should be less then, or equal to 360")
 	private Integer windDirection;
 	
-	@Column
+	@Column(nullable = true)
 	@Min(value = 0, message = "Value should be greater then, or equal to 0")
-	@Max(value = 100, message = "Value should be less then, or equal to 100")
+	@Max(value = 500, message = "Value should be less then, or equal to 500")
 	private Float windspeed;
 	
-	@Column
-	@Min(value = 0, message = "Value should be greater then, or equal to 0")
+	@Column(nullable = true)
+	@Min(value = -50, message = "Value should be greater then, or equal to -50")
 	@Max(value = 100, message = "Value should be less then, or equal to 100")
 	private Float dauw;
 	
-	@Column
-	@Min(value = 0, message = "Value should be greater then, or equal to 0")
-	@Max(value = 100, message = "Value should be less then, or equal to 100")
+	@Column(nullable = true)
+	@Min(value = 900, message = "Value should be greater then, or equal to 900")
+	@Max(value = 1100, message = "Value should be less then, or equal to 1100")
 	private Float pressure;
 	
 	@Column(nullable = false)

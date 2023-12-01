@@ -1,6 +1,8 @@
 package nl.cfns.entity;
 
 
+import java.util.UUID;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,9 +22,9 @@ import lombok.NoArgsConstructor;
 @Table(name = "CELLTOWER_TABLE")
 public class Celltower {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "celltower_id")
-	private Long id;
+	private UUID id;
 
 	@Column(name = "Mobile Network Code", length = 50, nullable = false, unique = false)
 	private String mnc;

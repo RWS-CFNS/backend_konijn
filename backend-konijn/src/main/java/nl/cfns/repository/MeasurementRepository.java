@@ -6,9 +6,10 @@ import org.springframework.stereotype.Repository;
 import nl.cfns.entity.Measurement;
 
 import java.util.List;
+import java.util.UUID;
 
 @Repository("MeasurementRepository")
-public interface MeasurementRepository  extends CrudRepository<Measurement,Long> {
+public interface MeasurementRepository  extends CrudRepository<Measurement,UUID> {
     //Filter measurements based on minimum and maximum values
     List<Measurement> findByLatencyBetween(Integer minLatency, Integer maxLatency);
     List<Measurement> findByUploadBetween(Float minUpload, Float maxUpload);
