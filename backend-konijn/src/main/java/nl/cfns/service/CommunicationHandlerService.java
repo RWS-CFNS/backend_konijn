@@ -10,7 +10,6 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import nl.cfns.config.RabbitConfig;
-import nl.cfns.entity.Measurement;
 import nl.cfns.entity.Measuringbox;
 import nl.cfns.entity.Request;
 import nl.cfns.entity.Request.MeasuringboxStatus;
