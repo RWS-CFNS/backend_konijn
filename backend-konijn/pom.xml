@@ -21,6 +21,12 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>17</java.version>
+        
+        <javafaker.version>1.0.2</javafaker.version>
+        <uber.version>3.7.0</uber.version>
+        <modelmapper.version>2.3.5</modelmapper.version>
+        <asciidoctor.version>2.2.1</asciidoctor.version>
+        
     </properties>
 			
 	<dependencies>
@@ -100,7 +106,7 @@
 		<dependency>
         	<groupId>com.github.javafaker</groupId>
         	<artifactId>javafaker</artifactId>
-        	<version>1.0.2</version> 
+        	<version>${javafaker.version}</version> 
     	</dependency>
     	<!-- dependencies for resource monitoring
     	<dependency>
@@ -123,12 +129,12 @@
 		<dependency>
       		<groupId>com.uber</groupId>
       		<artifactId>h3</artifactId>
-      		<version>3.7.0</version> 
+      		<version>${uber.version}</version> 
     	</dependency>
     	<dependency>
 		    <groupId>org.modelmapper</groupId>
 		    <artifactId>modelmapper</artifactId>
-		    <version>2.3.5</version>
+		    <version>${modelmapper.version}</version>
 		</dependency>
 	</dependencies>
 
@@ -137,7 +143,7 @@
 			<plugin>
 				<groupId>org.asciidoctor</groupId>
 				<artifactId>asciidoctor-maven-plugin</artifactId>
-				<version>2.2.1</version>
+				<version>${asciidoctor.version}</version>
 				<executions>
 					<execution>
 						<id>generate-docs</id>
