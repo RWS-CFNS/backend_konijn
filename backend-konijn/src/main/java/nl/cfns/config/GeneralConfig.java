@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class GeneralConfig {
-	// create object to convert between entities (models) and dto's
+	// create object to convert between entities (models) and nl.cfns.dto's
 	@Bean
 	public ModelMapper modelMapper() {
 		return new ModelMapper();

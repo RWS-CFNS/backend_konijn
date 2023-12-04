@@ -8,10 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
-import dto.MeasurementDto;
-import dto.MeasuringboxDto;
-import dto.WeatherMeasurementDto;
 import nl.cfns.config.RabbitConfig;
+import nl.cfns.dto.MeasurementDto;
+import nl.cfns.dto.MeasuringboxDto;
+import nl.cfns.dto.WeatherMeasurementDto;
 import nl.cfns.entity.Measurement;
 import nl.cfns.entity.Measuringbox;
 import nl.cfns.entity.Testbox;

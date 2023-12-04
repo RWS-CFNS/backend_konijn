@@ -6,9 +6,9 @@ import org.springframework.stereotype.Service;
 
 import com.github.javafaker.Faker;
 
-import dto.MeasurementDto;
-import dto.MeasuringboxDto;
-import dto.WeatherMeasurementDto;
+import nl.cfns.dto.MeasurementDto;
+import nl.cfns.dto.MeasuringboxDto;
+import nl.cfns.dto.WeatherMeasurementDto;
 import nl.cfns.entity.Celltower;
 
 //this class contains functions to generate valid data values. 

@@ -1,4 +1,4 @@
-package dto;
+package nl.cfns.dto;
 
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;

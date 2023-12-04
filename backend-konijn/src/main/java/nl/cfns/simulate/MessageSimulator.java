@@ -10,10 +10,10 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import dto.MeasurementDto;
-import dto.MeasuringboxDto;
-import dto.WeatherMeasurementDto;
 import nl.cfns.config.RabbitConfig;
+import nl.cfns.dto.MeasurementDto;
+import nl.cfns.dto.MeasuringboxDto;
+import nl.cfns.dto.WeatherMeasurementDto;
 import nl.cfns.entity.Celltower;
 import nl.cfns.entity.Testbox;
 import nl.cfns.repository.CelltowerRepository;
