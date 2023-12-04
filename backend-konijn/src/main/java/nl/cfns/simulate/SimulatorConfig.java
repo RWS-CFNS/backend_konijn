@@ -4,7 +4,6 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -45,7 +44,7 @@ public class SimulatorConfig {
 		simulatorMeasuringbox.setLatitude(2.0); 
 		simulatorMeasuringbox.setStatus(Measuringbox.MeasuringboxStatus.ACTIVE); 
 		simulatorMeasuringbox.setSimulated(true);
-		measuringboxRepository.save(simulatorMeasuringbox);
+		// measuringboxRepository.save(simulatorMeasuringbox);
 		
 		simulatorMeasurement.generateNewId();
 		//simulatorMeasurement.setMeasuringbox(SimulatorConfig.simulatorMeasuringbox);
@@ -62,7 +61,7 @@ public class SimulatorConfig {
 	    simulatorMeasurement.setLatitude(2.0); 
 	    simulatorMeasurement.setSimulated(true);
 		//simulatorMeasurement.setMeasuringbox(simulatorMeasuringbox);
-		measurementRepository.save(simulatorMeasurement);
+		// measurementRepository.save(simulatorMeasurement);
 		
 		log.info("the box for reference is " + simulatorMeasuringbox.toString());
 		log.info("the measurement for reference is " + simulatorMeasurement.toString());

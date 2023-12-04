@@ -18,7 +18,7 @@ import nl.cfns.repository.TestboxRepository;
 import nl.cfns.repository.WeatherMeasurementRepository;
 
 @Component("receiver")
-public class Receiver {
+public class ReceiverService {
 	private CountDownLatch latch = new CountDownLatch(1);
 	
 	//private repository object for interacting with measuringbox section of database

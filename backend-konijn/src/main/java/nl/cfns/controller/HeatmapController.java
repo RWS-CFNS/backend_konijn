@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import nl.cfns.basicpojo.MeasurementPoint;
-import nl.cfns.service.HeatmapGenerator;
+import nl.cfns.service.HeatmapGeneratorService;
 import nl.cfns.service.SignalstrengthService;
 
 @RestController
 @RequestMapping("/heatmap")
 public class HeatmapController {
 	@Autowired
-	private HeatmapGenerator heatmapService;
+	private HeatmapGeneratorService heatmapService;
 	
 	@Autowired
 	private SignalstrengthService signalstrengthService;

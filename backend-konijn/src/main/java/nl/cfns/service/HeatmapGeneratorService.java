@@ -19,7 +19,7 @@ import nl.cfns.repository.MeasurementRepository;
 import com.uber.h3core.H3Core;
 
 @Service
-public class HeatmapGenerator {
+public class HeatmapGeneratorService {
 	//create repo object for this class to access database
 	@Autowired
 	private MeasurementRepository measurementRepository;

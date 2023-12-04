@@ -29,7 +29,7 @@ public class SignalstrengthService {
         Iterable<Measurement> measurements = measurementRepository.findAll(); //take all measurements
 		List<Measurement> measurementList = StreamSupport.stream(measurements.spliterator(), false)//()convert to list
 				.collect(Collectors.toList());
-		generatedHeatmap = HeatmapGenerator.generateHexHeatmap(measurementList, 10);	//update object generatedHeatmap	
+		generatedHeatmap = HeatmapGeneratorService.generateHexHeatmap(measurementList, 10);	//update object generatedHeatmap	
 	}
 	
     public Map<String, Double> getSignalStrengthHeatmap() throws IOException {

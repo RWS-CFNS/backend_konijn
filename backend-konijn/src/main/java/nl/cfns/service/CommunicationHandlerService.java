@@ -24,7 +24,7 @@ import nl.cfns.repository.RequestRepository;
 //the class works automatically when measuringboxes are added in the H2 console or separate GUI
 //for testing general functionality of the backend, use the nl.cfns.simulate package instead
 @Service
-public class CommunicationHandler {
+public class CommunicationHandlerService {
 	@Autowired 
 	private AmqpTemplate amqpTemplate;
 	

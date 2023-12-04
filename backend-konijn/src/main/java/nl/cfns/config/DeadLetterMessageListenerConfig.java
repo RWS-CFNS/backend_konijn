@@ -11,7 +11,7 @@ import lombok.extern.java.Log;
 import nl.cfns.entity.*;
 @Component
 @Log
-public class DeadLetterMessageListener implements MessageListener {	
+public class DeadLetterMessageListenerConfig implements MessageListener {	
     @Override
     public void onMessage(Message message) {
         try {
