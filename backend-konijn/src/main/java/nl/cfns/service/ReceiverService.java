@@ -2,15 +2,19 @@ package nl.cfns.service;
 
 import java.util.concurrent.CountDownLatch;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
+import dto.MeasurementDto;
+import dto.MeasuringboxDto;
+import dto.WeatherMeasurementDto;
 import nl.cfns.config.RabbitConfig;
 import nl.cfns.entity.Measurement;
-import nl.cfns.entity.Testbox;
 import nl.cfns.entity.Measuringbox;
+import nl.cfns.entity.Testbox;
 import nl.cfns.entity.WeatherMeasurement;
 import nl.cfns.repository.MeasurementRepository;
 import nl.cfns.repository.MeasuringboxRepository;
@@ -21,6 +25,9 @@ import nl.cfns.repository.WeatherMeasurementRepository;
 public class ReceiverService {
 	private CountDownLatch latch = new CountDownLatch(1);
 	
+	@Autowired
+	private ModelMapper modelMapper;
+
 	//private repository object for interacting with measuringbox section of database
 	@Autowired	
 	private TestboxRepository testboxRepository;
@@ -52,8 +59,9 @@ public class ReceiverService {
 
 	@Async
 	@RabbitListener(queues = RabbitConfig.WEATHER_MEASUREMENT_QUEUE)
-	public void receiveMessage(WeatherMeasurement weatherMeasurement) {
+	public void receiveMessage(WeatherMeasurementDto weatherMeasurementDto) {
 		//System.out.println(" [x] Received weather" + weatherMeasurement.toString());
+		WeatherMeasurement weatherMeasurement = modelMapper.map(weatherMeasurementDto, WeatherMeasurement.class);
 		weatherMeasurement.generateNewId();
 		//WeatherMeasurement validweatherMeasurement = new WeatherMeasurement(weatherMeasurement);
 		weatherMeasurementRepository.save(weatherMeasurement);
@@ -63,21 +71,25 @@ public class ReceiverService {
 
 	@Async
 	@RabbitListener(queues = RabbitConfig.MEASUREMENT_QUEUE)
-	public void receiveMessage(Measurement measurement) {
-		//System.out.println(" [x] Received  measurement " + measurement.toString());
+	public void receiveMessage(MeasurementDto measurementDto) {
+
+		Measurement measurement = modelMapper.map(measurementDto, Measurement.class);
 		measurement.generateNewId();
 		measurementsRepository.save(measurement);
 		latch.countDown(); // why a countdown on receive?
 		
+		System.out.println(" [x] Received  measurementdto" + measurementDto.toString());
+		System.out.println("converted to " + measurement.toString());
+
 	}
 	
 	@Async
 	@RabbitListener(queues = RabbitConfig.MEASURINGBOX2_QUEUE)
-	public void receiveMessage(Measuringbox measuringbox2) {
+	public void receiveMessage(MeasuringboxDto measuringboxDto) {
 		//System.out.println(" [x] Received box2" + measuringbox2.toString());
-		
-		measuringbox2.generateNewId();
-		measuringboxRepository.save(measuringbox2);
+		Measuringbox measuringbox = modelMapper.map(measuringboxDto, Measuringbox.class);
+		measuringbox.generateNewId();
+		measuringboxRepository.save(measuringbox);
 		latch.countDown(); // why a countdown on receive?
 		
 	}

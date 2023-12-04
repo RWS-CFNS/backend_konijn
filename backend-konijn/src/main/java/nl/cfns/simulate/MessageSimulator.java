@@ -3,25 +3,19 @@ package nl.cfns.simulate;
 
 //for using File objects, print functions
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
 
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import nl.cfns.basicpojo.Coordinates;
+import dto.MeasurementDto;
+import dto.MeasuringboxDto;
+import dto.WeatherMeasurementDto;
 import nl.cfns.config.RabbitConfig;
 import nl.cfns.entity.Celltower;
-import nl.cfns.entity.Measurement;
 import nl.cfns.entity.Testbox;
-import nl.cfns.entity.Measuringbox;
-import nl.cfns.entity.WeatherMeasurement;
 import nl.cfns.repository.CelltowerRepository;
 
 //simulation class for sending messages to backend locally
@@ -54,7 +48,7 @@ public class MessageSimulator{
 		// create example box with values
 		
 		//Measuringbox box = new Measuringbox((long) 1, "exampleBox", "ok", "ok", 2, 3, MeasuringboxStatus.ACTIVE);
-		Measuringbox box = DataSimulator.generateRandomMeasuringbox();
+		MeasuringboxDto box = DataSimulator.generateRandomMeasuringbox();
 		//ystem.out.println(" [x] Sent '" + box.toString() + "'"); // display box in console in JSON format
 		amqpTemplate.convertAndSend(RabbitConfig.topicExchangeName, RabbitConfig.MEASURINGBOX2_KEY, box);
 	}
@@ -77,7 +71,7 @@ public class MessageSimulator{
 		//take celltowers from database
 		Iterable<Celltower> celltowerIterable = celltowerRepository.findAll();
 		// create example box with values
-		Measurement measurement = DataSimulator.generateRandomMeasurementAdjusted(celltowerIterable);
+		MeasurementDto measurement = DataSimulator.generateRandomMeasurementAdjusted(celltowerIterable);
 		
 		//System.out.println(" [x] Sent '" + measurement.toString() + "'"); // display box in console in JSON format
 		amqpTemplate.convertAndSend(RabbitConfig.topicExchangeName, RabbitConfig.MEASUREMENT_KEY , measurement);
@@ -89,7 +83,7 @@ public class MessageSimulator{
 	void simulateMessagesWeather() throws IOException {
 		// create example box with values
 		//WeatherMeasurement weatherMeasurement = new WeatherMeasurement((long) 1, new Timestamp(System.currentTimeMillis()), 50.5f, 60.5f, 45, 12.3f, 15.7f, 13.2f);
-		WeatherMeasurement weatherMeasurement = DataSimulator.generateRandomWeatherMeasurement();
+		WeatherMeasurementDto weatherMeasurement = DataSimulator.generateRandomWeatherMeasurement();
 		//System.out.println(" [x] Sent '" + weatherMeasurement.toString() + "'"); // display box in console in JSON format
 		amqpTemplate.convertAndSend(RabbitConfig.topicExchangeName, RabbitConfig.WEATHER_MEASUREMENT_KEY, weatherMeasurement);
 	}

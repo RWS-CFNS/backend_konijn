@@ -2,19 +2,14 @@ package nl.cfns.simulate;
 
 import java.sql.Timestamp;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.github.javafaker.Faker;
 
+import dto.MeasurementDto;
+import dto.MeasuringboxDto;
+import dto.WeatherMeasurementDto;
 import nl.cfns.entity.Celltower;
-import nl.cfns.entity.Measurement;
-import nl.cfns.entity.Measuringbox;
-import nl.cfns.entity.WeatherMeasurement;
-import nl.cfns.repository.CelltowerRepository;
-import nl.cfns.repository.MeasuringboxRepository;
-import nl.cfns.repository.TestboxRepository;
-import nl.cfns.simulate.SimulatorConfig;
 
 //this class contains functions to generate valid data values. 
 //the faker libary is used to generate values and string that are defined within a range
@@ -24,38 +19,38 @@ public class DataSimulator {
 
 	
 	//generate random values for weather measurements
-	public static WeatherMeasurement generateRandomWeatherMeasurement() {
+	public static WeatherMeasurementDto generateRandomWeatherMeasurement() {
 	    Faker faker = new Faker();		
-	    WeatherMeasurement measurement = new WeatherMeasurement();
+		WeatherMeasurementDto weatherMeasurementDto = new WeatherMeasurementDto();
 	    
-	    measurement.generateNewId();
-	    measurement.setTime(new Timestamp(System.currentTimeMillis())); 
-	    measurement.setTemp((float) faker.number().randomDouble(1, 0, 100)); 
-	    measurement.setHumid((float) faker.number().randomDouble(1, 0, 100)); 
-	    measurement.setWindDirection(faker.number().numberBetween(0, 100)); 
-	    measurement.setWindspeed((float) faker.number().randomDouble(1, 0, 100)); 
-	    measurement.setDauw((float) faker.number().randomDouble(1, 0, 100)); 
-	    measurement.setPressure((float) faker.number().randomDouble(1, 900, 1100)); 
-	    measurement.setSimulated(true);
+		// weatherMeasurementDto.generateNewId();
+		weatherMeasurementDto.setTime(new Timestamp(System.currentTimeMillis()));
+		weatherMeasurementDto.setTemp((float) faker.number().randomDouble(1, 0, 100));
+		weatherMeasurementDto.setHumid((float) faker.number().randomDouble(1, 0, 100));
+		weatherMeasurementDto.setWindDirection(faker.number().numberBetween(0, 100));
+		weatherMeasurementDto.setWindspeed((float) faker.number().randomDouble(1, 0, 100));
+		weatherMeasurementDto.setDauw((float) faker.number().randomDouble(1, 0, 100));
+		weatherMeasurementDto.setPressure((float) faker.number().randomDouble(1, 900, 1100));
+		weatherMeasurementDto.setSimulated(true);
 	    
-	    return measurement;
+		return weatherMeasurementDto;
 	}
 	
 	//function for generating random measuringbox values
-	public static Measuringbox generateRandomMeasuringbox() {
+	public static MeasuringboxDto generateRandomMeasuringbox() {
 	    Faker faker = new Faker();
-	    Measuringbox measuringbox = new Measuringbox();
+		MeasuringboxDto measuringboxDto = new MeasuringboxDto();
 	    
-	    measuringbox.generateNewId();
-	    measuringbox.setMnc(faker.number().numberBetween(0, 10));
-	    measuringbox.setMcc(faker.number().numberBetween(0, 10)); 
-	    measuringbox.setLac(faker.number().numberBetween(0, 10)); 
-	    measuringbox.setLongitude(faker.number().randomDouble(2, 0, 100)); 
-	    measuringbox.setLatitude(faker.number().randomDouble(2, 0, 90)); 
-	    measuringbox.setStatus(Measuringbox.MeasuringboxStatus.values()[faker.number().numberBetween(0, 4)]); 
-	    measuringbox.setSimulated(true);
+		// measuringboxDto.generateNewId();
+		measuringboxDto.setMnc(faker.number().numberBetween(0, 10));
+		measuringboxDto.setMcc(faker.number().numberBetween(0, 10));
+		measuringboxDto.setLac(faker.number().numberBetween(0, 10));
+		measuringboxDto.setLongitude(faker.number().randomDouble(2, 0, 100));
+		measuringboxDto.setLatitude(faker.number().randomDouble(2, 0, 90));
+		measuringboxDto.setStatus(MeasuringboxDto.MeasuringboxStatus.values()[faker.number().numberBetween(0, 4)]);
+		measuringboxDto.setSimulated(true);
 	    
-	    return measuringbox;
+		return measuringboxDto;
 	}
 	
 	//function for generating random measuringbox values
@@ -75,43 +70,43 @@ public class DataSimulator {
 	}
 	
 	//generate random values for measurement
-	public static Measurement generateRandomMeasurement() {
+	public static MeasurementDto generateRandomMeasurement() {
 	    Faker faker = new Faker();
-	    Measurement measurement = new Measurement();
+		MeasurementDto measurementDto = new MeasurementDto();
 	    
-	    measurement.generateNewId();
+		// measurement.generateNewId();
 	    //measurement.setMeasuringbox(SimulatorConfig.simulatorMeasuringbox);
-	    measurement.setTime(new Timestamp(System.currentTimeMillis())); 
-	    measurement.setLatency(faker.number().numberBetween(0, 100)); 
-	    measurement.setUpload((float) faker.number().randomDouble(2, 0, 100)); 
-	    measurement.setDownload((float) faker.number().randomDouble(2, 0, 100)); 
-	    measurement.setRSSI(faker.number().numberBetween(-100, 0)); 
-	    measurement.setRSRQ(faker.number().numberBetween(0, 20)); 
-	    measurement.setRSRP(faker.number().numberBetween(-100, 0)); 
-	    measurement.setSINR(faker.number().numberBetween(5, 100)); 
-	    measurement.setMnoString(faker.lorem().word()); 
-	    measurement.setLongitude(faker.number().randomDouble(2, 0, 100)); 
-	    measurement.setLatitude(faker.number().randomDouble(2, 0, 100)); 
-	    measurement.setSimulated(true);
+		measurementDto.setTime(new Timestamp(System.currentTimeMillis()));
+		measurementDto.setLatency(faker.number().numberBetween(0, 100));
+		measurementDto.setUpload((float) faker.number().randomDouble(2, 0, 100));
+		measurementDto.setDownload((float) faker.number().randomDouble(2, 0, 100));
+		measurementDto.setRSSI(faker.number().numberBetween(-100, 0));
+		measurementDto.setRSRQ(faker.number().numberBetween(0, 20));
+		measurementDto.setRSRP(faker.number().numberBetween(-100, 0));
+		measurementDto.setSINR(faker.number().numberBetween(5, 100));
+		measurementDto.setMnoString(faker.lorem().word());
+		measurementDto.setLongitude(faker.number().randomDouble(2, 0, 100));
+		measurementDto.setLatitude(faker.number().randomDouble(2, 0, 100));
+		measurementDto.setSimulated(true);
 	  
 	    
-	    return measurement;
+		return measurementDto;
 	}
 	
 	//generate random measurements, but they are based on locations of cell towers. 
 	//the values are determined by the distance to the cell towers
-	public static Measurement generateRandomMeasurementAdjusted(Iterable<Celltower> celltowerIterable) {
+	public static MeasurementDto generateRandomMeasurementAdjusted(Iterable<Celltower> celltowerIterable) {
 	    Faker faker = new Faker();
-	    Measurement measurement = new Measurement();
+		MeasurementDto measurementDto = new MeasurementDto();
 	    
 	    // Generate random latitude and longitude for the measurement point
 	    double latitude = faker.number().randomDouble(6, 0, 5); //range of latitudes
 	    double longitude = faker.number().randomDouble(6, 0, 5); //range of longitudes
 
-	    measurement.generateNewId();
-	    measurement.setTime(new Timestamp(System.currentTimeMillis())); 
-	    measurement.setLatitude(latitude);
-	    measurement.setLongitude(longitude);
+		// measurementDto.generateNewId();
+		measurementDto.setTime(new Timestamp(System.currentTimeMillis()));
+		measurementDto.setLatitude(latitude);
+		measurementDto.setLongitude(longitude);
 
 	    //Calculate distance to each tower
 	    double distanceToTower = calculateMinimalDistancetoTower(celltowerIterable, latitude, longitude);
@@ -120,21 +115,23 @@ public class DataSimulator {
 	    int rssiTower1 = (int) (1 - distanceToTower); // Example: Inverse relation with distance
 
 	    //Set RSSI values based on distance
-	    measurement.setRSSI(rssiTower1); // Combining signals from both towers
-	    measurement.setRSRQ(0); // Set a constant value for RSRQ
-	    measurement.setRSRP(0); // Set a constant value for RSRP
-	    measurement.setSINR(0);
+		measurementDto.setRSSI(rssiTower1); // Combining signals from both towers
+		measurementDto.setRSRQ(0); // Set a constant value for RSRQ
+		measurementDto.setRSRP(0); // Set a constant value for RSRP
+		measurementDto.setSINR(0);
 	    
 	    //check in terminal if values make sense
-	    System.out.println( "the following measurement:" + measurement.toString());
-	    System.out.println( "the following distance to a tower was used: " + distanceToTower);
+		// System.out.println( "the following measurement:" +
+		// measurementDto.toString());
+		// System.out.println( "the following distance to a tower was used: " +
+		// distanceToTower);
 
-	    measurement.setLatency(faker.number().numberBetween(0, 100)); 
-	    measurement.setUpload((float) faker.number().randomDouble(2, 0, 100)); 
-	    measurement.setDownload((float) faker.number().randomDouble(2, 0, 100)); 
-	    measurement.setMnoString(faker.lorem().word()); 
+		measurementDto.setLatency(faker.number().numberBetween(0, 100));
+		measurementDto.setUpload((float) faker.number().randomDouble(2, 0, 100));
+		measurementDto.setDownload((float) faker.number().randomDouble(2, 0, 100));
+		measurementDto.setMnoString(faker.lorem().word());
 	    
-	    return measurement;
+		return measurementDto;
 	}
 	
 	//function to calculate shortest distance between two points
