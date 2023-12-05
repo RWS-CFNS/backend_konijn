@@ -122,10 +122,10 @@ Clone the repo
 
 important: to run the program, open the nl.cfns.boot package. run the class named "BackendKonijnApplication"
 
-for the rabbitMQ management console, go to http://127.0.0.1:15672/#/
-for the H2 databse console, go to http://localhost:8090/h2-console/
-for our github repository, go to https://github.com/RWS-CFNS/backend_konijn
-for a heatmap datastring that can be used by a front-end application, access localhost:8090/heatmap/data
+- RabbitMQ Management Console: [http://127.0.0.1:15672/#/](http://127.0.0.1:15672/#/)
+- H2 Database Console: [http://localhost:8090/h2-console/](http://localhost:8090/h2-console/)
+- GitHub Repository: [https://github.com/RWS-CFNS/backend_konijn](https://github.com/RWS-CFNS/backend_konijn)
+- Heatmap Datastring for Front-end Application: [http://localhost:8090/heatmap/data](http://localhost:8090/heatmap/data)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
