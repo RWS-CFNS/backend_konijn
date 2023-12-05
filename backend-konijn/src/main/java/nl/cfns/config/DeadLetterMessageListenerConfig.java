@@ -5,10 +5,9 @@ import org.springframework.amqp.core.MessageListener;
 import org.springframework.amqp.utils.SerializationUtils;
 import org.springframework.stereotype.Component;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+//import com.fasterxml.jackson.databind.ObjectMapper;
 
 import lombok.extern.java.Log;
-import nl.cfns.entity.*;
 @Component
 @Log
 public class DeadLetterMessageListenerConfig implements MessageListener {	

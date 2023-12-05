@@ -3,15 +3,15 @@ package com.example.rabbit;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-import java.util.Optional;
-
-import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-
-import nl.cfns.entity.Testbox;
-import nl.cfns.h2service.MeasuringboxService;
-import nl.cfns.repository.TestboxRepository;
+//import java.util.Optional;
+//
+//import org.junit.Test;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.boot.test.context.SpringBootTest;
+//
+//import nl.cfns.entity.Testbox;
+//import nl.cfns.h2service.MeasuringboxService;
+//import nl.cfns.repository.TestboxRepository;
 
 //@RunWith(SpringRunner.class)
 //@SpringBootTest(classes = BackendKonijnApplication.class)
