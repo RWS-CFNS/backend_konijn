@@ -33,7 +33,8 @@ public class CommunicationHandlerService {
     @Autowired
     private MeasuringboxRepository measuringbox2Repository;
 	
-	//check every 5 seconds if measuringboxes in the database are connected
+	//check every 30 seconds if measuringboxes in the database are connected
+    //it checks activity by sending a message to each measuringbox. 
 	@Scheduled(fixedRate = 30000)
 	@Async
 	void isAliveMeasuringboxes() throws IOException {
@@ -66,6 +67,7 @@ public class CommunicationHandlerService {
         sendandSaveRequest(request);
 	}
 	
+	//send request to measuringbox for resetting the program
 	@Async
 	void requestResetMeasuringbox(UUID id) throws IOException{     
         //create request object for sending ISALIVE messages
@@ -75,6 +77,7 @@ public class CommunicationHandlerService {
         sendandSaveRequest(request);
 	}
 	
+	//function for sending as well as saving a request
 	@Async
 	void sendandSaveRequest(Request request) {
     	System.out.println(" [x] Sent '" + request.toString() + "'");

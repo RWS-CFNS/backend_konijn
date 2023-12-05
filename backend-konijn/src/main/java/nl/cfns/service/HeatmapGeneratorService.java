@@ -9,7 +9,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import nl.cfns.basicpojo.MeasurementPoint;
@@ -18,18 +17,21 @@ import nl.cfns.repository.MeasurementRepository;
 
 import com.uber.h3core.H3Core;
 
+//class for defining functions that generate heatmaps.
+//
 @Service
 public class HeatmapGeneratorService {
 	//create repo object for this class to access database
 	@Autowired
 	private MeasurementRepository measurementRepository;
-
-	@Async
+	
+	//this function creates a heatmap using a normal rectangle-grid
 	public CompletableFuture<List<MeasurementPoint>> generateHeatmap() {
 		//Query the database and process the data to generate heatmap data from measuringbox
 		Iterable<Measurement> measurements = measurementRepository.findAll();
 
 		//Convert Iterable to List
+		//streamsupport is a helper class from java.util, used for the conversion
 		List<Measurement> measurementList = StreamSupport.stream(measurements.spliterator(), false)
 				.collect(Collectors.toList());
 
@@ -38,22 +40,24 @@ public class HeatmapGeneratorService {
 				.map(measurement -> new MeasurementPoint(measurement.getLatitude(),
 						measurement.getLongitude(), measurement.getRSSI()))
 				.collect(Collectors.toList());
-
+		
+		//return list of values that can be plotted on a map
 		return CompletableFuture.completedFuture(heatmapData);
 	}
 	
 	//this function creates a heatmap using a hex shaped grid instead of rectangle-shaped grid
 	//it uses the H3 library from uber. The result is a map containing (1) grid number values, and then (2) signalstrength
 	//values corresponding to that specific hex shape
-	@Async
     public static Map<String, Double> generateHexHeatmap(List<Measurement> signalData, int resolution) throws IOException {
         // Initialize H3Core
         H3Core h3Core = H3Core.newInstance();
 
         // Create a map to store aggregated signal strength data by H3 hexagon
         Map<String, Double> heatmapData = new HashMap<>();
-
+        
+        //iterate list of measurements
         for (Measurement data : signalData) {
+        	//retrieve latitude and longitude values from data object
             double latitude = data.getLatitude();
             double longitude = data.getLongitude();
 

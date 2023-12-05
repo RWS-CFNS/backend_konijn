@@ -26,11 +26,11 @@ public class SimulatorConfig {
 	@Autowired	
 	private CelltowerRepository celltowerRepository;
 
-	@Autowired	
-	private MeasurementRepository measurementRepository;
-	
-	@Autowired	
-	private MeasuringboxRepository measuringboxRepository;
+//	@Autowired	
+//	private MeasurementRepository measurementRepository;
+//	
+//	@Autowired	
+//	private MeasuringboxRepository measuringboxRepository;
 
 	//this function creates objects that can be used as foreing key
 	//note: startup of the program fails completely if values used are invalid

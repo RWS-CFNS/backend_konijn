@@ -21,14 +21,20 @@ import nl.cfns.repository.MeasuringboxRepository;
 import nl.cfns.repository.TestboxRepository;
 import nl.cfns.repository.WeatherMeasurementRepository;
 
+
+//this class is the most important one when it comes to defining how data from rabbitMQ messages are handled
+//each function handles a different object
+//data is converted from a JSON datastructure to an entity (model) or a DTO derived from the models
+//for more information, see the designs in 23H2 Onedrive
 @Component("receiver")
 public class ReceiverService {
+	//define object for delays, which may be needed in some instances
 	private CountDownLatch latch = new CountDownLatch(1);
 	
 	@Autowired
 	private ModelMapper modelMapper;
 
-	//private repository object for interacting with measuringbox section of database
+	//private repository objects for interacting with measuringbox section of database
 	@Autowired	
 	private TestboxRepository testboxRepository;
 
@@ -42,7 +48,6 @@ public class ReceiverService {
 	private WeatherMeasurementRepository weatherMeasurementRepository;
 	
 	@Async
-	//@RabbitHandler
 	@RabbitListener(queues = RabbitConfig.queueName)
 	public void receiveMessage(Testbox receivedBox) {
 		//Testbox receivedBox = objectMapper.readValue(message, Testbox.class); // convert JSON string to class object
@@ -95,6 +100,7 @@ public class ReceiverService {
 		
 	}
 	
+	//small delay may be needed in some instances
 	public CountDownLatch getLatch() {
 		return latch;
 	}
