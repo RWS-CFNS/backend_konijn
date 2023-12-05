@@ -2,11 +2,7 @@
 <!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 <a name="readme-top"></a>
 <!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Don't forget to give the project a star!
-*** Thanks again! Now go create something AMAZING! :D
+*** This readme file is created using the Best-README-Template
 -->
 
 
@@ -124,25 +120,15 @@ Clone the repo
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+important: to run the program, open the nl.cfns.boot package. run the class named "BackendKonijnApplication"
 
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- ROADMAP -->
-## Roadmap
-
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
-
-See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
+for the rabbitMQ management console, go to http://127.0.0.1:15672/#/
+for the H2 databse console, go to http://localhost:8090/h2-console/
+for our github repository, go to https://github.com/RWS-CFNS/backend_konijn
+for a heatmap datastring that can be used by a front-end application, access localhost:8090/heatmap/data
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 
 
