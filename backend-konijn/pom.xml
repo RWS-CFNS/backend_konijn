@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.1.6</version>
+		<version>3.2.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	
@@ -26,6 +26,8 @@
         <uber.version>3.7.0</uber.version>
         <modelmapper.version>3.1.1</modelmapper.version>
         <asciidoctor.version>2.2.1</asciidoctor.version>
+        <lombok.version>1.18.24</lombok.version>
+        <javax.version>2.2</javax.version>
         
     </properties>
 			
@@ -95,9 +97,17 @@
         	<artifactId>spring-boot-starter-data-jpa</artifactId>
     	</dependency>
     	<dependency>
+		    <groupId>javax.persistence</groupId>
+		    <artifactId>javax.persistence-api</artifactId>
+		    <version>${javax.version}</version> <!-- Choose the appropriate version -->
+		</dependency>
+
+    	<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<optional>true</optional>
+		<!--	<version>${lombok.version}</version> -->
+			<scope>provided</scope> 
+			<!-- <optional>true</optional> I dont think this is optional--> 
 		</dependency>
 		<dependency> 
     		<groupId>org.springframework.boot</groupId> 

@@ -15,12 +15,14 @@ import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 
 @Entity
 @Data
+@Accessors(chain = true)
 @NoArgsConstructor	@AllArgsConstructor //generator constructors with and without variables
 @Table(name = "WEATHER_TABLE")
-public class WeatherMeasurement {
+public class WeatherMeasurement  implements VersionedEntity{
 	@Id
 	@GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "weather_id")
@@ -28,6 +30,7 @@ public class WeatherMeasurement {
 
 	//version numbers for detecting concurrent changes to entries. Also may prevent issues with id generation
 	@Version 
+	@Column(name = "version_nr")
 	private Integer version;
 	
 	@Column(nullable = true)
@@ -70,6 +73,10 @@ public class WeatherMeasurement {
         this.id = null; // Set the current ID to null and generate a new one
     }
 	
-	
+
+    @Override
+    public void setVersion(Integer version) {
+        this.version = version;
+    }
 
 }

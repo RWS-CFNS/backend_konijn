@@ -19,13 +19,15 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 
 @Entity
 @Data
+@Accessors(chain = true)
 @Builder(toBuilder = true, builderMethodName = "") //for only generating a copy constructor
 @NoArgsConstructor	@AllArgsConstructor //generator constructors with and without variables
 @Table(name = "MEASURINGBOX_TABLE")
-public class Measuringbox {
+public class Measuringbox  implements VersionedEntity{
 	@Id
 	@GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "measuringbox_id")
@@ -33,6 +35,7 @@ public class Measuringbox {
 	
 	//version numbers for detecting concurrent changes to entries. Also may prevent issues with id generation
 	@Version 
+	@Column(name = "version_nr")
 	private Integer version;
 	
 	//foreign key relation to keep track of measurements corresponding to this measuringbox
@@ -77,6 +80,12 @@ public class Measuringbox {
 
     public void generateNewId() {
         this.id = null; // Set the current ID to null and generate a new one
+    }
+    
+
+    @Override
+    public void setVersion(Integer version) {
+        this.version = version;
     }
 
 }

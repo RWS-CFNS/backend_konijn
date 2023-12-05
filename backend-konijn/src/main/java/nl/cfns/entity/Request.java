@@ -14,14 +14,16 @@ import jakarta.persistence.Version;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 
 
 
 @Entity
 @Data
+@Accessors(chain = true)
 @NoArgsConstructor	@AllArgsConstructor //generator constructors with and without variables. not included in @data annotation!
 @Table(name = "REQUEST_TABLE")
-public class Request {
+public class Request  implements VersionedEntity{
 	@Id
 	@GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "request_id")
@@ -29,6 +31,7 @@ public class Request {
 	
 	//version numbers for detecting concurrent changes to entries. Also may prevent issues with id generation
 	@Version 
+	@Column(name = "version_nr")
 	private Integer version;
 	
 	@Column(name = "measuringboxID")
@@ -51,5 +54,11 @@ public class Request {
 	
     public void generateNewId() {
         this.id = null; // Set the current ID to null and generate a new one
+    }
+    
+
+    @Override
+    public void setVersion(Integer version) {
+        this.version = version;
     }
 }

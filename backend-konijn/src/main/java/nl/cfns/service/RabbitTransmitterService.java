@@ -36,24 +36,24 @@ public class RabbitTransmitterService {
 	//check every 30 seconds if measuringboxes in the database are connected
     //first iteration is after 15 seconds
     //it checks activity by sending a message to each measuringbox. 
-	@Scheduled(fixedRate = 30000, initialDelay = 15000)
-	@Async
-	void isAliveMeasuringboxes() throws IOException {
-		//System.out.println("try to send request");
-        Iterable<Measuringbox> measuringboxes = measuringbox2Repository.findAll();
-        
-        //create request object for sending ISALIVE messages
-        Request request = new Request();
-        request.setMeasuringboxStatus(MeasuringboxStatus.CONNECTING);
-        request.setRequestType(RequestType.ISALIVE);
-        
-        //iterate all measuringboxes in database
-        for (Measuringbox box : measuringboxes) {
-            // Send the request object to RabbitMQ. Save request for later processing
-        	request.setMeasuringboxID(box.getId());
-        	sendandSaveRequest(request);
-        }
-    }
+//	@Scheduled(fixedRate = 30000, initialDelay = 15000)
+//	@Async
+//	void isAliveMeasuringboxes() throws IOException {
+//		//System.out.println("try to send request");
+//        Iterable<Measuringbox> measuringboxes = measuringbox2Repository.findAll();
+//        
+//        //create request object for sending ISALIVE messages
+//        Request request = new Request();
+//        request.setMeasuringboxStatus(MeasuringboxStatus.CONNECTING);
+//        request.setRequestType(RequestType.ISALIVE);
+//        
+//        //iterate all measuringboxes in database
+//        for (Measuringbox box : measuringboxes) {
+//            // Send the request object to RabbitMQ. Save request for later processing
+//        	request.setMeasuringboxID(box.getId());
+//        	sendandSaveRequest(request);
+//        }
+//    }
 
 	
 	//ask the measuringbox to send data that is not being send automatically. This forces the box to check for leftover data

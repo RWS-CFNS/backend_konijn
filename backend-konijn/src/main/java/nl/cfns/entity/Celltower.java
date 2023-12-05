@@ -9,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Version;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
@@ -25,6 +26,11 @@ public class Celltower {
 	@GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "celltower_id")
 	private UUID id;
+	
+	//version numbers for detecting concurrent changes to entries. Also may prevent issues with id generation
+	@Version 
+	@Column(name = "version_nr")
+	private Integer version;
 
 	@Column(name = "Mobile Network Code", length = 50, nullable = false, unique = false)
 	private String mnc;

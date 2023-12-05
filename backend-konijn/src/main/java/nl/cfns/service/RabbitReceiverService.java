@@ -80,7 +80,7 @@ public class RabbitReceiverService {
 
 		Measurement measurement = modelMapper.map(measurementDto, Measurement.class);
 		//measurement.generateNewId();
-		System.out.println(" [x] Received  measurementdto" + measurementDto.toString());
+		System.out.println(" [x] Received " + measurementDto.toString());
 		System.out.println("converted to " + measurement.toString());
 		measurementsRepository.save(measurement);
 		latch.countDown(); // why a countdown on receive?

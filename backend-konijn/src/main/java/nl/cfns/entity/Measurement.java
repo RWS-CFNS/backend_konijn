@@ -15,19 +15,23 @@ import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
+
 
 //TODO add foreign keys to entities
 @Entity
 @Data
+@Accessors(chain = true)
 @NoArgsConstructor	@AllArgsConstructor //generator constructors with and without variables
 @Table(name = "MEASUREMENTS_TABLE")
-public class Measurement {
+public class Measurement implements VersionedEntity{
 	@Id
 	@GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "measurement_id")
 	private UUID id;
 	
 	//version numbers for detecting concurrent changes to entries. Also may prevent issues with id generation
+	@Column(name = "version_nr")
 	@Version 
 	private Integer version;
 	
@@ -95,8 +99,11 @@ public class Measurement {
     public void generateNewId() {
         this.id = null; // Set the current ID to null and generate a new one
     }
-	
 
-
+    @Override
+    public void setVersion(Integer version) {
+        this.version = version;
+    }
+    
 
 }
