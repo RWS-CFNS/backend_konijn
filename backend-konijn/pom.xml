@@ -24,7 +24,7 @@
         
         <javafaker.version>1.0.2</javafaker.version>
         <uber.version>3.7.0</uber.version>
-        <modelmapper.version>2.3.5</modelmapper.version>
+        <modelmapper.version>3.1.1</modelmapper.version>
         <asciidoctor.version>2.2.1</asciidoctor.version>
         
     </properties>
