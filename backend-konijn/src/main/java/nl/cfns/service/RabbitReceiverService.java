@@ -27,7 +27,7 @@ import nl.cfns.repository.WeatherMeasurementRepository;
 //data is converted from a JSON datastructure to an entity (model) or a DTO derived from the models
 //for more information, see the designs in 23H2 Onedrive
 @Component("receiver")
-public class ReceiverService {
+public class RabbitReceiverService {
 	//define object for delays, which may be needed in some instances
 	private CountDownLatch latch = new CountDownLatch(1);
 	
@@ -51,7 +51,7 @@ public class ReceiverService {
 	@RabbitListener(queues = RabbitConfig.queueName)
 	public void receiveMessage(Testbox receivedBox) {
 		//Testbox receivedBox = objectMapper.readValue(message, Testbox.class); // convert JSON string to class object
-		receivedBox.generateNewId();
+		//receivedBox.generateNewId();
 		testboxRepository.save(receivedBox);	//insert measuringbox object into database
 		
 		//System.out.println("the name of the box is: " + receivedBox.getName());
@@ -67,7 +67,7 @@ public class ReceiverService {
 	public void receiveMessage(WeatherMeasurementDto weatherMeasurementDto) {
 		//System.out.println(" [x] Received weather" + weatherMeasurement.toString());
 		WeatherMeasurement weatherMeasurement = modelMapper.map(weatherMeasurementDto, WeatherMeasurement.class);
-		weatherMeasurement.generateNewId();
+		//weatherMeasurement.generateNewId();
 		//WeatherMeasurement validweatherMeasurement = new WeatherMeasurement(weatherMeasurement);
 		weatherMeasurementRepository.save(weatherMeasurement);
 		latch.countDown(); // why a countdown on receive?
@@ -79,7 +79,7 @@ public class ReceiverService {
 	public void receiveMessage(MeasurementDto measurementDto) {
 
 		Measurement measurement = modelMapper.map(measurementDto, Measurement.class);
-		measurement.generateNewId();
+		//measurement.generateNewId();
 		System.out.println(" [x] Received  measurementdto" + measurementDto.toString());
 		System.out.println("converted to " + measurement.toString());
 		measurementsRepository.save(measurement);
@@ -94,7 +94,7 @@ public class ReceiverService {
 	public void receiveMessage(MeasuringboxDto measuringboxDto) {
 		//System.out.println(" [x] Received box2" + measuringbox2.toString());
 		Measuringbox measuringbox = modelMapper.map(measuringboxDto, Measuringbox.class);
-		measuringbox.generateNewId();
+		//measuringbox.generateNewId();
 		measuringboxRepository.save(measuringbox);
 		latch.countDown(); // why a countdown on receive?
 		

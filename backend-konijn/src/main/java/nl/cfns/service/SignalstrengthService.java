@@ -22,7 +22,7 @@ public class SignalstrengthService {
 	
 	private Map<String, Double> generatedHeatmap;
 
-	//generate heatmap every x milliseconds
+	//generate reference heatmap every 5 seconds
 	@Async
 	@Scheduled(fixedRate = 5000)
 	public void generateHeatmap() throws IOException {
@@ -32,6 +32,7 @@ public class SignalstrengthService {
 		generatedHeatmap = HeatmapGeneratorService.generateHexHeatmap(measurementList, 10);	//update object generatedHeatmap	
 	}
 	
+	//function for retrieving heatmap
     public Map<String, Double> getSignalStrengthHeatmap() throws IOException {
         return generatedHeatmap;
     }

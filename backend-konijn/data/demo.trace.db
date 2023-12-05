@@ -1806,3 +1806,290 @@ org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-21
 org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
 2023-12-05 14:06:27 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:20:38 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:20:41 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:20:41 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:20:44 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:20:47 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:20:50 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:20:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:20:56 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:20:59 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:21:02 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:21:05 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:21:08 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:21:11 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:21:12 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:21:15 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:21:18 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:21:21 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:21:24 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:21:27 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:21:30 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:21:33 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:21:36 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:21:39 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:21:42 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:21:42 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:21:45 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:21:48 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:21:51 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:21:54 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:21:57 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:22:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:22:03 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:22:06 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:22:09 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:22:12 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:22:12 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:22:15 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:22:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:22:21 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:22:24 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:22:27 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:22:30 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:22:33 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:22:36 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:22:39 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:22:39 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:22:42 jdbc[7]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:22:45 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:22:48 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:22:51 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:22:54 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:22:57 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:23:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:23:03 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:23:06 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:23:09 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:23:09 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:23:33 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:23:33 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:23:36 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:23:39 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:23:39 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:23:42 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:23:45 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:23:48 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:23:51 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:23:54 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:23:57 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:24:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:24:03 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:24:06 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:24:09 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:24:09 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:24:12 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CELLTOWER_TABLE" not found; SQL statement:
+select c1_0.celltower_id,c1_0.latitude,c1_0.is_simulated,c1_0."location area code",c1_0.longitude,c1_0."mobile country code",c1_0."mobile network code" from celltower_table c1_0 [42102-214]
+2023-12-05 14:24:12 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:24:15 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:24:17 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CELLTOWER_TABLE" not found; SQL statement:
+select c1_0.celltower_id,c1_0.latitude,c1_0.is_simulated,c1_0."location area code",c1_0.longitude,c1_0."mobile country code",c1_0."mobile network code" from celltower_table c1_0 [42102-214]
+2023-12-05 14:24:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:24:21 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:24:22 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CELLTOWER_TABLE" not found; SQL statement:
+select c1_0.celltower_id,c1_0.latitude,c1_0.is_simulated,c1_0."location area code",c1_0.longitude,c1_0."mobile country code",c1_0."mobile network code" from celltower_table c1_0 [42102-214]
+2023-12-05 14:24:24 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:24:27 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MEASUREMENTS_TABLE" not found; SQL statement:
+select m1_0.measurement_id,m1_0.rsrp,m1_0.rsrq,m1_0.rssi,m1_0.sinr,m1_0.download,m1_0.is_simulated,m1_0.latency,m1_0.latitude,m1_0.longitude,m1_0."mobile network operator",m1_0.time,m1_0.upload from measurements_table m1_0 [42102-214]
+2023-12-05 14:24:27 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CELLTOWER_TABLE" not found; SQL statement:
+select c1_0.celltower_id,c1_0.latitude,c1_0.is_simulated,c1_0."location area code",c1_0.longitude,c1_0."mobile country code",c1_0."mobile network code" from celltower_table c1_0 [42102-214]
+2023-12-05 14:24:27 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:24:30 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:24:32 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CELLTOWER_TABLE" not found; SQL statement:
+select c1_0.celltower_id,c1_0.latitude,c1_0.is_simulated,c1_0."location area code",c1_0.longitude,c1_0."mobile country code",c1_0."mobile network code" from celltower_table c1_0 [42102-214]
+2023-12-05 14:24:32 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MEASUREMENTS_TABLE" not found; SQL statement:
+select m1_0.measurement_id,m1_0.rsrp,m1_0.rsrq,m1_0.rssi,m1_0.sinr,m1_0.download,m1_0.is_simulated,m1_0.latency,m1_0.latitude,m1_0.longitude,m1_0."mobile network operator",m1_0.time,m1_0.upload from measurements_table m1_0 [42102-214]
+2023-12-05 14:24:33 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:24:36 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:24:37 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MEASUREMENTS_TABLE" not found; SQL statement:
+select m1_0.measurement_id,m1_0.rsrp,m1_0.rsrq,m1_0.rssi,m1_0.sinr,m1_0.download,m1_0.is_simulated,m1_0.latency,m1_0.latitude,m1_0.longitude,m1_0."mobile network operator",m1_0.time,m1_0.upload from measurements_table m1_0 [42102-214]
+2023-12-05 14:24:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CELLTOWER_TABLE" not found; SQL statement:
+select c1_0.celltower_id,c1_0.latitude,c1_0.is_simulated,c1_0."location area code",c1_0.longitude,c1_0."mobile country code",c1_0."mobile network code" from celltower_table c1_0 [42102-214]
+2023-12-05 14:24:39 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:24:39 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MEASUREMENTS_TABLE" not found; SQL statement:
+select m1_0.measurement_id,m1_0.rsrp,m1_0.rsrq,m1_0.rssi,m1_0.sinr,m1_0.download,m1_0.is_simulated,m1_0.latency,m1_0.latitude,m1_0.longitude,m1_0."mobile network operator",m1_0.time,m1_0.upload from measurements_table m1_0 [42102-214]
+2023-12-05 14:24:39 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CELLTOWER_TABLE" not found; SQL statement:
+select c1_0.celltower_id,c1_0.latitude,c1_0.is_simulated,c1_0."location area code",c1_0.longitude,c1_0."mobile country code",c1_0."mobile network code" from celltower_table c1_0 [42102-214]
+2023-12-05 14:24:39 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MEASURINGBOX_TABLE" not found; SQL statement:
+select m1_0.measuringbox_id,m1_0.latitude,m1_0.is_simulated,m1_0.lac,m1_0.longitude,m1_0.mcc,m1_0.mnc,m1_0.status from measuringbox_table m1_0 [42102-214]
+2023-12-05 14:24:39 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:24:40 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MEASURINGBOX_TABLE" not found; SQL statement:
+insert into measuringbox_table (latitude,is_simulated,lac,longitude,mcc,mnc,status,measuringbox_id) values (?,?,?,?,?,?,?,?) [42102-214]
+2023-12-05 14:24:42 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:24:44 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MEASUREMENTS_TABLE" not found; SQL statement:
+select m1_0.measurement_id,m1_0.rsrp,m1_0.rsrq,m1_0.rssi,m1_0.sinr,m1_0.download,m1_0.is_simulated,m1_0.latency,m1_0.latitude,m1_0.longitude,m1_0."mobile network operator",m1_0.time,m1_0.upload from measurements_table m1_0 [42102-214]
+2023-12-05 14:24:44 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CELLTOWER_TABLE" not found; SQL statement:
+select c1_0.celltower_id,c1_0.latitude,c1_0.is_simulated,c1_0."location area code",c1_0.longitude,c1_0."mobile country code",c1_0."mobile network code" from celltower_table c1_0 [42102-214]
+2023-12-05 14:24:44 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MEASURINGBOX_TABLE" not found; SQL statement:
+insert into measuringbox_table (latitude,is_simulated,lac,longitude,mcc,mnc,status,measuringbox_id) values (?,?,?,?,?,?,?,?) [42102-214]
+2023-12-05 14:24:45 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:24:48 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MEASURINGBOX_TABLE" not found; SQL statement:
+insert into measuringbox_table (latitude,is_simulated,lac,longitude,mcc,mnc,status,measuringbox_id) values (?,?,?,?,?,?,?,?) [42102-214]
+2023-12-05 14:24:48 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:24:49 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CELLTOWER_TABLE" not found; SQL statement:
+select c1_0.celltower_id,c1_0.latitude,c1_0.is_simulated,c1_0."location area code",c1_0.longitude,c1_0."mobile country code",c1_0."mobile network code" from celltower_table c1_0 [42102-214]
+2023-12-05 14:24:49 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MEASUREMENTS_TABLE" not found; SQL statement:
+select m1_0.measurement_id,m1_0.rsrp,m1_0.rsrq,m1_0.rssi,m1_0.sinr,m1_0.download,m1_0.is_simulated,m1_0.latency,m1_0.latitude,m1_0.longitude,m1_0."mobile network operator",m1_0.time,m1_0.upload from measurements_table m1_0 [42102-214]
+2023-12-05 14:24:51 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:24:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:24:59 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:25:02 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:25:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:25:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:25:09 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:25:12 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:25:15 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:25:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:25:21 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:25:24 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 14:25:27 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-12-05 15:05:53 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MEASUREMENTS_TABLE" not found; SQL statement:
+select m1_0.measurement_id,m1_0.rsrp,m1_0.rsrq,m1_0.rssi,m1_0.sinr,m1_0.download,m1_0.is_simulated,m1_0.latency,m1_0.latitude,m1_0.longitude,m1_0."mobile network operator",m1_0.time,m1_0.upload,m1_0.version from measurements_table m1_0 [42102-214]
+2023-12-05 15:05:58 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MEASUREMENTS_TABLE" not found; SQL statement:
+select m1_0.measurement_id,m1_0.rsrp,m1_0.rsrq,m1_0.rssi,m1_0.sinr,m1_0.download,m1_0.is_simulated,m1_0.latency,m1_0.latitude,m1_0.longitude,m1_0."mobile network operator",m1_0.time,m1_0.upload,m1_0.version from measurements_table m1_0 [42102-214]
+2023-12-05 15:06:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MEASURINGBOX_TABLE" not found; SQL statement:
+insert into measuringbox_table (latitude,is_simulated,lac,longitude,mcc,mnc,status,version,measuringbox_id) values (?,?,?,?,?,?,?,?,?) [42102-214]
+2023-12-05 15:06:03 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MEASUREMENTS_TABLE" not found; SQL statement:
+select m1_0.measurement_id,m1_0.rsrp,m1_0.rsrq,m1_0.rssi,m1_0.sinr,m1_0.download,m1_0.is_simulated,m1_0.latency,m1_0.latitude,m1_0.longitude,m1_0."mobile network operator",m1_0.time,m1_0.upload,m1_0.version from measurements_table m1_0 [42102-214]
+2023-12-05 15:06:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MEASURINGBOX_TABLE" not found; SQL statement:
+insert into measuringbox_table (latitude,is_simulated,lac,longitude,mcc,mnc,status,version,measuringbox_id) values (?,?,?,?,?,?,?,?,?) [42102-214]
+2023-12-05 15:06:08 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MEASUREMENTS_TABLE" not found; SQL statement:
+select m1_0.measurement_id,m1_0.rsrp,m1_0.rsrq,m1_0.rssi,m1_0.sinr,m1_0.download,m1_0.is_simulated,m1_0.latency,m1_0.latitude,m1_0.longitude,m1_0."mobile network operator",m1_0.time,m1_0.upload,m1_0.version from measurements_table m1_0 [42102-214]
+2023-12-05 15:06:07 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MEASURINGBOX_TABLE" not found; SQL statement:
+insert into measuringbox_table (latitude,is_simulated,lac,longitude,mcc,mnc,status,version,measuringbox_id) values (?,?,?,?,?,?,?,?,?) [42102-214]
+2023-12-05 15:06:11 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MEASUREMENTS_TABLE" not found; SQL statement:
+select m1_0.measurement_id,m1_0.rsrp,m1_0.rsrq,m1_0.rssi,m1_0.sinr,m1_0.download,m1_0.is_simulated,m1_0.latency,m1_0.latitude,m1_0.longitude,m1_0."mobile network operator",m1_0.time,m1_0.upload,m1_0.version from measurements_table m1_0 [42102-214]
+2023-12-05 15:06:11 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MEASURINGBOX_TABLE" not found; SQL statement:
+insert into measuringbox_table (latitude,is_simulated,lac,longitude,mcc,mnc,status,version,measuringbox_id) values (?,?,?,?,?,?,?,?,?) [42102-214]
+2023-12-05 15:06:11 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MEASURINGBOX_TABLE" not found; SQL statement:
+insert into measuringbox_table (latitude,is_simulated,lac,longitude,mcc,mnc,status,version,measuringbox_id) values (?,?,?,?,?,?,?,?,?) [42102-214]

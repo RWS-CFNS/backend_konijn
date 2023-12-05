@@ -23,7 +23,7 @@ import nl.cfns.repository.RequestRepository;
 //the class works automatically when measuringboxes are added in the H2 console or separate GUI
 //for testing general functionality of the backend, use the nl.cfns.simulate package instead
 @Service
-public class CommunicationHandlerService {
+public class RabbitTransmitterService {
 	@Autowired 
 	private AmqpTemplate amqpTemplate;
 	
@@ -34,8 +34,9 @@ public class CommunicationHandlerService {
     private MeasuringboxRepository measuringbox2Repository;
 	
 	//check every 30 seconds if measuringboxes in the database are connected
+    //first iteration is after 15 seconds
     //it checks activity by sending a message to each measuringbox. 
-	@Scheduled(fixedRate = 30000)
+	@Scheduled(fixedRate = 30000, initialDelay = 15000)
 	@Async
 	void isAliveMeasuringboxes() throws IOException {
 		//System.out.println("try to send request");
@@ -48,7 +49,6 @@ public class CommunicationHandlerService {
         
         //iterate all measuringboxes in database
         for (Measuringbox box : measuringboxes) {
-
             // Send the request object to RabbitMQ. Save request for later processing
         	request.setMeasuringboxID(box.getId());
         	sendandSaveRequest(request);
@@ -80,7 +80,7 @@ public class CommunicationHandlerService {
 	//function for sending as well as saving a request
 	@Async
 	void sendandSaveRequest(Request request) {
-    	System.out.println(" [x] Sent '" + request.toString() + "'");
+    	//System.out.println(" [x] Sent '" + request.toString() + "'");
         amqpTemplate.convertAndSend(RabbitConfig.topicExchangeName, RabbitConfig.REQUEST_KEY, request);
         requestRepository.save(request);		
 	}

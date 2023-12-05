@@ -9,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Version;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
@@ -25,6 +26,10 @@ public class Measurement {
 	@GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "measurement_id")
 	private UUID id;
+	
+	//version numbers for detecting concurrent changes to entries. Also may prevent issues with id generation
+	@Version 
+	private Integer version;
 	
 	//foreign key for keeping track which measuringbox this measurement belongs to
 //    @ManyToOne

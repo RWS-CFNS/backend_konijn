@@ -11,7 +11,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import lombok.extern.java.Log;
 /*
 for the rabbitMQ management console, go to http://127.0.0.1:15672/#/
-for the H2 databse console, go to http://localhost:8080/h2-console/
+for the H2 databse console, go to http://localhost:8090/h2-console/
 for our github repository, go to https://github.com/RWS-CFNS/backend_konijn
 for a heatmap datastring that can be used by a front-end application, access localhost:8090/heatmap/data
 

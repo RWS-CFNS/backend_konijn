@@ -21,7 +21,7 @@ import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import nl.cfns.service.ReceiverService;
+import nl.cfns.service.RabbitReceiverService;
 
 //this configuration creates a connection with an existing rabbitmq server
 //only works if a rabbitmq server is running on this PC
@@ -210,7 +210,7 @@ public class RabbitConfig {
 
 		// adapters to be used by the receiver class
 		@Bean
-		MessageListenerAdapter exampleListenerAdapter(ReceiverService receiver) {
+		MessageListenerAdapter exampleListenerAdapter(RabbitReceiverService receiver) {
 			return new MessageListenerAdapter(receiver, "receiveMessage");
 		}	   
 	   

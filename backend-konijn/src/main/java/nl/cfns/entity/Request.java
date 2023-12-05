@@ -10,7 +10,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-
+import jakarta.persistence.Version;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,7 +27,9 @@ public class Request {
     @Column(name = "request_id")
 	private UUID id;
 	
-	
+	//version numbers for detecting concurrent changes to entries. Also may prevent issues with id generation
+	@Version 
+	private Integer version;
 	
 	@Column(name = "measuringboxID")
 	private UUID measuringboxID;

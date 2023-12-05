@@ -9,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Version;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
@@ -25,6 +26,10 @@ public class WeatherMeasurement {
     @Column(name = "weather_id")
 	private UUID id;
 
+	//version numbers for detecting concurrent changes to entries. Also may prevent issues with id generation
+	@Version 
+	private Integer version;
+	
 	@Column(nullable = true)
 	private Timestamp time;
 	
